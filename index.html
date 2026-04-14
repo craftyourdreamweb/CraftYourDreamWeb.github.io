@@ -200,6 +200,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     <a onclick="showPage('plantilla')">Plantilla</a>
     <a onclick="showPage('clasificacion')">Grupo H — Mundial</a>
     <a onclick="showPage('tienda')">Tienda</a>
+    <a onclick="showPage('Historia')">Historia</a>
   </nav>
 </header>
 
@@ -302,6 +303,16 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     <span>Política de privacidad · Aviso legal</span>
   </div>
 </footer>
+
+<!-- Historia -->
+  <div id="page-historia" class="page-section">
+  <section class="section">
+    <div class="section-header"><h2 class="section-title">Historia</h2></div>
+    <div class="news-grid" id="all-news"></div>
+  </section>
+</div>
+
+  
 
 <!-- ADMIN PANEL -->
 <div class="admin-overlay" id="adminOverlay">
@@ -458,7 +469,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
           <h4 style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo);letter-spacing:1px;margin-bottom:12px">Productos (<span id="store-count">0</span>)</h4>
           <div id="admin-store-list"></div>
         </div>
-
+      
        <!-- API AUTO
         <div class="admin-section" id="admin-api">
           <div style="background:#fff8e1;border:1.5px solid var(--amarillo);padding:16px 20px;margin-bottom:20px;font-size:13px;line-height:1.7">
@@ -539,7 +550,6 @@ let squad=ld('esp_squad',[
   {id:10,num:23,name:"Álex Grimaldo",pos:"Defensa",club:"Bayer Leverkusen",age:29},
   {id:11,num:16,name:"Rodri",pos:"Centrocampista",club:"Manchester City",age:28},
   {id:12,num:8,name:"Pedri",pos:"Centrocampista",club:"FC Barcelona",age:23},
-  {id:13,num:14,name:"Martín Zubimendi",pos:"Centrocampista",club:"Arsenal",age:25},
   {id:14,num:10,name:"Dani Olmo",pos:"Centrocampista",club:"FC Barcelona",age:27},
   {id:15,num:14,name:"Andreu Zarzoso",pos:"Centrocampista",club:"FC Barcelona",age:20},
   {id:16,num:20,name:"Álex Baena",pos:"Centrocampista",club:"Atlético Madrid",age:23},
