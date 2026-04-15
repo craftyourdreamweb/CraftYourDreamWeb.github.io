@@ -28,7 +28,7 @@ nav a:hover,nav a.active{color:var(--blanco);border-bottom-color:var(--amarillo)
 
 /* HERO */
 .hero{position:relative;height:580px;overflow:hidden;background:var(--rojo-oscuro)}
-.hero-img{width:100%;height:100%;object-fit:cover;opacity:.4}
+.hero-img{width:100%;height:100%;object-fit:cover;opacity: 0.4}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(100,0,0,.95) 30%,rgba(100,0,0,.1) 100%);display:flex;align-items:center;justify-content:space-between;padding:0 80px}
 .hero-content{max-width:580px}
 .hero-badge{display:inline-block;background:var(--amarillo);color:#111;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;margin-bottom:18px}
@@ -130,6 +130,10 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 .footer-col a:hover{color:var(--amarillo)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;font-size:12px}
 
+/* PATROCINADORES */
+
+.patrocinadores{display:flex;gap:20px;align-items:center;justify-content:center;margin-top:30px }
+
 /* ADMIN */
 .admin-overlay{display:none;position:fixed;inset:0;background:rgba(20,0,0,.92);z-index:9999;overflow-y:auto}
 .admin-overlay.open{display:flex;flex-direction:column}
@@ -210,7 +214,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 <!-- INICIO -->
 <div id="page-inicio" class="page-section active">
   <section class="hero">
-    <img class="hero-img" src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?w=1600&auto=format&fit=crop" alt="Selección España"/>
+    <img class="hero-img" src="https://objetos-xlk.estaticos-marca.com/uploads/2024/12/25/676c342e135d0.jpeg" alt="Selección España"/>
     <div class="hero-overlay">
       <div class="hero-content">
         <span class="hero-badge">Mundial 2026 · Grupo H · Campeones Euro 2024</span>
@@ -241,11 +245,23 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
   </section>
   <section class="section">
     <div class="section-header">
-      <h2 class="section-title">Historia de la roja</h2>
-      <span class="ver-todo" onclick="showPage('historia')">Ver toda →</span>
+      <h2 class="section-title">LA ROJA, LA SELECCIÓN PERFECTA</h2>
+      <span class="ver-todo" onclick="showPage('historia')">Ver Historia completa →</span>
     </div>
+    <img src="https://media.cnn.com/api/v1/images/stellar/prod/cnne-1268609-spain-s-defender-sergio-ramos-c-raises.jpg?q=w_1110,c_fill" class="ImagenHistoria"/>
     <div class="news-grid" id="home-news"></div>
   </section>
+  <section class="partidos-bg">
+    <div class="section-header">
+      <h2 class="section-title">Patrocinadores</h2>
+       <div class="patrocinadores">
+    </div>
+    <a href="https://www.adidas.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas" style="height:60px;object-fit:contain" /></a>
+    <a href="https://www.coca-cola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/3840px-Coca-Cola_logo.svg.png" alt="Coca-Cola" style="height:60px;object-fit:contain"/></a>
+    <a href="https://www.iberdrola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Logo_Iberdrola_%282023%29.svg/1280px-Logo_Iberdrola_%282023%29.svg.png" alt="Iberdrola" style="height:60px;object-fit:contain"/></a>
+    <a href="https://www.mahou.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png" alt="Mahou San Miguel" style="height:60px;object-fit:contain"/></a>
+    <span class="ver-todo" onclick="showPage('patrocinadores')">Ver todos →</span>
+    </section>
 </div>
 
 <!-- NOTICIAS -->
@@ -306,6 +322,25 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     <div class="TextHistory"><div class="container">
     <h1>La Roja: La seleccion perfecta</h1>
     <img src="https://media.cnn.com/api/v1/images/stellar/prod/cnne-1268609-spain-s-defender-sergio-ramos-c-raises.jpg?q=w_1110,c_fill" class="ImagenHistoria"/>
+  </section>
+</div>
+
+<!-- PATROCINADORES -->
+<div id="page-patrocinadores" class="page-section">
+  <section class="section">
+    <div class="section-header"><h2 class="section-title">Patrocinadores</h2></div>
+      <div class="patrocinadores">
+        <a href="https://www.adidas.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas" style="height:60px;object-fit:contain" /></a>
+        <a href="https://www.coca-cola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/3840px-Coca-Cola_logo.svg.png" alt="Coca-Cola" style="height:60px;object-fit:contain"/></a>
+        <a href="https://www.iberdrola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Logo_Iberdrola_%282023%29.svg/1280px-Logo_Iberdrola_%282023%29.svg.png" alt="Iberdrola" style="height:60px;object-fit:contain"/></a>
+        <a href="https://www.mahou.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png" alt="Mahou San Miguel" style="height:60px;object-fit:contain"/></a>
+        <a href="https://www.endesa.com" target="_blank"><img src="https://www.endesa.com/content/dam/endesa-com/endesa_logo.svg" alt="Endesa" style="height:60px;object-fit:contain"/></a>
+        <a href="https://www.santander.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Banco_Santander_Logotipo.svg/3840px-Banco_Santander_Logotipo.svg.png" alt="Santander" style="height:60px;object-fit:contain"/></a>
+        <a href="https://www.mapfre.com" target="_blank"><img src="https://www.mapfre.com/media/2025/12/logo-generic-mapfre.svg" alt="Mapfre" style="height:60px;object-fit:contain"/></a>
+        <a href="https://www.movistar.es" target="_blank"><img src="https://ssr.col.movistar.es/api/v1/get-glyph/movistar-logo-h-m/2.00/movistarBlue" alt="Movistar" style="height:60px;object-fit:contain"/></a></div><a href="https://www.laliga.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/3840px-LaLiga_logo_2023.svg.png" alt="LaLiga" style="height:60px;object-fit:contain"/></a>
+        <a href="https://www.samsung.com" target="_blank"><img src="https://images.samsung.com/is/image/samsung/assets/global/about-us/brand/logo/mo/360_197_1.png?$720_N_PNG$" alt="Samsung" style="height:60px;object-fit:contain"/></a>
+        <a href="https://www.lays.es" target="_blank"><img src="https://www.lays.es/themes/custom/lays_fe/logo.png" alt="Lay's" style="height:60px;object-fit:contain"/></a>
+      </div>
   </section>
 </div>
 
