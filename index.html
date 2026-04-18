@@ -131,8 +131,14 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;font-size:12px}
 
 /* PATROCINADORES */
+.patrocinadores-home{display:flex;justify-content:center;align-items:center;gap:40px;margin-top:20px;}
+.patrocinadores-home img{height:45px;width:auto;filter:grayscale(100%) opacity(0.7);transition:all 0.3s ease;}
+.patrocinadores-home img:hover{filter:grayscale(0%) opacity(1);transform:scale(1.1);}
+.patrocinadores-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:40px 5%;margin-top:30px;margin-bottom:40px;}
+.patrocinadores-grid a{width:20%;display:flex;justify-content:center;align-items:center;}
+.patrocinadores-grid img{width:100%;height:auto;object-fit:contain;filter:grayscale(100%) brightness(0.8);transition:all 0.3s ease;}
+.patrocinadores-grid img:hover{filter:grayscale(0%);transform:scale(1.1);}
 
-.patrocinadores{display:flex;gap:20px;align-items:center;justify-content:center;margin-top:30px }
 
 /* ADMIN */
 .admin-overlay{display:none;position:fixed;inset:0;background:rgba(20,0,0,.92);z-index:9999;overflow-y:auto}
@@ -250,18 +256,31 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     </div>
     <img src="https://media.cnn.com/api/v1/images/stellar/prod/cnne-1268609-spain-s-defender-sergio-ramos-c-raises.jpg?q=w_1110,c_fill" class="ImagenHistoria"/>
     <div class="news-grid" id="home-news"></div>
-  </section>
+  </section> 
+
+  
   <section class="partidos-bg">
-    <div class="section-header">
-      <h2 class="section-title">Patrocinadores</h2>
-       <div class="patrocinadores">
+  <div class="section-header">
+    <h2 class="section-title">Patrocinadores</h2>
+    <div class="patrocinadores-home">
+      <a href="https://www.adidas.com" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png">
+      </a>
+      <a href="https://www.coca-cola.com" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/3840px-Coca-Cola_logo.svg.png">
+      </a>
+      <a href="https://www.iberdrola.com" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Logo_Iberdrola_%282023%29.svg/1280px-Logo_Iberdrola_%282023%29.svg.png">
+      </a>
+      <a href="https://www.mahou.com" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png">
+      </a>
     </div>
-    <a href="https://www.adidas.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas" style="height:60px;object-fit:contain" /></a>
-    <a href="https://www.coca-cola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/3840px-Coca-Cola_logo.svg.png" alt="Coca-Cola" style="height:60px;object-fit:contain"/></a>
-    <a href="https://www.iberdrola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Logo_Iberdrola_%282023%29.svg/1280px-Logo_Iberdrola_%282023%29.svg.png" alt="Iberdrola" style="height:60px;object-fit:contain"/></a>
-    <a href="https://www.mahou.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png" alt="Mahou San Miguel" style="height:60px;object-fit:contain"/></a>
-    <span class="ver-todo" onclick="showPage('patrocinadores')">Ver todos →</span>
-    </section>
+    <span class="ver-todo" onclick="showPage('patrocinadores')">
+      Ver todos →
+    </span>
+  </div>
+</section>
 </div>
 
 <!-- NOTICIAS -->
@@ -325,25 +344,26 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
   </section>
 </div>
 
-<!-- PATROCINADORES -->
+<!--PATROCINADORES -->
 <div id="page-patrocinadores" class="page-section">
-  <section class="section">
-    <div class="section-header"><h2 class="section-title">Patrocinadores</h2></div>
-      <div class="patrocinadores">
-        <a href="https://www.adidas.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas" style="height:60px;object-fit:contain" /></a>
-        <a href="https://www.coca-cola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/3840px-Coca-Cola_logo.svg.png" alt="Coca-Cola" style="height:60px;object-fit:contain"/></a>
-        <a href="https://www.iberdrola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Logo_Iberdrola_%282023%29.svg/1280px-Logo_Iberdrola_%282023%29.svg.png" alt="Iberdrola" style="height:60px;object-fit:contain"/></a>
-        <a href="https://www.mahou.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png" alt="Mahou San Miguel" style="height:60px;object-fit:contain"/></a>
-        <a href="https://www.endesa.com" target="_blank"><img src="https://www.endesa.com/content/dam/endesa-com/endesa_logo.svg" alt="Endesa" style="height:60px;object-fit:contain"/></a>
-        <a href="https://www.santander.com" target="_blank"><img src="https://i.imgur.com/WlOVbGD.png"/></a>
-        <a href="https://www.mapfre.com" target="_blank"><img src="https://www.mapfre.com/media/2025/12/logo-generic-mapfre.svg" alt="Mapfre" style="height:60px;object-fit:contain"/></a>
-        <a href="https://www.movistar.es" target="_blank"><img src="https://ssr.col.movistar.es/api/v1/get-glyph/movistar-logo-h-m/2.00/movistarBlue" alt="Movistar" style="height:60px;object-fit:contain"/></a>
-        <a href="https://www.laliga.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/3840px-LaLiga_logo_2023.svg.png" alt="LaLiga" style="height:60px;object-fit:contain"/></a>
-        <a href="https://www.samsung.com" target="_blank"><img src="https://images.samsung.com/is/image/samsung/assets/global/about-us/brand/logo/mo/360_197_1.png?$720_N_PNG$" alt="Samsung" style="height:60px;object-fit:contain"/></a>
-        <a href="https://www.lays.es" target="_blank"><img src="https://www.lays.es/themes/custom/lays_fe/logo.png" alt="Lay's" style="height:60px;object-fit:contain"/></a>
-      </div>
-  </section>
+<section>
+  <h2 class="section-title">Todos los patrocinadores</h2>
+  <div class="patrocinadores-grid">
+    <a href="https://www.adidas.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png"></a>
+    <a href="https://www.coca-cola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/3840px-Coca-Cola_logo.svg.png"></a>
+    <a href="https://www.iberdrola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Logo_Iberdrola_%282023%29.svg/1280px-Logo_Iberdrola_%282023%29.svg.png"></a>
+    <a href="https://www.mahou.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png"></a>
+    <a href="https://www.endesa.com" target="_blank"><img src="https://www.endesa.com/content/dam/endesa-com/endesa_logo.svg"></a>
+    <a href="https://www.santander.com" target="_blank"><img src="https://i.imgur.com/WlOVbGD.png"></a>
+    <a href="https://www.mapfre.com" target="_blank"><img src="https://www.mapfre.com/media/2025/12/logo-generic-mapfre.svg"></a>
+    <a href="https://www.movistar.es" target="_blank"><img src="https://ssr.col.movistar.es/api/v1/get-glyph/movistar-logo-h-m/2.00/movistarBlue"></a>
+    <a href="https://www.laliga.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/3840px-LaLiga_logo_2023.svg.png"></a>
+    <a href="https://www.samsung.com" target="_blank"><img src="https://images.samsung.com/is/image/samsung/assets/global/about-us/brand/logo/mo/360_197_1.png?$720_N_PNG$"></a>
+    <a href="https://www.lays.es" target="_blank"><img src="https://www.lays.es/themes/custom/lays_fe/logo.png"></a>
+  </div>
+</section>
 </div>
+
 
 <footer>
   <div class="footer-grid">
