@@ -131,17 +131,34 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;font-size:12px}
 
 /* PATROCINADORES */
-.patrocinadores-home{display:flex;justify-content: space-evenly;}
-.patrocinadores-home img{width:230px;height:200px;object-fit:contain;filter:grayscale(100%) brightness(0.8);transition:all 0.3s ease;}
-.patrocinadores-home img:hover{filter:grayscale(0%) opacity(1);transform:scale(1.1);}
-.patrocinadores-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:40px 5%;margin-top:30px;margin-bottom:40px;}
-.patrocinadores-grid a{width:20%;display:flex;justify-content:center;align-items:center;}
-.patrocinadores-grid img{width:100%;height:auto;object-fit:contain;filter:grayscale(100%) brightness(0.8);transition:all 0.3s ease;}
-.patrocinadores-grid img:hover{filter:grayscale(0%);transform:scale(1.1);}
-.patrocinadores-bg {background:var(--rojo-oscuro);padding-top:20px;padding-bottom:2px;padding-left:40px;padding-right:40px;}
-.patrocinadores-bg .section-title,.patrocinadores-bg .ver-todo{color:var(--blanco)}
-.patrocinadores-bg .section-header{border-left-color:var(--amarillo)}
-.patrocinadores-bg .ver-todo:hover{color:var(--amarillo)}
+.patrocinadores-bg{background:#1a0000;padding:60px 40px 50px;}
+.patrocinadores-bg .section-header{border-left-color:var(--amarillo);}
+.patrocinadores-bg .section-title{color:var(--blanco);}
+.patrocinadores-bg .ver-todo{color:rgba(255,255,255,.55);font-size:12px;}
+.patrocinadores-bg .ver-todo:hover{color:var(--amarillo);}
+.sponsor-tier-label{display:flex;align-items:center;gap:14px;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:20px;margin-top:36px;}
+.sponsor-tier-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08);}
+.sponsor-tier-label.gold{color:var(--amarillo);opacity:.7;}
+.sponsor-main-wrap{display:flex;justify-content:center;align-items:center;gap:0;margin-bottom:10px;}
+.sponsor-main-item{display:flex;justify-content:center;align-items:center;padding:28px 52px;transition:border-color .3s, background .3s;cursor:pointer;}
+.sponsor-main-item:hover{border-color:rgba(241,191,0,.3);background:rgba(255,255,255,.03);}
+.sponsor-main-item img{height:60px;width:auto;max-width:220px;object-fit:contain;filter:brightness(0) invert(1) opacity(.6);transition:filter .35s, transform .35s;}
+.sponsor-main-item:hover img{filter:brightness(0) invert(1) opacity(1);transform:scale(1.06);}
+.sponsor-row{display:flex;flex-wrap:wrap;justify-content:center;gap:0;}
+.sponsor-item{display:flex;justify-content:center;align-items:center;padding:22px 36px;flex:1;min-width:160px;max-width:220px;border-right:1px solid rgba(255,255,255,.06);transition:background .3s;cursor:pointer;}
+.sponsor-item:last-child{border-right:none;}
+.sponsor-item:hover{background:rgba(255,255,255,.04);}
+.sponsor-item img{height:38px;width:auto;max-width:150px;object-fit:contain;filter:brightness(0) invert(1) opacity(.45);transition:filter .35s, transform .35s;}
+.sponsor-item:hover img{filter:brightness(0) invert(1) opacity(.9);transform:scale(1.07);}
+.sponsor-collab-row{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:0;}
+.sponsor-collab-item{display:flex;justify-content:center;align-items:center;padding:16px 28px;flex:1;min-width:110px;max-width:160px;border-right:1px solid rgba(255,255,255,.05);transition:background .3s;cursor:pointer;}
+.sponsor-collab-item:last-child{border-right:none;}
+.sponsor-collab-item:hover{background:rgba(255,255,255,.03);}
+.sponsor-collab-item img{height:26px;width:auto;max-width:110px;object-fit:contain;filter:brightness(0) invert(1) opacity(.3);transition:filter .35s, transform .3s;}
+.sponsor-collab-item:hover img{filter:brightness(0) invert(1) opacity(.75);transform:scale(1.06);}
+.patrocinadores-page-wrap{background:#1a0000;padding:60px 40px;}
+.patrocinadores-page-wrap .section-title{color:var(--blanco);}
+.patrocinadores-page-wrap .section-header{border-left-color:var(--amarillo);}
 
 
 /* ADMIN */
@@ -264,29 +281,56 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 
   
   <section class="patrocinadores-bg">
-  <div class="section-header">
-    <h2 class="section-title">Patrocinadores</h2>
-    <span class="ver-todo" onclick="showPage('patrocinadores')">
-      Ver todos →
-    </span>
-  </div>
-</section>
-<section class="patrocinadores-bg">
-      <div class="patrocinadores-home">
-      <a href="https://www.adidas.com" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png">
-      </a>
-      <a href="https://www.coca-cola.com" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/3840px-Coca-Cola_logo.svg.png">
-      </a>
-      <a href="https://www.iberdrola.com" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Logo_Iberdrola_%282023%29.svg/1280px-Logo_Iberdrola_%282023%29.svg.png">
-      </a>
-      <a href="https://www.mahou.com" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png">
+    <div class="section-header">
+      <h2 class="section-title">Patrocinadores</h2>
+      <span class="ver-todo" onclick="showPage('patrocinadores')">Ver todos →</span>
+    </div>
+
+    <!-- Patrocinador Principal -->
+    <div class="sponsor-tier-label gold">Patrocinador Principal</div>
+    <div class="sponsor-main-wrap">
+      <a href="https://www.adidas.com" target="_blank" class="sponsor-main-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas"/>
       </a>
     </div>
-</section>
+
+    <!-- Patrocinadores Oficiales -->
+    <div class="sponsor-tier-label">Patrocinadores Oficiales</div>
+    <div class="sponsor-row">
+      <a href="https://www.coca-cola.com" target="_blank" class="sponsor-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/3840px-Coca-Cola_logo.svg.png" alt="Coca-Cola"/>
+      </a>
+      <a href="https://www.iberdrola.com" target="_blank" class="sponsor-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Logo_Iberdrola_%282023%29.svg/1280px-Logo_Iberdrola_%282023%29.svg.png" alt="Iberdrola"/>
+      </a>
+      <a href="https://www.mahou.com" target="_blank" class="sponsor-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png" alt="Mahou San Miguel"/>
+      </a>
+      <a href="https://www.santander.com" target="_blank" class="sponsor-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Banco_Santander_Logotipo.svg/3840px-Banco_Santander_Logotipo.svg.png" alt="Santander"/>
+      </a>
+    </div>
+
+    <!-- Colaboradores -->
+    <div class="sponsor-tier-label">Colaboradores</div>
+    <div class="sponsor-collab-row">
+      <a href="https://www.endesa.com" target="_blank" class="sponsor-collab-item">
+        <img src="https://www.endesa.com/content/dam/endesa-com/endesa_logo.svg" alt="Endesa"/>
+      </a>
+      <a href="https://www.mapfre.com" target="_blank" class="sponsor-collab-item">
+        <img src="https://www.mapfre.com/media/2025/12/logo-generic-mapfre.svg" alt="Mapfre"/>
+      </a>
+      <a href="https://www.movistar.es" target="_blank" class="sponsor-collab-item">
+        <img src="https://ssr.col.movistar.es/api/v1/get-glyph/movistar-logo-h-m/2.00/movistarBlue" alt="Movistar"/>
+      </a>
+      <a href="https://www.laliga.com" target="_blank" class="sponsor-collab-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/3840px-LaLiga_logo_2023.svg.png" alt="LaLiga"/>
+      </a>
+      <a href="https://www.samsung.com" target="_blank" class="sponsor-collab-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Samsung_Orig_Wordmark_BLACK_RGB.png" alt="Samsung"/>
+      </a>
+    </div>
+  </section>
 </div>
 
 <!-- NOTICIAS -->
@@ -352,20 +396,54 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 
 <!--PATROCINADORES -->
 <div id="page-patrocinadores" class="page-section">
-<section>
-  <h2 class="section-title">Todos los patrocinadores</h2>
-  <div class="patrocinadores-grid">
-    <a href="https://www.adidas.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png"></a>
-    <a href="https://www.coca-cola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/3840px-Coca-Cola_logo.svg.png"></a>
-    <a href="https://www.iberdrola.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Logo_Iberdrola_%282023%29.svg/1280px-Logo_Iberdrola_%282023%29.svg.png"></a>
-    <a href="https://www.mahou.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png"></a>
-    <a href="https://www.endesa.com" target="_blank"><img src="https://www.endesa.com/content/dam/endesa-com/endesa_logo.svg"></a>
-    <a href="https://www.santander.com" target="_blank"><img src="https://i.imgur.com/WlOVbGD.png"></a>
-    <a href="https://www.mapfre.com" target="_blank"><img src="https://www.mapfre.com/media/2025/12/logo-generic-mapfre.svg"></a>
-    <a href="https://www.movistar.es" target="_blank"><img src="https://ssr.col.movistar.es/api/v1/get-glyph/movistar-logo-h-m/2.00/movistarBlue"></a>
-    <a href="https://www.laliga.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/3840px-LaLiga_logo_2023.svg.png"></a>
-    <a href="https://www.samsung.com" target="_blank"><img src="https://images.samsung.com/is/image/samsung/assets/global/about-us/brand/logo/mo/360_197_1.png?$720_N_PNG$"></a>
-    <a href="https://www.lays.es" target="_blank"><img src="https://www.lays.es/themes/custom/lays_fe/logo.png"></a>
+<section class="patrocinadores-bg" style="min-height:100vh;">
+  <div class="section-header">
+    <h2 class="section-title">Patrocinadores &amp; Colaboradores</h2>
+  </div>
+
+  <div class="sponsor-tier-label gold">Patrocinador Principal</div>
+  <div class="sponsor-main-wrap">
+    <a href="https://www.adidas.com" target="_blank" class="sponsor-main-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas"/>
+    </a>
+  </div>
+
+  <div class="sponsor-tier-label">Patrocinadores Oficiales</div>
+  <div class="sponsor-row">
+    <a href="https://www.coca-cola.com" target="_blank" class="sponsor-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/3840px-Coca-Cola_logo.svg.png" alt="Coca-Cola"/>
+    </a>
+    <a href="https://www.iberdrola.com" target="_blank" class="sponsor-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Logo_Iberdrola_%282023%29.svg/1280px-Logo_Iberdrola_%282023%29.svg.png" alt="Iberdrola"/>
+    </a>
+    <a href="https://www.mahou.com" target="_blank" class="sponsor-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png" alt="Mahou San Miguel"/>
+    </a>
+    <a href="https://www.santander.com" target="_blank" class="sponsor-item">
+      <img src="https://cdn.worldvectorlogo.com/logos/santander-vertical-logo-2.svg" alt="Santander"/>
+    </a>
+  </div>
+
+  <div class="sponsor-tier-label">Colaboradores</div>
+  <div class="sponsor-collab-row">
+    <a href="https://www.endesa.com" target="_blank" class="sponsor-collab-item">
+      <img src="https://www.endesa.com/content/dam/endesa-com/endesa_logo.svg" alt="Endesa"/>
+    </a>
+    <a href="https://www.mapfre.com" target="_blank" class="sponsor-collab-item">
+      <img src="https://www.mapfre.com/media/2025/12/logo-generic-mapfre.svg" alt="Mapfre"/>
+    </a>
+    <a href="https://www.movistar.es" target="_blank" class="sponsor-collab-item">
+      <img src="https://ssr.col.movistar.es/api/v1/get-glyph/movistar-logo-h-m/2.00/movistarBlue" alt="Movistar"/>
+    </a>
+    <a href="https://www.laliga.com" target="_blank" class="sponsor-collab-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/LaLiga_logo_2023.svg/3840px-LaLiga_logo_2023.svg.png" alt="LaLiga"/>
+    </a>
+    <a href="https://www.samsung.com" target="_blank" class="sponsor-collab-item">
+      <img src="https://images.samsung.com/is/image/samsung/assets/global/about-us/brand/logo/mo/360_197_1.png?$720_N_PNG$" alt="Samsung"/>
+    </a>
+    <a href="https://www.lays.es" target="_blank" class="sponsor-collab-item">
+      <img src="https://www.lays.es/themes/custom/lays_fe/logo.png" alt="Lay's"/>
+    </a>
   </div>
 </section>
 </div>
