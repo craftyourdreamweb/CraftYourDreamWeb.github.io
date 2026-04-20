@@ -387,30 +387,28 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 
 <!-- Historia -->
 <div id="page-historia" class="page-section">
-  <div style="position:relative;height:480px;overflow:hidden;background:var(--rojo-oscuro);">
+  <div style="position:relative;overflow:hidden;background:var(--rojo-oscuro);">
     <img src="https://media.cnn.com/api/v1/images/stellar/prod/cnne-1268609-spain-s-defender-sergio-ramos-c-raises.jpg?q=w_1110,c_fill"
-      style="width:100%;height:100%;object-fit:cover;opacity:.3;" alt="Historia España"/>
-    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(80,0,0,.97) 35%,rgba(80,0,0,.15));display:flex;align-items:center;padding:0 80px;">
-      <div>
-        <span style="display:inline-block;background:var(--amarillo);color:#111;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;margin-bottom:16px;">Desde 1920</span>
-        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:72px;color:var(--blanco);line-height:.95;margin-bottom:16px;">La Roja<br/><span style="color:var(--amarillo);">Una leyenda viva</span></h1>
-        <p style="color:rgba(255,255,255,.75);font-size:16px;max-width:520px;line-height:1.65;">Más de un siglo de fútbol, pasión y gloria. De los Juegos Olímpicos de Amberes al dominio absoluto del fútbol mundial entre 2008 y 2024. La selección más laureada de Europa.</p>
-        <div style="display:flex;gap:28px;margin-top:28px;">
-          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">1</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Mundial</div></div>
-          <div style="width:1px;background:rgba(255,255,255,.15);"></div>
-          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">4</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Eurocopas</div></div>
-          <div style="width:1px;background:rgba(255,255,255,.15);"></div>
-          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">1</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Oro Olímpico</div></div>
-          <div style="width:1px;background:rgba(255,255,255,.15);"></div>
-          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">100+</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Años</div></div>
-        </div>
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.3;" alt="Historia España"/>
+    <div style="position:relative;z-index:1;background:linear-gradient(135deg,rgba(80,0,0,.97) 40%,rgba(80,0,0,.5));padding:48px 40px 44px;">
+      <span style="display:inline-block;background:var(--amarillo);color:#111;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;margin-bottom:16px;">Desde 1920</span>
+      <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,8vw,72px);color:var(--blanco);line-height:.95;margin-bottom:16px;">La Roja<br/><span style="color:var(--amarillo);">Una leyenda viva</span></h1>
+      <p style="color:rgba(255,255,255,.75);font-size:15px;max-width:520px;line-height:1.65;margin-bottom:28px;">Más de un siglo de fútbol, pasión y gloria. De los Juegos Olímpicos de Amberes al dominio absoluto del fútbol mundial entre 2008 y 2024. La selección más laureada de Europa.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:20px 28px;">
+        <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">1</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Mundial</div></div>
+        <div style="width:1px;background:rgba(255,255,255,.15);"></div>
+        <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">4</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Eurocopas</div></div>
+        <div style="width:1px;background:rgba(255,255,255,.15);"></div>
+        <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">1</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Oro Olímpico</div></div>
+        <div style="width:1px;background:rgba(255,255,255,.15);"></div>
+        <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">100+</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Años</div></div>
       </div>
     </div>
   </div>
 
   <!-- Intro texto -->
-  <section class="section" style="background:var(--gris-claro);padding:48px 80px;">
-    <div style="max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+  <section class="section" style="background:var(--gris-claro);">
+    <div style="max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;align-items:start;">
       <div>
         <h2 style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--rojo-oscuro);letter-spacing:1px;margin-bottom:14px;">La selección más exitosa de Europa</h2>
         <p style="font-size:14px;color:#444;line-height:1.8;margin-bottom:12px;">La Selección Española de Fútbol es, a día de hoy, la selección con más Eurocopas en su palmarés, con cuatro títulos continentales (1964, 2008, 2012 y 2024), además de un Campeonato del Mundo conquistado en Sudáfrica en 2010.</p>
@@ -491,7 +489,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
   <!-- ENTRENADORES -->
   <section class="section" style="background:var(--gris-claro);">
     <div class="section-header"><h2 class="section-title">Seleccionadores de Leyenda</h2></div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:860px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:860px;">
       <div style="background:var(--blanco);border-top:4px solid var(--rojo);padding:20px 22px;">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo-oscuro);letter-spacing:.5px;">Luis Aragonés</div>
         <div style="font-size:11px;font-weight:700;color:var(--rojo);letter-spacing:1.5px;text-transform:uppercase;margin:4px 0 8px;">2004 – 2008</div>
