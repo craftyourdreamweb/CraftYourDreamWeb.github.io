@@ -386,15 +386,132 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 
 
 <!-- Historia -->
-  <div id="page-historia" class="page-section">
-  <section class="section">
-    <div class="section-header"><h2 class="section-title">Historia</h2></div>
-  <section class="section" style="display:flex;align-items:center;gap:40px;flex-wrap:wrap">
-    <div class="TextHistory"><div class="container">
-    <h1>La Roja: La seleccion perfecta</h1>
-    <img src="https://media.cnn.com/api/v1/images/stellar/prod/cnne-1268609-spain-s-defender-sergio-ramos-c-raises.jpg?q=w_1110,c_fill" class="ImagenHistoria"/>
+<div id="page-historia" class="page-section">
+  <div style="position:relative;height:480px;overflow:hidden;background:var(--rojo-oscuro);">
+    <img src="https://media.cnn.com/api/v1/images/stellar/prod/cnne-1268609-spain-s-defender-sergio-ramos-c-raises.jpg?q=w_1110,c_fill"
+      style="width:100%;height:100%;object-fit:cover;opacity:.3;" alt="Historia España"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(80,0,0,.97) 35%,rgba(80,0,0,.15));display:flex;align-items:center;padding:0 80px;">
+      <div>
+        <span style="display:inline-block;background:var(--amarillo);color:#111;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;margin-bottom:16px;">Desde 1920</span>
+        <h1 style="font-family:'Bebas Neue',sans-serif;font-size:72px;color:var(--blanco);line-height:.95;margin-bottom:16px;">La Roja<br/><span style="color:var(--amarillo);">Una leyenda viva</span></h1>
+        <p style="color:rgba(255,255,255,.75);font-size:16px;max-width:520px;line-height:1.65;">Más de un siglo de fútbol, pasión y gloria. De los Juegos Olímpicos de Amberes al dominio absoluto del fútbol mundial entre 2008 y 2024. La selección más laureada de Europa.</p>
+        <div style="display:flex;gap:28px;margin-top:28px;">
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">1</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Mundial</div></div>
+          <div style="width:1px;background:rgba(255,255,255,.15);"></div>
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">4</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Eurocopas</div></div>
+          <div style="width:1px;background:rgba(255,255,255,.15);"></div>
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">1</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Oro Olímpico</div></div>
+          <div style="width:1px;background:rgba(255,255,255,.15);"></div>
+          <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">100+</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Años</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro texto -->
+  <section class="section" style="background:var(--gris-claro);padding:48px 80px;">
+    <div style="max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+      <div>
+        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--rojo-oscuro);letter-spacing:1px;margin-bottom:14px;">La selección más exitosa de Europa</h2>
+        <p style="font-size:14px;color:#444;line-height:1.8;margin-bottom:12px;">La Selección Española de Fútbol es, a día de hoy, la selección con más Eurocopas en su palmarés, con cuatro títulos continentales (1964, 2008, 2012 y 2024), además de un Campeonato del Mundo conquistado en Sudáfrica en 2010.</p>
+        <p style="font-size:14px;color:#444;line-height:1.8;">Conocida en sus inicios como «La Furia Española» por su espíritu combativo, La Roja evolucionó hasta convertirse en sinónimo del mejor fútbol del mundo gracias a una generación histórica liderada por Xavi, Iniesta y Villa, y más tarde por una nueva ola de talentos como Pedri, Yamal y Nico Williams.</p>
+      </div>
+      <div>
+        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--rojo-oscuro);letter-spacing:1px;margin-bottom:14px;">Rumbo al Mundial 2026</h2>
+        <p style="font-size:14px;color:#444;line-height:1.8;margin-bottom:12px;">Bajo la dirección de Luis de la Fuente, La Roja llega al Mundial de Norteamérica 2026 como vigente campeona de Europa y una de las grandes favoritas al título. España se integra en el Grupo H junto a rivales de alto nivel.</p>
+        <p style="font-size:14px;color:#444;line-height:1.8;">Con una mezcla perfecta de experiencia e irrupción juvenil, la ilusión de toda España pasa por conquistar la segunda estrella mundial y consolidar el legado de la generación más brillante que ha dado el fútbol español.</p>
+      </div>
+    </div>
   </section>
+
+  <!-- Timeline -->
+  <section class="section">
+    <div class="section-header"><h2 class="section-title">Momentos Clave</h2></div>
+    <div style="position:relative;padding-left:32px;border-left:3px solid var(--gris);max-width:820px;">
+
+      <div style="position:relative;margin-bottom:38px;">
+        <div style="position:absolute;left:-41px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--rojo);border:3px solid var(--blanco);box-shadow:0 0 0 2px var(--rojo);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--rojo);text-transform:uppercase;">1920</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--rojo-oscuro);margin:4px 0 6px;">El debut olímpico · Medalla de Plata en Amberes</h3>
+        <p style="font-size:14px;color:#555;line-height:1.7;">España debuta en los Juegos Olímpicos de Amberes con una brillante actuación. El equipo, bautizado como «La Furia Española», sorprende a todo el mundo y se cuelga la plata tras caer ante Bélgica en la final. El apodo quedaría grabado para siempre en el imaginario del fútbol español.</p>
+      </div>
+
+      <div style="position:relative;margin-bottom:38px;">
+        <div style="position:absolute;left:-41px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--rojo);border:3px solid var(--blanco);box-shadow:0 0 0 2px var(--rojo);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--rojo);text-transform:uppercase;">1964</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--rojo-oscuro);margin:4px 0 6px;">Primera Eurocopa · Madrid ante la URSS</h3>
+        <p style="font-size:14px;color:#555;line-height:1.7;">Ante su afición en el Estadio Santiago Bernabéu, España conquista su primera Eurocopa derrotando a la Unión Soviética (2-1). Marcelino y Pereda marcan los goles de una noche histórica. Un título que tardaría 44 años en tener continuación pero que puso la semilla de la grandeza.</p>
+      </div>
+
+      <div style="position:relative;margin-bottom:38px;">
+        <div style="position:absolute;left:-41px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--rojo);border:3px solid var(--blanco);box-shadow:0 0 0 2px var(--rojo);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--rojo);text-transform:uppercase;">1992</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--rojo-oscuro);margin:4px 0 6px;">Oro Olímpico · Barcelona 92</h3>
+        <p style="font-size:14px;color:#555;line-height:1.7;">Ante su propio público en los Juegos Olímpicos de Barcelona, la selección sub-23 capitaneada por Abelardo y con Guardiola en el mediocampo conquista la medalla de oro. Una gesta que emocionó a todo el país y que sembró la semilla de la generación dorada que estaba por venir.</p>
+      </div>
+
+      <div style="position:relative;margin-bottom:38px;">
+        <div style="position:absolute;left:-41px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--amarillo);border:3px solid var(--blanco);box-shadow:0 0 0 2px var(--amarillo);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--rojo);text-transform:uppercase;">2008</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--rojo-oscuro);margin:4px 0 6px;">Empieza la Era Dorada · Euro 2008</h3>
+        <p style="font-size:14px;color:#555;line-height:1.7;">En Viena, Fernando Torres bate a Lehmann con un genial uno contra uno para dar a España la segunda Eurocopa de su historia. El «tiki-taka» de Luis Aragonés deslumbra al mundo. España inicia así la mayor racha de éxitos de la historia del fútbol internacional: cinco títulos en seis años.</p>
+      </div>
+
+      <div style="position:relative;margin-bottom:38px;">
+        <div style="position:absolute;left:-41px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--amarillo);border:3px solid var(--blanco);box-shadow:0 0 0 2px var(--amarillo);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--rojo);text-transform:uppercase;">2010</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--rojo-oscuro);margin:4px 0 6px;">Campeones del Mundo · Soccer City, Johannesburgo</h3>
+        <p style="font-size:14px;color:#555;line-height:1.7;">Andrés Iniesta, en el minuto 116 de la prórroga de la final ante Países Bajos, estampa el gol que catapulta a España a la cima del mundo. El primer —y hasta ahora único— Campeonato del Mundo de La Roja. Del Bosque lleva al combinado nacional al Olimpo del fútbol mundial en suelo africano.</p>
+      </div>
+
+      <div style="position:relative;margin-bottom:38px;">
+        <div style="position:absolute;left:-41px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--amarillo);border:3px solid var(--blanco);box-shadow:0 0 0 2px var(--amarillo);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--rojo);text-transform:uppercase;">2012</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--rojo-oscuro);margin:4px 0 6px;">La Goleada de Kiev · Euro 2012</h3>
+        <p style="font-size:14px;color:#555;line-height:1.7;">España aplasta a Italia por 4-0 en la final del Olímpico de Kiev, en la mayor goleada de la historia de una final de Eurocopa. Silva, Jordi Alba, Torres y Mata marcan los tantos. La selección de Del Bosque corona una generación absolutamente irrepetible con su tercer título en cuatro años.</p>
+      </div>
+
+      <div style="position:relative;margin-bottom:38px;">
+        <div style="position:absolute;left:-41px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--rojo);border:3px solid var(--blanco);box-shadow:0 0 0 2px var(--rojo);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--rojo);text-transform:uppercase;">2021 – 2023</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--rojo-oscuro);margin:4px 0 6px;">La Reconstrucción · Nace la Nueva España</h3>
+        <p style="font-size:14px;color:#555;line-height:1.7;">Tras años de transición, Luis de la Fuente toma las riendas de la selección y apuesta decididamente por la cantera. Pedri, Gavi, Yamal y Nico Williams empiezan a asomar como la nueva generación llamada a devolver a España a la cima. La Nations League de 2021 (ante Francia) da las primeras señales de renacimiento.</p>
+      </div>
+
+      <div style="position:relative;">
+        <div style="position:absolute;left:-41px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--amarillo);border:3px solid var(--blanco);box-shadow:0 0 0 2px var(--amarillo);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--rojo);text-transform:uppercase;">2024</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--rojo-oscuro);margin:4px 0 6px;">La Cuarta Eurocopa · Alemania 2024</h3>
+        <p style="font-size:14px;color:#555;line-height:1.7;">Lamine Yamal, con solo 17 años, y Nico Williams se convierten en los protagonistas de una Eurocopa sensacional. España vence a Inglaterra en la final de Berlín (2-1) con un golazo de Mikel Oyarzabal. La cuarta Eurocopa de la historia de La Roja, récord absoluto entre todas las selecciones europeas, y el pistoletazo de salida hacia el Mundial 2026.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ENTRENADORES -->
+  <section class="section" style="background:var(--gris-claro);">
+    <div class="section-header"><h2 class="section-title">Seleccionadores de Leyenda</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:860px;">
+      <div style="background:var(--blanco);border-top:4px solid var(--rojo);padding:20px 22px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo-oscuro);letter-spacing:.5px;">Luis Aragonés</div>
+        <div style="font-size:11px;font-weight:700;color:var(--rojo);letter-spacing:1.5px;text-transform:uppercase;margin:4px 0 8px;">2004 – 2008</div>
+        <p style="font-size:13px;color:#555;line-height:1.6;">El «Sabio de Hortaleza» diseñó el tiki-taka y llevó a España a la Eurocopa 2008. El inicio de todo.</p>
+      </div>
+      <div style="background:var(--blanco);border-top:4px solid var(--rojo);padding:20px 22px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo-oscuro);letter-spacing:.5px;">Vicente del Bosque</div>
+        <div style="font-size:11px;font-weight:700;color:var(--rojo);letter-spacing:1.5px;text-transform:uppercase;margin:4px 0 8px;">2008 – 2016</div>
+        <p style="font-size:13px;color:#555;line-height:1.6;">Tres títulos en cuatro años. Mundial 2010 y dos Eurocopas (2008 con Aragonés, 2012 él). El mejor palmarés de la historia.</p>
+      </div>
+      <div style="background:var(--blanco);border-top:4px solid var(--amarillo);padding:20px 22px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo-oscuro);letter-spacing:.5px;">Luis de la Fuente</div>
+        <div style="font-size:11px;font-weight:700;color:var(--rojo);letter-spacing:1.5px;text-transform:uppercase;margin:4px 0 8px;">2022 – Actualidad</div>
+        <p style="font-size:13px;color:#555;line-height:1.6;">Conquistó la Eurocopa 2024 y guía a la nueva generación hacia el Mundial 2026 con un fútbol atrevido y vertical.</p>
+      </div>
+    </div>
+  </section>
+
 </div>
+
 
 
 <footer>
