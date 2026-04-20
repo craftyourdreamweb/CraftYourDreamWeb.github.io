@@ -131,13 +131,17 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;font-size:12px}
 
 /* PATROCINADORES */
-.patrocinadores-home{display:flex;justify-content:center;align-items:center;gap:40px;margin-top:20px;flex-wrap:wrap;}
-.patrocinadores-home img{height:45px;width:auto;filter:grayscale(100%) opacity(0.7);transition:all 0.3s ease;}
+.patrocinadores-home{display:flex;justify-content: space-evenly;}
+.patrocinadores-home img{width:230px;height:200px;object-fit:contain;filter:grayscale(100%) brightness(0.8);transition:all 0.3s ease;}
 .patrocinadores-home img:hover{filter:grayscale(0%) opacity(1);transform:scale(1.1);}
 .patrocinadores-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:40px 5%;margin-top:30px;margin-bottom:40px;}
 .patrocinadores-grid a{width:20%;display:flex;justify-content:center;align-items:center;}
 .patrocinadores-grid img{width:100%;height:auto;object-fit:contain;filter:grayscale(100%) brightness(0.8);transition:all 0.3s ease;}
 .patrocinadores-grid img:hover{filter:grayscale(0%);transform:scale(1.1);}
+.patrocinadores-bg {background:var(--rojo-oscuro);padding-top:20px;padding-bottom:2px;padding-left:40px;padding-right:40px;}
+.patrocinadores-bg .section-title,.patrocinadores-bg .ver-todo{color:var(--blanco)}
+.patrocinadores-bg .section-header{border-left-color:var(--amarillo)}
+.patrocinadores-bg .ver-todo:hover{color:var(--amarillo)}
 
 
 /* ADMIN */
@@ -259,10 +263,16 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
   </section> 
 
   
-  <section class="partidos-bg">
+  <section class="patrocinadores-bg">
   <div class="section-header">
     <h2 class="section-title">Patrocinadores</h2>
-    <div class="patrocinadores-home">
+    <span class="ver-todo" onclick="showPage('patrocinadores')">
+      Ver todos →
+    </span>
+  </div>
+</section>
+<section class="patrocinadores-bg">
+      <div class="patrocinadores-home">
       <a href="https://www.adidas.com" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png">
       </a>
@@ -276,10 +286,6 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Mahou-san_miguel_logo.svg/1280px-Mahou-san_miguel_logo.svg.png">
       </a>
     </div>
-    <span class="ver-todo" onclick="showPage('patrocinadores')">
-      Ver todos →
-    </span>
-  </div>
 </section>
 </div>
 
