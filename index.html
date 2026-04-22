@@ -96,10 +96,14 @@ nav a:hover,nav a.active{color:var(--blanco);border-bottom-color:var(--amarillo)
 
 /* PLANTILLA */
 .plantilla-section{padding:60px 40px}
+.plantilla-selector{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 32px}
+.plantilla-btn{background:transparent;border:2px solid var(--rojo);color:var(--rojo);font-family:'Barlow',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:9px 20px;cursor:pointer;transition:all .2s}
+.plantilla-btn:hover{background:var(--rojo);color:var(--blanco)}
+.plantilla-btn.active{background:var(--rojo-oscuro);border-color:var(--rojo-oscuro);color:var(--blanco)}
 .plantilla-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;margin-top:12px}
 .jugador-card{background:var(--gris-claro);border-top:4px solid var(--rojo);overflow:hidden;transition:transform .2s}
 .jugador-card:hover{transform:translateY(-3px)}
-.jugador-dorsal{background:var(--rojo-oscuro);color:var(--amarillo);font-family:'Bebas Neue',sans-serif;font-size:42px;text-align:center;padding:18px 0 8px;letter-spacing:2px}
+.jugador-dorsal{background:var(--rojo-oscuro);color:var(--amarillo);font-family:'Bebas Neue',sans-serif;font-size:42px;text-align:center;min-height:80px;display:flex;align-items:center;justify-content:center;letter-spacing:2px;overflow:hidden;padding:18px 0 8px}
 .jugador-info{padding:10px 14px 14px}
 .jugador-nombre{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--rojo-oscuro);letter-spacing:.5px;line-height:1.1}
 .jugador-pos{font-size:11px;font-weight:700;color:var(--rojo);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px}
@@ -128,7 +132,25 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 .footer-col h5{color:var(--blanco);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:14px}
 .footer-col a{display:block;color:rgba(255,255,255,.5);font-size:13px;margin-bottom:7px;cursor:pointer}
 .footer-col a:hover{color:var(--amarillo)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;font-size:12px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.footer-social{display:flex;gap:12px;align-items:center}
+.footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);transition:all .2s;text-decoration:none}
+.footer-social a:hover{background:var(--amarillo);color:#111}
+.footer-social svg{width:18px;height:18px;fill:currentColor}
+
+/* MODAL NOTICIA */
+.news-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:8000;overflow-y:auto;padding:40px 20px}
+.news-modal-overlay.open{display:flex;align-items:flex-start;justify-content:center}
+.news-modal{background:var(--blanco);max-width:780px;width:100%;position:relative}
+.news-modal-img{width:100%;height:360px;object-fit:cover;display:block}
+.news-modal-body{padding:32px 36px 40px}
+.news-modal-cat{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--rojo);margin-bottom:10px}
+.news-modal-title{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--rojo-oscuro);line-height:1;margin-bottom:8px;letter-spacing:1px}
+.news-modal-meta{font-size:12px;color:#999;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--gris)}
+.news-modal-content{font-size:15px;color:#333;line-height:1.8;white-space:pre-wrap}
+.news-modal-close{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.5);color:#fff;border:none;width:36px;height:36px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.news-modal-close:hover{background:var(--rojo)}
+.news-card{cursor:pointer}
 
 /* PATROCINADORES */
 .patrocinadores-bg{background:#1a0000;padding:60px 40px 50px;}
@@ -355,8 +377,16 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 <!-- PLANTILLA -->
 <div id="page-plantilla" class="page-section">
   <section class="plantilla-section">
-    <div class="section-header"><h2 class="section-title">Plantilla · Selección España 2026</h2></div>
-    <p style="font-size:13px;color:#666;margin-bottom:4px">Seleccionador: <strong>Luis de la Fuente</strong></p>
+    <div class="section-header"><h2 class="section-title">Plantilla · Selección España</h2></div>
+    <div class="plantilla-selector">
+      <button class="plantilla-btn active" onclick="switchPlantilla('masculina')">Selección Masculina</button>
+      <button class="plantilla-btn" onclick="switchPlantilla('femenina')">Selección Femenina</button>
+      <button class="plantilla-btn" onclick="switchPlantilla('alevinA')">Alevín A</button>
+      <button class="plantilla-btn" onclick="switchPlantilla('alevinB')">Alevín B</button>
+      <button class="plantilla-btn" onclick="switchPlantilla('benjamin')">Benjamín</button>
+      <button class="plantilla-btn" onclick="switchPlantilla('prebenjamin')">Prebenjamín</button>
+    </div>
+    <p style="font-size:13px;color:#666;margin-bottom:4px" id="squad-coach"></p>
     <div id="squad-content"></div>
   </section>
 </div>
@@ -525,11 +555,30 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
   </div>
   <div class="footer-bottom">
     <span>© 2026 Selección Española · RFEF</span>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/rfef/" target="_blank" title="Instagram RFEF">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
     <span>Política de privacidad · Aviso legal</span>
   </div>
 </footer>
 
   
+
+<!-- MODAL NOTICIA -->
+<div class="news-modal-overlay" id="newsModalOverlay" onclick="if(event.target===this)closeNewsModal()">
+  <div class="news-modal">
+    <button class="news-modal-close" onclick="closeNewsModal()">✕</button>
+    <img class="news-modal-img" id="modal-img" src="" alt=""/>
+    <div class="news-modal-body">
+      <div class="news-modal-cat" id="modal-cat"></div>
+      <div class="news-modal-title" id="modal-title"></div>
+      <div class="news-modal-meta" id="modal-meta"></div>
+      <div class="news-modal-content" id="modal-content"></div>
+    </div>
+  </div>
+</div>
 
 <!-- ADMIN PANEL -->
 <div class="admin-overlay" id="adminOverlay">
@@ -555,6 +604,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
             <button class="admin-tab" onclick="adminTab('squad')">👕 Plantilla</button>
             <button class="admin-tab" onclick="adminTab('table')">🏆 Grupo</button>
             <button class="admin-tab" onclick="adminTab('store')">🛒 Tienda</button>
+            <button class="admin-tab api-tab" onclick="adminTab('api')">⚡ API</button>
           </div>
         </div>
         <button style="background:rgba(255,255,255,.1);color:#fff;border:none;font-size:24px;cursor:pointer;padding:6px 12px" onclick="closeAdmin()">✕</button>
@@ -581,6 +631,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
               <div class="form-group"><label>Categoría *</label><input type="text" id="n-cat" placeholder="Convocatoria, Crónica, Mundial..."/></div>
             </div>
             <div class="form-group"><label>Resumen</label><textarea id="n-summary" placeholder="Descripción breve..."></textarea></div>
+            <div class="form-group"><label>Contenido completo</label><textarea id="n-content" style="min-height:140px" placeholder="Escribe aquí el artículo completo que verán los lectores al abrir la noticia..."></textarea></div>
             <div class="g2">
               <div class="form-group"><label>URL Imagen</label><input type="text" id="n-img" placeholder="https://images.unsplash.com/..."/></div>
               <div class="form-group"><label>Fecha</label><input type="date" id="n-date"/></div>
@@ -622,6 +673,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
         <div class="admin-section" id="admin-squad">
           <div class="add-box">
             <h4>Añadir Jugador</h4>
+            <div class="form-group"><label>Categoría</label><select id="p-cat"><option value="masculina">Selección Masculina</option><option value="femenina">Selección Femenina</option><option value="alevinA">Alevín A</option><option value="alevinB">Alevín B</option><option value="benjamin">Benjamín</option><option value="prebenjamin">Prebenjamín</option></select></div>
             <div class="g3">
               <div class="form-group"><label>Dorsal</label><input type="number" id="p-num" min="1" max="99"/></div>
               <div class="form-group"><label>Nombre *</label><input type="text" id="p-name" placeholder="Lamine Yamal"/></div>
@@ -631,6 +683,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
               <div class="form-group"><label>Club</label><input type="text" id="p-club" placeholder="FC Barcelona"/></div>
               <div class="form-group"><label>Edad</label><input type="number" id="p-age" placeholder="17"/></div>
             </div>
+            <div class="form-group"><label>URL Foto del jugador (opcional)</label><input type="text" id="p-img" placeholder="https://..."/></div>
             <button class="btn-primary" onclick="addPlayer()">+ Añadir jugador</button>
           </div>
           <h4 style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo);letter-spacing:1px;margin-bottom:12px">Plantilla (<span id="squad-count">0</span> jugadores)</h4>
@@ -687,7 +740,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
           <div id="admin-store-list"></div>
         </div>
       
-       <!-- API AUTO
+       <!-- API AUTO-SYNC -->
         <div class="admin-section" id="admin-api">
           <div style="background:#fff8e1;border:1.5px solid var(--amarillo);padding:16px 20px;margin-bottom:20px;font-size:13px;line-height:1.7">
             <strong>⚡ Estado de sincronización automática</strong><br/>
@@ -726,7 +779,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
             <br/>
             <strong>Competiciones cubiertas (tier gratuito):</strong> Amistosos internacionales, UEFA Nations League, Clasificación Mundial, Copa del Mundo FIFA
           </div>
-        </div>-->
+        </div>
 
       </div>
     </div>
@@ -741,9 +794,21 @@ function ld(k,d){try{const x=localStorage.getItem(k);return x?JSON.parse(x):d}ca
 
 // ---- DEFAULT DATA ----
 let news=ld('esp_news',[
-  {id:1,title:"España aplasta a Serbia 3-0 en el Estadio de la Cerámica",cat:"Crónica · Amistoso",summary:"Yamal, Williams y Olmo firman una goleada ante los serbios en el último ensayo previo al Mundial.",img:"https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&auto=format&fit=crop",date:"2026-03-27"},
-  {id:2,title:"España empata 0-0 con Egipto en el RCDE Stadium",cat:"Crónica · Amistoso",summary:"La Roja cierra la ventana de marzo con un empate ante los egipcios liderados por Salah.",img:"https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&auto=format&fit=crop",date:"2026-03-31"},
-  {id:3,title:"España en el Grupo H del Mundial 2026 junto a Cabo Verde, Arabia Saudí y Uruguay",cat:"Mundial 2026",summary:"El sorteo celebrado en Washington D.C. puso a La Roja en el Grupo H. Debuta el 15 de junio ante Cabo Verde en Atlanta.",img:"https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&auto=format&fit=crop",date:"2025-12-05"}
+  {id:1,title:"España aplasta a Serbia 3-0 en el Estadio de la Cerámica",cat:"Crónica · Amistoso",summary:"Yamal, Williams y Olmo firman una goleada ante los serbios en el último ensayo previo al Mundial.",img:"https://www.tudn.com/_next/image?url=https%3A%2F%2Fst1.uvnimg.com%2F2e%2F3e%2Fe325d9354d729908e9a51371f1fa%2F0cb4a33b1aa945aba17232ffd6629609&w=1280&q=75",date:"2026-03-27",content:`La noche en Estadio de la Cerámica tuvo aroma a fiesta grande. La selección española firmó una victoria contundente por 3-0 ante Serbia, en un encuentro donde el balón pareció tener acento ibérico desde el primer minuto.
+
+España salió al césped con la intención de mandar, y lo dejó claro rápido: posesiones largas, presión alta y un ritmo que fue asfixiando poco a poco a los balcánicos. Serbia, sólida en defensa sobre el papel, se vio obligada a retroceder, como si el campo se inclinara ligeramente hacia su portería.
+
+El primer gol llegó como caen las tormentas de verano: anunciado, inevitable. Tras una jugada colectiva que cosió pases con precisión quirúrgica, el balón terminó en la red y encendió a la grada. El rugido del estadio fue un trueno que marcó el tono del resto del partido.
+
+Lejos de conformarse, España siguió empujando. El segundo tanto fue una muestra de inteligencia táctica, aprovechando un desajuste defensivo serbio. Para entonces, Serbia ya navegaba en aguas turbulentas, intentando resistir más que competir.
+
+En la segunda mitad, el guion no cambió demasiado. España controló el ritmo con la serenidad de quien sabe que tiene el partido en el bolsillo, pero sin bajar la intensidad. El tercer gol, ya definitivo, fue la firma elegante al pie de una obra bien ejecutada.
+
+Más allá del marcador, el encuentro dejó sensaciones muy positivas: cohesión, talento joven y una idea de juego clara que se despliega como un mapa bien dibujado. Serbia, por su parte, tendrá que recomponer piezas tras una noche en la que nunca encontró el hilo del partido.
+
+Así, bajo las luces de La Cerámica, España no solo ganó, sino que convenció. Y en el fútbol, eso vale casi tanto como el resultado.`},
+  {id:2,title:"España empata 0-0 con Egipto en el RCDE Stadium",cat:"Crónica · Amistoso",summary:"La Roja cierra la ventana de marzo con un empate ante los egipcios liderados por Salah.",img:"https://caracoltv.brightspotcdn.com/dims4/default/fe55907/2147483647/strip/true/crop/1600x900+0+0/resize/1280x720!/format/webp/quality/75/?url=https%3A%2F%2Fcaracol-brightspot.s3.us-west-2.amazonaws.com%2Ffa%2Fb2%2F614915a94118bab6c7a24fcfecdf%2Ffotojet-2026-03-31t170017-911.jpg",date:"2026-03-31"},
+  {id:3,title:"España en el Grupo H del Mundial 2026 junto a Cabo Verde, Arabia Saudí y Uruguay",cat:"Mundial 2026",summary:"El sorteo celebrado en Washington D.C. puso a La Roja en el Grupo H. Debuta el 15 de junio ante Cabo Verde en Atlanta.",img:"https://objetos-xlk.estaticos-marca.com/uploads/2025/12/05/693336a165c63.jpeg",date:"2025-12-05"}
 ]);
 
 let matches=ld('esp_matches',[
@@ -770,13 +835,139 @@ let squad=ld('esp_squad',[
   {id:14,num:10,name:"Dani Olmo",pos:"Centrocampista",club:"FC Barcelona",age:27},
   {id:15,num:14,name:"Andreu Zarzoso",pos:"Centrocampista",club:"FC Barcelona",age:20},
   {id:16,num:20,name:"Álex Baena",pos:"Centrocampista",club:"Atlético Madrid",age:23},
-  {id:17,num:7,name:"Lamine Yamal",pos:"Delantero",club:"FC Barcelona",age:18},
+  {id:17,num:7,name:"Lamine Yamal",pos:"Delantero",club:"FC Barcelona",age:18,img:"https://www.sopitas.com/wp-content/uploads/2024/06/lamine-yamal-seleccion-espana.jpg"},
   {id:18,num:11,name:"Nico Williams",pos:"Delantero",club:"Athletic Club",age:22},
   {id:19,num:21,name:"Mikel Oyarzabal",pos:"Delantero",club:"Real Sociedad",age:27},
   {id:20,num:17,name:"Ferran Torres",pos:"Delantero",club:"FC Barcelona",age:24},
   {id:21,num:19,name:"Yeremy Pino",pos:"Delantero",club:"Crystal Palace",age:22},
   {id:22,num:9,name:"Hugo Senra",pos:"Delantero",club:"Atlético Madrid",age:19}
 ]);
+
+// Plantillas por categoría (cada una se almacena en localStorage por separado)
+const CATEGORIAS = {
+  masculina:  { label: 'Selección Masculina', coach: 'Seleccionador: Luis de la Fuente', key: 'esp_squad' },
+  femenina:   { label: 'Selección Femenina',  coach: 'Seleccionadora: Sonia Bermúdez',   key: 'esp_squad_femenina' },
+  alevinA:    { label: 'Alevín A',            coach: 'Entrenador: Carlos Velasco',       key: 'esp_squad_alevinA' },
+  alevinB:    { label: 'Alevín B',            coach: 'Entrenador: Marta Ríos',           key: 'esp_squad_alevinB' },
+  benjamin:   { label: 'Benjamín',            coach: 'Entrenador: Javier Moreno',        key: 'esp_squad_benjamin' },
+  prebenjamin:{ label: 'Prebenjamín',         coach: 'Entrenador: Ana Fuentes',          key: 'esp_squad_prebenjamin' }
+};
+
+// Datos iniciales selección femenina
+const DEFAULT_FEMENINA = [
+  {id:2001,num:1, name:"Esther Sullastres",   pos:"Portero",       club:"Atlético Madrid", age:32},
+  {id:2002,num:1, name:"Misa Rodríguez",      pos:"Portero",       club:"Real Madrid",     age:26},
+  {id:2003,num:13,name:"Cata Coll",           pos:"Portero",       club:"FC Barcelona",    age:24},
+  {id:2004,num:23,name:"Adriana Nanclares",   pos:"Portero",       club:"Athletic Club",   age:23},
+  {id:2005,num:2, name:"Ona Batlle",          pos:"Defensa",       club:"FC Barcelona",    age:26},
+  {id:2006,num:3, name:"Jana Fernández",      pos:"Defensa",       club:"FC Barcelona",    age:24},
+  {id:2007,num:4, name:"Irene Paredes",       pos:"Defensa",       club:"FC Barcelona",    age:34},
+  {id:2008,num:5, name:"María Méndez",        pos:"Defensa",       club:"Real Madrid",     age:24},
+  {id:2009,num:6, name:"Martina Fernández",   pos:"Defensa",       club:"Atlético Madrid", age:21},
+  {id:2010,num:7, name:"Olga Carmona",        pos:"Defensa",       club:"Real Madrid",     age:25},
+  {id:2011,num:14,name:"Laia Aleixandri",     pos:"Defensa",       club:"Manchester City", age:25},
+  {id:2012,num:15,name:"Laia Codina",         pos:"Defensa",       club:"FC Barcelona",    age:26},
+  {id:2013,num:15,name:"Leila Ouahabi",       pos:"Defensa",       club:"Manchester City", age:32},
+  {id:2014,num:20,name:"Aiara Agirrezabala",  pos:"Defensa",       club:"Athletic Club",   age:17},
+  {id:2015,num:3, name:"Teresa Abelleira",    pos:"Centrocampista",club:"Real Madrid",     age:26},
+  {id:2016,num:6, name:"Aitana Bonmatí",      pos:"Centrocampista",club:"FC Barcelona",    age:28},
+  {id:2017,num:8, name:"Mariona Caldentey",   pos:"Centrocampista",club:"Arsenal",         age:29},
+  {id:2018,num:12,name:"Patri Guijarro",      pos:"Centrocampista",club:"FC Barcelona",    age:27},
+  {id:2019,num:14,name:"Vicky López",         pos:"Centrocampista",club:"Chelsea",         age:19},
+  {id:2020,num:16,name:"Clara Serrajordi",    pos:"Centrocampista",club:"FC Barcelona",    age:18},
+  {id:2021,num:21,name:"Alba Redondo",        pos:"Centrocampista",club:"Chelsea",         age:29},
+  {id:2022,num:21,name:"Fiamma Benítez",      pos:"Centrocampista",club:"Atlético Madrid", age:21},
+  {id:2023,num:22,name:"Maite Zubieta",       pos:"Centrocampista",club:"Athletic Club",   age:21},
+  {id:2024,num:9, name:"Clàudia Pina",        pos:"Delantero",     club:"FC Barcelona",    age:24},
+  {id:2025,num:9, name:"Esther González",     pos:"Delantero",     club:"Real Madrid",     age:33},
+  {id:2026,num:10,name:"Athenea del Castillo",pos:"Delantero",     club:"Real Madrid",     age:25},
+  {id:2027,num:11,name:"Alexia Putellas",     pos:"Delantero",     club:"FC Barcelona",    age:32},
+  {id:2028,num:17,name:"Lucía Corrales",      pos:"Delantero",     club:"Atlético Madrid", age:20},
+  {id:2029,num:17,name:"Lucía García",        pos:"Delantero",     club:"Athletic Club",   age:27},
+  {id:2030,num:18,name:"Salma Paralluelo",    pos:"Delantero",     club:"FC Barcelona",    age:22},
+  {id:2031,num:19,name:"Eva Navarro",         pos:"Delantero",     club:"Atlético Madrid", age:25}
+];
+
+const DEFAULT_ALEVIN_A = [
+  {id:3001,num:1, name:"Marcos Iglesias",  pos:"Portero",       club:"Escuela RFEF", age:11},
+  {id:3002,num:2, name:"Diego Ruano",      pos:"Defensa",       club:"Escuela RFEF", age:11},
+  {id:3003,num:3, name:"Adrián Casas",     pos:"Defensa",       club:"Escuela RFEF", age:12},
+  {id:3004,num:4, name:"Pablo Soler",      pos:"Defensa",       club:"Escuela RFEF", age:11},
+  {id:3005,num:5, name:"Hugo Llorente",    pos:"Defensa",       club:"Escuela RFEF", age:12},
+  {id:3006,num:6, name:"Iván Bermejo",     pos:"Centrocampista",club:"Escuela RFEF", age:11},
+  {id:3007,num:7, name:"Samuel Vega",      pos:"Centrocampista",club:"Escuela RFEF", age:12},
+  {id:3008,num:8, name:"Mateo Prieto",     pos:"Centrocampista",club:"Escuela RFEF", age:11},
+  {id:3009,num:9, name:"Javier Navarro",   pos:"Centrocampista",club:"Escuela RFEF", age:12},
+  {id:3010,num:10,name:"Alejandro Molina", pos:"Delantero",     club:"Escuela RFEF", age:12},
+  {id:3011,num:11,name:"Rubén Serrano",    pos:"Delantero",     club:"Escuela RFEF", age:11}
+];
+
+const DEFAULT_ALEVIN_B = [
+  {id:4001,num:1, name:"Nicolás Campos",   pos:"Portero",       club:"Escuela RFEF", age:10},
+  {id:4002,num:2, name:"Tomás Reina",      pos:"Defensa",       club:"Escuela RFEF", age:10},
+  {id:4003,num:3, name:"Andrés Cano",      pos:"Defensa",       club:"Escuela RFEF", age:10},
+  {id:4004,num:4, name:"Carlos Pons",      pos:"Defensa",       club:"Escuela RFEF", age:10},
+  {id:4005,num:5, name:"Joel Ferrer",      pos:"Centrocampista",club:"Escuela RFEF", age:10},
+  {id:4006,num:6, name:"Bruno Ortiz",      pos:"Centrocampista",club:"Escuela RFEF", age:10},
+  {id:4007,num:7, name:"Óscar Blanco",     pos:"Centrocampista",club:"Escuela RFEF", age:10},
+  {id:4008,num:8, name:"Raúl Sáez",        pos:"Delantero",     club:"Escuela RFEF", age:10},
+  {id:4009,num:9, name:"Álex Herrero",     pos:"Delantero",     club:"Escuela RFEF", age:10},
+  {id:4010,num:10,name:"Marcos Gil",       pos:"Delantero",     club:"Escuela RFEF", age:10}
+];
+
+const DEFAULT_BENJAMIN = [
+  {id:5001,num:1, name:"Leo Pascual",      pos:"Portero",       club:"Escuela RFEF", age:8},
+  {id:5002,num:2, name:"Noa Bravo",        pos:"Defensa",       club:"Escuela RFEF", age:8},
+  {id:5003,num:3, name:"Matías Ramos",     pos:"Defensa",       club:"Escuela RFEF", age:9},
+  {id:5004,num:4, name:"Luca Mendía",      pos:"Defensa",       club:"Escuela RFEF", age:8},
+  {id:5005,num:5, name:"Iker Toral",       pos:"Centrocampista",club:"Escuela RFEF", age:9},
+  {id:5006,num:6, name:"Fran Pedraza",     pos:"Centrocampista",club:"Escuela RFEF", age:8},
+  {id:5007,num:7, name:"Dani Aguilar",     pos:"Centrocampista",club:"Escuela RFEF", age:9},
+  {id:5008,num:8, name:"Sergio Trujillo",  pos:"Delantero",     club:"Escuela RFEF", age:8},
+  {id:5009,num:9, name:"Adrián Cobos",     pos:"Delantero",     club:"Escuela RFEF", age:9}
+];
+
+const DEFAULT_PREBENJAMIN = [
+  {id:6001,num:1, name:"Arián Valls",      pos:"Portero",       club:"Escuela RFEF", age:6},
+  {id:6002,num:2, name:"Martín Durán",     pos:"Defensa",       club:"Escuela RFEF", age:7},
+  {id:6003,num:3, name:"Enzo Fuente",      pos:"Defensa",       club:"Escuela RFEF", age:6},
+  {id:6004,num:4, name:"Thiago Mora",      pos:"Centrocampista",club:"Escuela RFEF", age:7},
+  {id:6005,num:5, name:"Biel Sanz",        pos:"Centrocampista",club:"Escuela RFEF", age:6},
+  {id:6006,num:6, name:"Oliver Llopis",    pos:"Centrocampista",club:"Escuela RFEF", age:7},
+  {id:6007,num:7, name:"Hugo Esteve",      pos:"Delantero",     club:"Escuela RFEF", age:6},
+  {id:6008,num:8, name:"Ian Castells",     pos:"Delantero",     club:"Escuela RFEF", age:7}
+];
+
+// Cargar datos de categorías desde localStorage (o usar defaults)
+function getSquadDefault(cat){
+  switch(cat){
+    case 'femenina':    return DEFAULT_FEMENINA;
+    case 'alevinA':     return DEFAULT_ALEVIN_A;
+    case 'alevinB':     return DEFAULT_ALEVIN_B;
+    case 'benjamin':    return DEFAULT_BENJAMIN;
+    case 'prebenjamin': return DEFAULT_PREBENJAMIN;
+    default: return [];
+  }
+}
+
+let currentCategoria = 'masculina';
+
+function getSquadForCategoria(cat){
+  if(cat === 'masculina') return squad;
+  const stored = ld(CATEGORIAS[cat].key, null);
+  if(stored !== null) return stored;
+  return getSquadDefault(cat);
+}
+
+function switchPlantilla(cat){
+  currentCategoria = cat;
+  const cats = Object.keys(CATEGORIAS);
+  document.querySelectorAll('.plantilla-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', cats[i] === cat);
+  });
+  renderSquad();
+}
+
 
 let tableData=ld('esp_table',[
   {pos:1,name:"España",pj:0,g:0,e:0,p:0,gf:0,gc:0,pts:0,status:"normal",isTnf:true},
@@ -844,13 +1035,28 @@ function fmtDate(d){
 
 // ---- RENDER ----
 function renderNews(){
-  const tmpl=(n,i)=>`<div class="news-card${i===0?' featured':''}">
+  const tmpl=(n,i)=>`<div class="news-card${i===0?' featured':''}" onclick="openNewsModal(${n.id})">
     <img src="${n.img}" alt="" onerror="this.src='https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600'"/>
     <div class="news-body"><div class="news-cat">${n.cat}</div><h3>${n.title}</h3><p class="news-meta">${n.date||''}</p></div>
   </div>`;
   const h=document.getElementById('home-news'),a=document.getElementById('all-news');
   if(h)h.innerHTML=news.slice(0,3).map(tmpl).join('');
   if(a)a.innerHTML=news.map(tmpl).join('');
+}
+
+function openNewsModal(id){
+  const n=news.find(x=>x.id===id);if(!n)return;
+  document.getElementById('modal-img').src=n.img||'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800';
+  document.getElementById('modal-cat').textContent=n.cat||'';
+  document.getElementById('modal-title').textContent=n.title||'';
+  document.getElementById('modal-meta').textContent=n.date||'';
+  document.getElementById('modal-content').textContent=n.content||n.summary||'Este artículo no tiene contenido todavía. Puedes añadirlo desde el panel de administración.';
+  document.getElementById('newsModalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeNewsModal(){
+  document.getElementById('newsModalOverlay').classList.remove('open');
+  document.body.style.overflow='';
 }
 
 function renderMatches(){
@@ -878,14 +1084,24 @@ function renderMatches(){
 
 function renderSquad(){
   const el=document.getElementById('squad-content');
+  const coachEl=document.getElementById('squad-coach');
   if(!el)return;
+  const cat = CATEGORIAS[currentCategoria];
+  const currentSquad = getSquadForCategoria(currentCategoria);
+  if(coachEl) coachEl.innerHTML = cat.coach ? `<strong>${cat.coach}</strong>` : '';
   const grupos=['Portero','Defensa','Centrocampista','Delantero'];
+  if(!currentSquad.length){
+    el.innerHTML=`<p style="color:#aaa;font-style:italic;margin-top:16px">No hay jugadores registrados en esta categoría todavía. Puedes añadirlos desde el panel de administración.</p>`;
+    return;
+  }
   el.innerHTML=grupos.map(g=>{
-    const pp=squad.filter(p=>p.pos===g).sort((a,b)=>a.num-b.num);
+    const pp=currentSquad.filter(p=>p.pos===g).sort((a,b)=>a.num-b.num);
     if(!pp.length)return'';
     return`<div class="grupo-label">${g}s</div>
-    <div class="plantilla-grid">${pp.map(p=>`<div class="jugador-card">
-      <div class="jugador-dorsal">${p.num||'—'}</div>
+    <div class="plantilla-grid">${pp.map(p=>`<div class="jugador-card" style="${p.img?'border-top:none':''}">
+      ${p.img
+        ?`<img src="${p.img}" alt="${p.name}" style="width:100%;height:200px;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="jugador-dorsal" style="display:none">${p.num||'—'}</div>`
+        :`<div class="jugador-dorsal">${p.num||'—'}</div>`}
       <div class="jugador-info">
         <div class="jugador-nombre">${p.name}</div>
         <div class="jugador-pos">${p.pos}</div>
@@ -941,11 +1157,21 @@ function renderAMatches(){
     <button class="btn-danger" onclick="delMatch(${m.id})">Eliminar</button></div>`).join('');
 }
 function renderASquad(){
-  const c=document.getElementById('squad-count');if(c)c.textContent=squad.length;
-  document.getElementById('admin-squad-list').innerHTML=[...squad].sort((a,b)=>a.num-b.num).map(p=>`<div class="item-row">
-    <div style="width:34px;height:34px;background:var(--rojo-oscuro);color:var(--amarillo);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:17px;flex-shrink:0">${p.num}</div>
-    <div style="flex:1"><div class="item-row-info">${p.name}</div><div class="item-row-sub">${p.pos} · ${p.club||''} · ${p.age} años</div></div>
-    <button class="btn-danger" onclick="delPlayer(${p.id})">Eliminar</button></div>`).join('');
+  const allCats = Object.keys(CATEGORIAS);
+  const getList = cat => cat==='masculina' ? squad : (ld(CATEGORIAS[cat].key,null)??getSquadDefault(cat));
+  let total = allCats.reduce((s,c)=>s+getList(c).length,0);
+  const c=document.getElementById('squad-count');if(c)c.textContent=total;
+  let html='';
+  allCats.forEach(cat=>{
+    const list = getList(cat);
+    html+=`<div style="margin-bottom:6px;padding:6px 0;border-bottom:2px solid var(--gris);font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--rojo);letter-spacing:1px">${CATEGORIAS[cat].label} (${list.length})</div>`;
+    if(!list.length){ html+=`<p style="font-size:12px;color:#bbb;margin-bottom:12px;font-style:italic">Sin jugadores</p>`; return; }
+    html+=[...list].sort((a,b)=>a.num-b.num).map(p=>`<div class="item-row">
+      <div style="width:34px;height:34px;background:var(--rojo-oscuro);color:var(--amarillo);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:17px;flex-shrink:0">${p.num}</div>
+      <div style="flex:1"><div class="item-row-info">${p.name}</div><div class="item-row-sub">${p.pos} · ${p.club||''} · ${p.age} años</div></div>
+      <button class="btn-danger" onclick="delPlayer(${p.id},'${cat}')">Eliminar</button></div>`).join('');
+  });
+  document.getElementById('admin-squad-list').innerHTML=html;
 }
 function renderATable(){
   document.getElementById('admin-table-list').innerHTML=[...tableData].sort((a,b)=>a.pos-b.pos).map(t=>`<div class="item-row">
@@ -965,8 +1191,8 @@ function g(id){const e=document.getElementById(id);return e?e.value.trim():'';}
 
 function addNews(){
   const t=g('n-title'),c=g('n-cat');if(!t||!c){alert('Título y categoría obligatorios');return;}
-  news.unshift({id:uid(),title:t,cat:c,summary:g('n-summary'),img:g('n-img')||'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600',date:g('n-date')});
-  sv('esp_news',news);['n-title','n-cat','n-summary','n-img','n-date'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
+  news.unshift({id:uid(),title:t,cat:c,summary:g('n-summary'),content:g('n-content'),img:g('n-img')||'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600',date:g('n-date')});
+  sv('esp_news',news);['n-title','n-cat','n-summary','n-content','n-img','n-date'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
   renderNews();renderANews();
 }
 function delNews(id){if(!confirm('¿Eliminar?'))return;news=news.filter(n=>n.id!==id);sv('esp_news',news);renderNews();renderANews();}
@@ -981,12 +1207,30 @@ function addMatch(){
 function delMatch(id){if(!confirm('¿Eliminar?'))return;matches=matches.filter(m=>m.id!==id);sv('esp_matches',matches);renderMatches();renderAMatches();}
 
 function addPlayer(){
-  const n=g('p-num'),nm=g('p-name');if(!nm){alert('Nombre obligatorio');return;}
-  squad.push({id:uid(),num:parseInt(n)||0,name:nm,pos:g('p-pos'),club:g('p-club'),age:parseInt(g('p-age'))||0});
-  sv('esp_squad',squad);['p-num','p-name','p-club','p-age'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
+  const n=g('p-num'),nm=g('p-name'),cat=g('p-cat')||'absoluta';if(!nm){alert('Nombre obligatorio');return;}
+  const newPlayer={id:uid(),num:parseInt(n)||0,name:nm,pos:g('p-pos'),club:g('p-club'),age:parseInt(g('p-age'))||0,img:g('p-img')||''};
+  if(cat==='masculina'){
+    squad.push(newPlayer);sv('esp_squad',squad);
+  } else {
+    let catSquad=ld(CATEGORIAS[cat].key, null);
+    if(catSquad===null) catSquad=getSquadDefault(cat);
+    catSquad.push(newPlayer);sv(CATEGORIAS[cat].key,catSquad);
+  }
+  ['p-num','p-name','p-club','p-age','p-img'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
   renderSquad();renderASquad();
 }
-function delPlayer(id){if(!confirm('¿Eliminar?'))return;squad=squad.filter(p=>p.id!==id);sv('esp_squad',squad);renderSquad();renderASquad();}
+function delPlayer(id,cat){
+  cat=cat||'absoluta';
+  if(!confirm('¿Eliminar?'))return;
+  if(cat==='masculina'){squad=squad.filter(p=>p.id!==id);sv('esp_squad',squad);}
+  else{
+    let cs = ld(CATEGORIAS[cat].key, null);
+    if(cs===null) cs=getSquadDefault(cat);
+    cs=cs.filter(p=>p.id!==id);
+    sv(CATEGORIAS[cat].key,cs);
+  }
+  renderSquad();renderASquad();
+}
 
 function addTableRow(){
   const pos=parseInt(g('t-pos')),nm=g('t-name');if(!pos||!nm){alert('Posición y nombre obligatorios');return;}
