@@ -244,6 +244,15 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
   .hero-title{font-size:48px}
   .hero-escudo-wrap{display:none}
   .g2,.g3{grid-template-columns:1fr}
+  .plantilla-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .jugador-card img{height:160px}
+}
+@media(max-width:480px){
+  .plantilla-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .jugador-card img{height:130px;width:100%;object-fit:cover;display:block}
+  .jugador-nombre{font-size:15px}
+  .plantilla-selector{gap:6px}
+  .plantilla-btn{font-size:10px;padding:7px 12px}
 }
 </style>
 </head>
@@ -877,10 +886,10 @@ let matches=ld('esp_matches',[
   {id:5,home:"Uruguay",away:"España",hg:null,ag:null,status:"upcoming",date:"2026-06-26T02:00",venue:"Estadio Akron, Guadalajara",comp:"Mundial 2026 · Grupo H · J3"}
 ]);
 
-let squad=ld('esp_squad',[
+let squad=[
   {id:1,num:1,name:"Unai Simón",pos:"Portero",club:"Athletic Club",age:27},
   {id:2,num:13,name:"David Raya",pos:"Portero",club:"Arsenal",age:29},
-  {id:3,num:25,name:"Joan García",pos:"Portero",club:"FC Barcelona",age:23,img:"joan_garcia.png"},
+  {id:3,num:25,name:"Joan García",pos:"Portero",club:"FC Barcelona",age:23},
   {id:4,num:2,name:"Pedro Porro",pos:"Defensa",club:"Tottenham",age:25},
   {id:5,num:3,name:"Marc Cucurella",pos:"Defensa",club:"Chelsea",age:25},
   {id:6,num:4,name:"Alex Carmona",pos:"Defensa",club:"Zeus",age:23},
@@ -899,7 +908,7 @@ let squad=ld('esp_squad',[
   {id:20,num:17,name:"Ferran Torres",pos:"Delantero",club:"FC Barcelona",age:24},
   {id:21,num:19,name:"Yeremy Pino",pos:"Delantero",club:"Crystal Palace",age:22},
   {id:22,num:9,name:"Hugo Senra",pos:"Delantero",club:"Atlético Madrid",age:19}
-]);
+];
 
 // Plantillas por categoría (cada una se almacena en localStorage por separado)
 const CATEGORIAS = {
@@ -1174,7 +1183,7 @@ function renderSquad(){
     return`<div class="grupo-label">${g}s</div>
     <div class="plantilla-grid">${pp.map(p=>`<div class="jugador-card" style="${p.img?'border-top:none':''}">
       ${p.img
-        ?`<img src="${playerImgSrc(p.img)}" alt="${p.name}" style="width:100%;height:200px;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="jugador-dorsal" style="display:none">${p.num||'—'}</div>`
+        ?`<img src="${playerImgSrc(p.img)}" alt="${p.name}" style="width:100%;height:200px;object-fit:cover;object-position:top;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="jugador-dorsal" style="display:none">${p.num||'—'}</div>`
         :`<div class="jugador-dorsal">${p.num||'—'}</div>`}
       <div class="jugador-info">
         <div class="jugador-nombre">${p.name}</div>
