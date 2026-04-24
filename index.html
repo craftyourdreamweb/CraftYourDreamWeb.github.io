@@ -884,7 +884,7 @@ let squad=ld('esp_squad',[
   {id:4,num:2,name:"Pedro Porro",pos:"Defensa",club:"Tottenham",age:25},
   {id:5,num:3,name:"Marc Cucurella",pos:"Defensa",club:"Chelsea",age:25},
   {id:6,num:4,name:"Alex Carmona",pos:"Defensa",club:"Zeus",age:23},
-  {id:7,num:5,name:"Pau Cubarsí",pos:"Defensa",club:"FC Barcelona",age:18},
+  {id:7,num:5,name:"Pau Cubarsí",pos:"Defensa",club:"FC Barcelona",age:18,img:"pau_cubarsi.png"},
   {id:8,num:6,name:"Robin Le Normand",pos:"Defensa",club:"Atlético Madrid",age:28},
   {id:9,num:15,name:"Dean Huijsen",pos:"Defensa",club:"Real Madrid",age:19},
   {id:10,num:23,name:"Álex Grimaldo",pos:"Defensa",club:"Bayer Leverkusen",age:29},
@@ -893,7 +893,7 @@ let squad=ld('esp_squad',[
   {id:14,num:10,name:"Dani Olmo",pos:"Centrocampista",club:"FC Barcelona",age:27},
   {id:15,num:14,name:"Andreu Zarzoso",pos:"Centrocampista",club:"FC Barcelona",age:20},
   {id:16,num:20,name:"Álex Baena",pos:"Centrocampista",club:"Atlético Madrid",age:23},
-  {id:17,num:7,name:"Lamine Yamal",pos:"Delantero",club:"FC Barcelona",age:18,img:"pau_cubarsi.png"},
+  {id:17,num:7,name:"Lamine Yamal",pos:"Delantero",club:"FC Barcelona",age:18,img:"yamal.jpg"},
   {id:18,num:11,name:"Nico Williams",pos:"Delantero",club:"Athletic Club",age:22},
   {id:19,num:21,name:"Mikel Oyarzabal",pos:"Delantero",club:"Real Sociedad",age:27},
   {id:20,num:17,name:"Ferran Torres",pos:"Delantero",club:"FC Barcelona",age:24},
@@ -1151,10 +1151,9 @@ function renderMatches(){
 
 function playerImgSrc(img){
   if(!img) return '';
-  // Si ya es una ruta relativa o absoluta completa, úsala tal cual
-  if(img.startsWith('http')||img.startsWith('/')||img.startsWith('./')) return img;
-  // Si es solo un nombre de archivo, construye la ruta relativa
-  return `img/jugadores/${img}`;
+  if(img.startsWith('http')||img.startsWith('/')) return img;
+  // Busca la imagen en la raíz del repositorio
+  return img;
 }
 
 function renderSquad(){
