@@ -737,7 +737,11 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
               <div class="form-group"><label>Club</label><input type="text" id="p-club" placeholder="FC Barcelona"/></div>
               <div class="form-group"><label>Edad</label><input type="number" id="p-age" placeholder="17"/></div>
             </div>
-            <div class="form-group"><label>URL Foto del jugador (opcional)</label><input type="text" id="p-img" placeholder="https://..."/></div>
+            <div class="form-group">
+              <label>Foto del jugador (opcional)</label>
+              <input type="text" id="p-img" placeholder="yamal.jpg"/>
+              <small style="color:#999;font-size:11px;margin-top:4px;display:block">Sube la foto a la carpeta <code style="background:#eee;padding:1px 5px">img/jugadores/</code> de tu repositorio y escribe solo el nombre del archivo (ej: <code style="background:#eee;padding:1px 5px">yamal.jpg</code>)</small>
+            </div>
             <button class="btn-primary" onclick="addPlayer()">+ Añadir jugador</button>
           </div>
           <h4 style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo);letter-spacing:1px;margin-bottom:12px">Plantilla (<span id="squad-count">0</span> jugadores)</h4>
@@ -876,11 +880,11 @@ let matches=ld('esp_matches',[
 let squad=ld('esp_squad',[
   {id:1,num:1,name:"Unai Simón",pos:"Portero",club:"Athletic Club",age:27},
   {id:2,num:13,name:"David Raya",pos:"Portero",club:"Arsenal",age:29},
-  {id:3,num:25,name:"Joan García",pos:"Portero",club:"FC Barcelona",age:23,img:"https://rfef.es/sites/default/files/styles/ficha/public/img-internacionales/joan_garcia_390x520_0.png.webp?itok=KBL1maOu"},
+  {id:3,num:25,name:"Joan García",pos:"Portero",club:"FC Barcelona",age:23},
   {id:4,num:2,name:"Pedro Porro",pos:"Defensa",club:"Tottenham",age:25},
   {id:5,num:3,name:"Marc Cucurella",pos:"Defensa",club:"Chelsea",age:25},
   {id:6,num:4,name:"Alex Carmona",pos:"Defensa",club:"Zeus",age:23},
-  {id:7,num:5,name:"Pau Cubarsí",pos:"Defensa",club:"FC Barcelona",age:18,img:"pau_cubarsi.png"},
+  {id:7,num:5,name:"Pau Cubarsí",pos:"Defensa",club:"FC Barcelona",age:18},
   {id:8,num:6,name:"Robin Le Normand",pos:"Defensa",club:"Atlético Madrid",age:28},
   {id:9,num:15,name:"Dean Huijsen",pos:"Defensa",club:"Real Madrid",age:19},
   {id:10,num:23,name:"Álex Grimaldo",pos:"Defensa",club:"Bayer Leverkusen",age:29},
@@ -889,7 +893,7 @@ let squad=ld('esp_squad',[
   {id:14,num:10,name:"Dani Olmo",pos:"Centrocampista",club:"FC Barcelona",age:27},
   {id:15,num:14,name:"Andreu Zarzoso",pos:"Centrocampista",club:"FC Barcelona",age:20},
   {id:16,num:20,name:"Álex Baena",pos:"Centrocampista",club:"Atlético Madrid",age:23},
-  {id:17,num:7,name:"Lamine Yamal",pos:"Delantero",club:"FC Barcelona",age:18,img:""},
+  {id:17,num:7,name:"Lamine Yamal",pos:"Delantero",club:"FC Barcelona",age:18,img:"cubarsi.jpg"},
   {id:18,num:11,name:"Nico Williams",pos:"Delantero",club:"Athletic Club",age:22},
   {id:19,num:21,name:"Mikel Oyarzabal",pos:"Delantero",club:"Real Sociedad",age:27},
   {id:20,num:17,name:"Ferran Torres",pos:"Delantero",club:"FC Barcelona",age:24},
@@ -1145,6 +1149,14 @@ function renderMatches(){
   ['home-matches','all-matches'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=matches.map(card).join('');});
 }
 
+function playerImgSrc(img){
+  if(!img) return '';
+  // Si ya es una ruta relativa o absoluta completa, úsala tal cual
+  if(img.startsWith('http')||img.startsWith('/')||img.startsWith('./')) return img;
+  // Si es solo un nombre de archivo, construye la ruta relativa
+  return `img/jugadores/${img}`;
+}
+
 function renderSquad(){
   const el=document.getElementById('squad-content');
   const coachEl=document.getElementById('squad-coach');
@@ -1163,7 +1175,7 @@ function renderSquad(){
     return`<div class="grupo-label">${g}s</div>
     <div class="plantilla-grid">${pp.map(p=>`<div class="jugador-card" style="${p.img?'border-top:none':''}">
       ${p.img
-        ?`<img src="${p.img}" alt="${p.name}" style="width:100%;height:200px;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="jugador-dorsal" style="display:none">${p.num||'—'}</div>`
+        ?`<img src="${playerImgSrc(p.img)}" alt="${p.name}" style="width:100%;height:200px;object-fit:cover;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="jugador-dorsal" style="display:none">${p.num||'—'}</div>`
         :`<div class="jugador-dorsal">${p.num||'—'}</div>`}
       <div class="jugador-info">
         <div class="jugador-nombre">${p.name}</div>
@@ -1322,9 +1334,10 @@ function saveEscudo(){
 }
 
 // ---- API AUTO-SYNC ----
-// Spain national team ID en football-data.org = 760
-const SPAIN_TEAM_ID = 760;
-const API_BASE = 'https://api.football-data.org/v4';
+// España team ID en api-football.com = 9
+// Base: https://v3.football.api-sports.io
+const SPAIN_TEAM_ID = 9;
+const API_BASE = 'https://v3.football.api-sports.io';
 
 function setApiBox(type,html){
   const el=document.getElementById('api-status-box');
@@ -1346,9 +1359,9 @@ function updateApiStatus(){
   const ls=document.getElementById('api-last-sync-label');
   if(!el)return;
   if(apiKey){
-    el.innerHTML=`<span style="color:#00aa55;font-weight:700">✅ API activada</span> — España ID: <code style="background:#eee;padding:1px 5px">760</code> · Los datos se sincronizan automáticamente al cargar la página.`;
+    el.innerHTML=`<span style="color:#00aa55;font-weight:700">✅ API activada</span> — España ID: <code style="background:#eee;padding:1px 5px">9</code> · Los datos se sincronizan automáticamente al cargar la página.`;
   } else {
-    el.innerHTML=`<span style="color:#cc0000">❌ Sin configurar</span> — Introduce tu token en el Paso 2 para activar la sincronización automática.`;
+    el.innerHTML=`<span style="color:#cc0000">❌ Sin configurar</span> — Introduce tu token del dashboard de api-football.com para activar la sincronización automática.`;
   }
   const last=ld('esp_lastsync','');
   if(ls)ls.textContent=last?'Última sincronización: '+last:'';
@@ -1356,76 +1369,114 @@ function updateApiStatus(){
 
 async function testAndSync(){
   if(!apiKey){alert('Primero guarda tu clave API');return;}
-  setApiBox('api-info','⏳ Conectando con football-data.org...');
+  setApiBox('api-info','⏳ Conectando con api-football.com...');
   await syncFromApi(true);
 }
 
 async function syncFromApi(verbose=false){
   if(!apiKey)return;
-  const headers={'X-Auth-Token':apiKey};
-  try {
-    // Fetch upcoming + recent matches for Spain
-    const res=await fetch(`${API_BASE}/teams/${SPAIN_TEAM_ID}/matches?status=SCHEDULED,LIVE,IN_PLAY,PAUSED,FINISHED&limit=20`,{headers});
-    if(!res.ok){
-      const errData=await res.json().catch(()=>({}));
-      throw new Error(errData.message||`HTTP ${res.status} — Verifica tu token.`);
-    }
-    const data=await res.json();
-    if(data.matches&&data.matches.length>0){
-      const stMap={SCHEDULED:'upcoming',LIVE:'live',IN_PLAY:'live',PAUSED:'live',FINISHED:'played',POSTPONED:'upcoming',CANCELLED:'upcoming'};
-      const compMap={WC:'Mundial 2026',UCL:'Champions League',UNL:'UEFA Nations League',EC:'Eurocopa',CL:'Clasificación Mundial',FL1:'Ligue 1'};
+  const headers={
+    'x-apisports-key': apiKey
+  };
 
-      const raw=data.matches.map((m,i)=>{
-        const compName=m.competition?.name||'Internacional';
-        const compCode=m.competition?.code||'';
-        const comp=(compMap[compCode]||compName)+(m.matchday?` · J${m.matchday}`:'');
-        return{
-          id:8000+i,
-          home:m.homeTeam.shortName||m.homeTeam.name,
-          away:m.awayTeam.shortName||m.awayTeam.name,
-          hg:m.score?.fullTime?.home??null,
-          ag:m.score?.fullTime?.away??null,
-          status:stMap[m.status]||'upcoming',
-          date:m.utcDate,
-          venue:m.venue||'Por confirmar',
-          comp
+  try {
+    // Obtener temporada actual y partidos de España
+    const season = new Date().getFullYear();
+    const res = await fetch(
+      `${API_BASE}/fixtures?team=${SPAIN_TEAM_ID}&season=${season}&last=5&next=5`,
+      {headers}
+    );
+
+    if(!res.ok){
+      const errData = await res.json().catch(()=>({}));
+      const msg = errData.message || errData.errors?.token || `HTTP ${res.status}`;
+      throw new Error(msg);
+    }
+
+    const data = await res.json();
+
+    // Comprobar errores de autenticación en el body
+    if(data.errors && Object.keys(data.errors).length > 0){
+      const errMsg = Object.values(data.errors).join(' · ');
+      throw new Error(errMsg);
+    }
+
+    const fixtures = data.response || [];
+
+    if(fixtures.length > 0){
+      const stMap = {
+        'NS':'upcoming', 'TBD':'upcoming', 'SUSP':'upcoming', 'PST':'upcoming', 'CANC':'upcoming',
+        '1H':'live', 'HT':'live', '2H':'live', 'ET':'live', 'P':'live', 'LIVE':'live', 'BT':'live',
+        'FT':'played', 'AET':'played', 'PEN':'played', 'AWD':'played', 'WO':'played'
+      };
+
+      const compMap = {
+        'UEFA Nations League':'Nations League',
+        'World Cup - Qualification Europe':'Clasificación Mundial',
+        'World Cup':'Mundial 2026',
+        'UEFA Euro':'Eurocopa',
+        'Friendlies - International':'Amistoso Internacional'
+      };
+
+      const raw = fixtures.map((f, i) => {
+        const fix = f.fixture;
+        const teams = f.teams;
+        const goals = f.goals;
+        const comp = f.league;
+        const statusShort = fix.status?.short || 'NS';
+        const status = stMap[statusShort] || 'upcoming';
+        const compName = compMap[comp.name] || comp.name;
+        const round = comp.round ? ` · ${comp.round.replace('Regular Season - ','J')}` : '';
+
+        return {
+          id: 7000 + i,
+          home: teams.home.name,
+          away: teams.away.name,
+          hg: goals.home,
+          ag: goals.away,
+          status,
+          date: fix.date,
+          venue: fix.venue?.name ? `${fix.venue.name}, ${fix.venue.city}` : 'Por confirmar',
+          comp: compName + round
         };
       });
 
-      // Keep last 3 finished + all upcoming/live, sorted by date
-      const finished=raw.filter(m=>m.status==='played').slice(-3);
-      const pending=raw.filter(m=>m.status!=='played');
-      matches=[...finished,...pending].sort((a,b)=>new Date(a.date)-new Date(b.date));
-      sv('esp_matches',matches);
+      matches = raw.sort((a,b) => new Date(a.date) - new Date(b.date));
+      sv('esp_matches', matches);
       renderMatches();
 
-      // Update sync time
-      const now=new Date().toLocaleString('es-ES');
-      sv('esp_lastsync',now);
-      const syncEls=['home-sync-status','all-sync-status'];
-      syncEls.forEach(id=>{const e=document.getElementById(id);if(e)e.textContent='Datos sincronizados automáticamente · '+now;});
+      const now = new Date().toLocaleString('es-ES');
+      sv('esp_lastsync', now);
+      const syncEls = ['home-sync-status','all-sync-status'];
+      syncEls.forEach(id => { const e=document.getElementById(id); if(e) e.textContent='Datos sincronizados · '+now; });
 
-      if(verbose)setApiBox('api-ok',`✅ <strong>Sincronización exitosa.</strong> ${matches.length} partidos cargados desde football-data.org.<br/>Los resultados se actualizarán automáticamente en cada visita.`);
+      if(verbose) setApiBox('api-ok',
+        `✅ <strong>Sincronización exitosa.</strong> ${matches.length} partidos cargados desde api-football.com.<br/>
+        Los resultados se actualizarán automáticamente en cada visita.`
+      );
     } else {
-      if(verbose)setApiBox('api-info','⚠️ La API respondió correctamente pero no devolvió partidos para España. Puede que no haya partidos próximos registrados todavía.');
+      if(verbose) setApiBox('api-info',
+        '⚠️ La API respondió correctamente pero no devolvió partidos. Puede que no haya partidos en las próximas/últimas 5 jornadas.'
+      );
     }
     updateApiStatus();
+
   } catch(e){
-    if(verbose)setApiBox('api-error',
+    if(verbose) setApiBox('api-error',
       `❌ <strong>Error al conectar:</strong> ${e.message}<br/><br/>
       <strong>Soluciones:</strong><ul style="margin:8px 0 0 16px;line-height:1.9;font-size:12px">
       <li>Verifica que el token sea correcto (sin espacios)</li>
-      <li>El token puede tardar 5–10 minutos en activarse tras el registro</li>
-      <li>Comprueba tu conexión a internet</li>
-      <li>football-data.org puede estar temporalmente caído</li>
+      <li>El token puede tardar unos minutos en activarse tras el registro</li>
+      <li>Comprueba que tu cuenta en dashboard.api-football.com esté activa</li>
+      <li>El plan gratuito tiene 100 peticiones/día — comprueba que no las hayas agotado</li>
       </ul>`
     );
-    console.warn('API sync error:',e.message);
+    console.warn('API sync error:', e.message);
   }
 }
 
 // Auto-sync silently on page load
-if(apiKey){syncFromApi(false);}
+if(apiKey){ syncFromApi(false); }
 
 // ---- NAVIGATION ----
 function showPage(name){
