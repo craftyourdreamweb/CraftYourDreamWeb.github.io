@@ -279,7 +279,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     <a onclick="showPage('noticias')">Noticias</a>
     <a onclick="showPage('partidos')">Partidos</a>
     <a onclick="showPage('plantilla')">Plantilla</a>
-    <a onclick="showPage('clasificacion')">Grupo H — Mundial</a>
+    <a onclick="showPage('clasificacion')">Clasificación</a>
     <a onclick="showPage('tienda')">Tienda</a>
   </nav>
 </header>
@@ -418,14 +418,14 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 <!-- CLASIFICACIÓN -->
 <div id="page-clasificacion" class="page-section">
   <section class="tabla-section">
-    <div class="section-header"><h2 class="section-title">Grupo H · Mundial 2026</h2></div>
+    <div class="section-header"><h2 class="section-title">Clasificación · 3ª Federación Grupo 6</h2></div>
     <p style="font-size:12px;color:#888;margin-bottom:14px" id="tabla-fecha"></p>
     <div class="tabla-container">
       <table class="tabla">
-        <thead><tr><th>#</th><th>Selección</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>Pts</th></tr></thead>
+        <thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>Pts</th></tr></thead>
         <tbody id="tabla-body"></tbody>
       </table>
-      <p style="font-size:11px;color:#aaa;margin-top:10px">🔴 Pasa a octavos · Grupos del 15 jun al 26 jun 2026</p>
+      <p style="font-size:11px;color:#aaa;margin-top:10px">🔴 Ascenso directo · 🟡 Playoff de ascenso</p>
     </div>
   </section>
 </div>
@@ -574,7 +574,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
       <div class="club-name" style="margin-top:10px;color:#fff">La Roja<span>Selección Española de Fútbol</span></div>
       <p style="margin-top:12px;font-size:13px;line-height:1.6">Real Federación Española de Fútbol<br/>Ciudad del Fútbol · Las Rozas, Madrid<br/>+34 913 495 200</p>
     </div>
-    <div class="footer-col"><h5>Equipo</h5><a onclick="showPage('plantilla')">Plantilla</a><a onclick="showPage('clasificacion')">Grupo H</a><a onclick="showPage('partidos')">Calendario</a></div>
+    <div class="footer-col"><h5>Equipo</h5><a onclick="showPage('plantilla')">Plantilla</a><a onclick="showPage('clasificacion')">Clasificación</a><a onclick="showPage('partidos')">Calendario</a></div>
     <div class="footer-col"><h5>Afición</h5><a>Entradas</a><a onclick="showPage('tienda')">Tienda oficial</a><a onclick="openAdmin()">⚙ Admin</a></div>
   </div>
   <div class="footer-bottom">
@@ -1042,12 +1042,28 @@ function switchPlantilla(cat){
 }
 
 
-let tableData=ld('esp_table',[
-  {pos:1,name:"España",pj:0,g:0,e:0,p:0,gf:0,gc:0,pts:0,status:"normal",isTnf:true},
-  {pos:2,name:"Uruguay",pj:0,g:0,e:0,p:0,gf:0,gc:0,pts:0,status:"normal",isTnf:false},
-  {pos:3,name:"Arabia Saudí",pj:0,g:0,e:0,p:0,gf:0,gc:0,pts:0,status:"normal",isTnf:false},
-  {pos:4,name:"Cabo Verde",pj:0,g:0,e:0,p:0,gf:0,gc:0,pts:0,status:"normal",isTnf:false}
-]);
+let tableData=[
+  {pos:1,name:"Castellonense",pj:31,g:13,e:0,p:0,gf:0,gc:0,pts:63,status:"ascenso",isTnf:false},
+  {pos:2,name:"Levante B",pj:31,g:17,e:0,p:0,gf:0,gc:0,pts:62,status:"playoff",isTnf:false},
+  {pos:3,name:"At. Saguntino",pj:31,g:16,e:0,p:0,gf:0,gc:0,pts:59,status:"playoff",isTnf:false},
+  {pos:4,name:"Villareal C",pj:31,g:13,e:0,p:0,gf:0,gc:0,pts:54,status:"playoff",isTnf:false},
+  {pos:5,name:"La Nucia",pj:31,g:18,e:0,p:0,gf:0,gc:0,pts:52,status:"playoff",isTnf:false},
+  {pos:6,name:"Ontinyent 1931",pj:31,g:7,e:0,p:0,gf:0,gc:0,pts:48,status:"normal",isTnf:false},
+  {pos:7,name:"Buñol",pj:31,g:6,e:0,p:0,gf:0,gc:0,pts:47,status:"normal",isTnf:false},
+  {pos:8,name:"Vall de Uxo",pj:31,g:19,e:0,p:0,gf:0,gc:0,pts:46,status:"normal",isTnf:false},
+  {pos:9,name:"Torrellano",pj:32,g:2,e:0,p:0,gf:0,gc:0,pts:44,status:"normal",isTnf:false},
+  {pos:10,name:"Soneja",pj:31,g:0,e:0,p:0,gf:0,gc:0,pts:39,status:"normal",isTnf:false},
+  {pos:11,name:"Hercules B",pj:31,g:0,e:0,p:0,gf:0,gc:0,pts:38,status:"normal",isTnf:false},
+  {pos:12,name:"Roda",pj:31,g:0,e:0,p:0,gf:0,gc:0,pts:37,status:"normal",isTnf:false},
+  {pos:13,name:"Jove Español",pj:31,g:0,e:0,p:0,gf:0,gc:0,pts:34,status:"normal",isTnf:false},
+  {pos:14,name:"Crevillente",pj:31,g:0,e:0,p:0,gf:0,gc:0,pts:32,status:"normal",isTnf:false},
+  {pos:15,name:"Atzeneta",pj:31,g:0,e:0,p:0,gf:0,gc:0,pts:31,status:"descenso",isTnf:false},
+  {pos:16,name:"Alzira",pj:31,g:0,e:0,p:0,gf:0,gc:0,pts:30,status:"descenso",isTnf:false},
+  {pos:17,name:"Utiel",pj:31,g:0,e:0,p:0,gf:0,gc:0,pts:26,status:"descenso",isTnf:false},
+  {pos:18,name:"Recambios Colon",pj:31,g:0,e:0,p:0,gf:0,gc:0,pts:19,status:"descenso",isTnf:false}
+];
+
+let tableDate='3ª Federación Grupo 6 · Temporada 2025/26';
 
 let storeItems=ld('esp_store',[
   {id:1,name:"Camiseta Oficial España 2026 — Local",price:150,img:"https://shop.rfef.es/cdn/shop/files/25CM0843_Z9.png?v=1764598846&width=1000",badge:"Mundial 2026"},
@@ -1056,7 +1072,6 @@ let storeItems=ld('esp_store',[
   {id:4,name:"Bufanda La Roja Edición Mundial",price:11.95,img:"https://shop.rfef.es/cdn/shop/products/24BF0003_Z1.jpg?v=1710411541&width=1000",badge:"Oferta"}
 ]);
 
-let tableDate=ld('esp_tdate','Grupo H · Los partidos comienzan el 15 de junio de 2026');
 let escudoUrl=ld('esp_escudo','https://upload.wikimedia.org/wikipedia/commons/6/6a/Escudo_selecci%C3%B3n_espa%C3%B1ola.png');
 let apiKey=ld('esp_apikey','');
 let nid=ld('esp_nid',300);
@@ -1180,11 +1195,11 @@ function renderSquad(){
 function renderTable(){
   const el=document.getElementById('tabla-body'),fd=document.getElementById('tabla-fecha');
   if(!el)return;
-  const s=[...tableData].sort((a,b)=>b.pts-a.pts||(b.gf-b.gc)-(a.gf-a.gc));
+  const s=[...tableData].sort((a,b)=>b.pts-a.pts||b.g-a.g||(b.gf-b.gc)-(a.gf-a.gc));
   el.innerHTML=s.map((t,i)=>{
     const pos=i+1;
     const cls=t.isTnf?'destacado':t.status==='descenso'?'descenso':'';
-    const ic=pos<=2?'🔴 ':t.status==='descenso'?'⚫ ':'';
+    const ic=pos===1?'🔴 ':pos<=5?'🟡 ':t.status==='descenso'?'⚫ ':'';
     return`<tr class="${cls}"><td class="pos-num">${pos}</td><td>${ic}${t.name}</td><td>${t.pj}</td><td>${t.g}</td><td>${t.e}</td><td>${t.p}</td><td>${t.gf}</td><td>${t.gc}</td><td><strong>${t.pts}</strong></td></tr>`;
   }).join('');
   if(fd)fd.textContent=tableDate;
