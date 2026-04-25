@@ -133,6 +133,10 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 .footer-col a{display:block;color:rgba(255,255,255,.5);font-size:13px;margin-bottom:7px;cursor:pointer}
 .footer-col a:hover{color:var(--amarillo)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:12px}
+@media(max-width:600px){
+  .footer-bottom{flex-direction:column;gap:14px;text-align:center}
+  .footer-social{order:-1}
+}
 .footer-social{display:flex;gap:12px;align-items:center}
 .footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);transition:all .2s;text-decoration:none}
 .footer-social a:hover{background:var(--amarillo);color:#111}
@@ -150,8 +154,8 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 .legal-modal p{font-size:14px;color:#444;line-height:1.8;margin-bottom:10px}
 .legal-modal ul{font-size:14px;color:#444;line-height:1.9;padding-left:20px;margin-bottom:10px}
 @media(max-width:700px){.legal-modal{padding:30px 22px 40px}}
-.news-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:8000;overflow-y:auto;padding:40px 20px}
-.news-modal-overlay.open{display:flex;align-items:flex-start;justify-content:center}
+.news-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:8000;overflow-y:auto;padding:40px 20px;visibility:hidden}
+.news-modal-overlay.open{display:flex;align-items:flex-start;justify-content:center;visibility:visible}
 .news-modal{background:var(--blanco);max-width:780px;width:100%;position:relative}
 .news-modal-img{width:100%;height:360px;object-fit:cover;display:block}
 .news-modal-body{padding:32px 36px 40px}
@@ -587,10 +591,21 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
   
 
 <!-- MODAL NOTICIA -->
-<div class="news-modal-overlay" id="newsModalOverlay" onclick="if(event.target===this)closeNewsModal()">
+<div class="news-modal-overlay" id="newsModalOverlay" onclick="if(event.target===this)closeNewsModal()" style="display:none;position:fixed;inset:0;z-index:8000">
+  <div class="news-modal">
+    <button class="news-modal-close" onclick="closeNewsModal()">✕</button>
+    <img class="news-modal-img" id="modal-img" src="" alt="" style="display:none"/>
+    <div class="news-modal-body">
+      <div class="news-modal-cat" id="modal-cat"></div>
+      <div class="news-modal-title" id="modal-title"></div>
+      <div class="news-modal-meta" id="modal-meta"></div>
+      <div class="news-modal-content" id="modal-content"></div>
+    </div>
+  </div>
+</div>
 
 <!-- MODAL LEGAL -->
-<div class="legal-modal-overlay" id="legalModalOverlay" onclick="if(event.target===this)closeLegalModal()">
+<div class="legal-modal-overlay" id="legalModalOverlay" onclick="if(event.target===this)closeLegalModal()" style="display:none;position:fixed;inset:0;z-index:9000">
   <div class="legal-modal">
     <button class="legal-modal-close" onclick="closeLegalModal()">✕</button>
     <h1>Aviso Legal y Política de Privacidad</h1>
@@ -631,17 +646,8 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     <p>Para cualquier consulta relacionada con el presente Aviso Legal o con el tratamiento de sus datos personales, puede ponerse en contacto con la RFEF a través de la siguiente dirección de correo electrónico: <strong>legal@rfef.es</strong> o por correo postal en Ciudad del Fútbol, Las Rozas, Madrid.</p>
   </div>
 </div>
-  <div class="news-modal">
-    <button class="news-modal-close" onclick="closeNewsModal()">✕</button>
-    <img class="news-modal-img" id="modal-img" src="" alt=""/>
-    <div class="news-modal-body">
-      <div class="news-modal-cat" id="modal-cat"></div>
-      <div class="news-modal-title" id="modal-title"></div>
-      <div class="news-modal-meta" id="modal-meta"></div>
-      <div class="news-modal-content" id="modal-content"></div>
-    </div>
-  </div>
-</div>
+
+<!-- ADMIN PANEL -->
 
 <!-- ADMIN PANEL -->
 <div class="admin-overlay" id="adminOverlay">
@@ -1123,6 +1129,7 @@ function closeLegalModal(){
 function openNewsModal(id){
   const n=news.find(x=>x.id===id);if(!n)return;
   document.getElementById('modal-img').src=n.img||'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800';
+  document.getElementById('modal-img').style.display='block';
   document.getElementById('modal-cat').textContent=n.cat||'';
   document.getElementById('modal-title').textContent=n.title||'';
   document.getElementById('modal-meta').textContent=n.date||'';
@@ -1485,6 +1492,33 @@ async function syncFromApi(verbose=false){
 
 // Auto-sync silently on page load
 if(apiKey){ syncFromApi(false); }
+
+function openLegalModal(){
+  const el=document.getElementById('legalModalOverlay');
+  el.style.cssText='display:flex;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.8);overflow-y:auto;padding:40px 20px;align-items:flex-start;justify-content:center';
+  document.body.style.overflow='hidden';
+}
+function closeLegalModal(){
+  document.getElementById('legalModalOverlay').style.display='none';
+  document.body.style.overflow='';
+}
+function openNewsModal(id){
+  const n=news.find(x=>x.id===id);if(!n)return;
+  const img=document.getElementById('modal-img');
+  img.src=n.img||'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=800';
+  img.style.display='block';
+  document.getElementById('modal-cat').textContent=n.cat||'';
+  document.getElementById('modal-title').textContent=n.title||'';
+  document.getElementById('modal-meta').textContent=n.date||'';
+  document.getElementById('modal-content').textContent=n.content||n.summary||'Este artículo no tiene contenido todavía.';
+  const el=document.getElementById('newsModalOverlay');
+  el.style.cssText='display:flex;position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.75);overflow-y:auto;padding:40px 20px;align-items:flex-start;justify-content:center';
+  document.body.style.overflow='hidden';
+}
+function closeNewsModal(){
+  document.getElementById('newsModalOverlay').style.display='none';
+  document.body.style.overflow='';
+}
 
 // ---- NAVIGATION ----
 function showPage(name){
