@@ -171,7 +171,40 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 .news-modal-close:hover{background:var(--rojo)}
 .news-card{cursor:pointer}
 
-/* ENTRADAS */
+/* ABONATE */
+.abonate-section{padding:60px 40px 120px;background:var(--gris-claro)}
+.abonate-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-top:24px}
+.abono-card{background:#fff;border:1px solid var(--gris);overflow:hidden;text-align:center;transition:transform .2s;cursor:pointer}
+.abono-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.abono-card-top{background:var(--rojo-oscuro);padding:28px 20px}
+.abono-tipo{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;letter-spacing:2px}
+.abono-precio{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--amarillo);letter-spacing:1px;line-height:1}
+.abono-precio span{font-size:18px;color:rgba(255,255,255,.6)}
+.abono-card-body{padding:18px 20px}
+.abono-desc{font-size:13px;color:#666;line-height:1.7;margin-bottom:14px}
+.btn-abono{width:100%;background:var(--rojo);color:#fff;border:none;padding:11px;font-family:'Barlow',sans-serif;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.btn-abono:hover{background:var(--rojo-oscuro)}
+.abonate-aviso{background:#fff;border:2px solid var(--amarillo);padding:20px 24px;margin-top:28px;display:flex;gap:16px;align-items:flex-start;max-width:680px}
+.abonate-aviso-icon{font-size:28px;flex-shrink:0}
+.abonate-aviso p{font-size:14px;color:#444;line-height:1.7}
+.abonate-aviso strong{color:var(--rojo-oscuro)}
+
+/* CONTACTO */
+.contacto-section{padding:60px 40px 120px;background:var(--blanco)}
+.contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:24px}
+.contacto-form{display:flex;flex-direction:column;gap:14px}
+.contacto-form input,.contacto-form textarea,.contacto-form select{border:1.5px solid var(--gris);padding:12px 14px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--texto);width:100%;transition:border .2s}
+.contacto-form input:focus,.contacto-form textarea:focus{outline:none;border-color:var(--rojo)}
+.contacto-form textarea{min-height:130px;resize:vertical}
+.btn-enviar{background:var(--rojo);color:#fff;border:none;padding:13px 28px;font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;align-self:flex-start}
+.btn-enviar:hover{background:var(--rojo-oscuro)}
+.contacto-info{display:flex;flex-direction:column;gap:20px}
+.contacto-info-item{display:flex;gap:14px;align-items:flex-start}
+.contacto-info-icon{width:44px;height:44px;background:var(--rojo-oscuro);color:var(--amarillo);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.contacto-info-text h4{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:var(--rojo-oscuro);margin-bottom:2px}
+.contacto-info-text p{font-size:13px;color:#666;line-height:1.6}
+.contacto-ok{display:none;background:#e8f5e9;border:1.5px solid #4caf50;padding:14px 18px;color:#2e7d32;font-size:14px;font-weight:600;margin-top:8px}
+@media(max-width:700px){.contacto-grid{grid-template-columns:1fr}.abonate-section,.contacto-section{padding:40px 20px 80px}}
 .entradas-section{padding:60px 40px 120px;background:var(--blanco)}
 .entradas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-top:24px}
 .entrada-card{border:1px solid var(--gris);background:#fff;overflow:hidden}
@@ -306,7 +339,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
       <div class="club-name">La Roja<span>Selección Española de Fútbol</span></div>
     </div>
     <div class="header-actions">
-      <span class="btn-amarillo" onclick="showPage('tienda')">TIENDA</span>
+      <span class="btn-amarillo" onclick="showPage('abonate')">ABÓNATE</span>
     </div>
   </div>
   <nav>
@@ -317,6 +350,9 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     <a onclick="showPage('plantilla')">Plantilla</a>
     <a onclick="showPage('clasificacion')">Clasificación</a>
     <a onclick="showPage('tienda')">Tienda</a>
+    <a onclick="showPage('entradas')">Entradas</a>
+    <a onclick="showPage('abonate')">Abónate</a>
+    <a onclick="showPage('contacto')">Contacto</a>
   </nav>
 </header>
 
@@ -475,6 +511,100 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 </div>
 
 
+<!-- ABÓNATE -->
+<div id="page-abonate" class="page-section">
+  <section class="abonate-section">
+    <div class="section-header"><h2 class="section-title">Abónate</h2></div>
+    <p style="font-size:14px;color:#666;margin-top:8px">Hazte socio del club y disfruta de todos los partidos en casa.</p>
+    <div class="abonate-grid">
+      <div class="abono-card">
+        <div class="abono-card-top">
+          <div class="abono-tipo">Adulto</div>
+          <div class="abono-precio">100<span> €/temporada</span></div>
+        </div>
+        <div class="abono-card-body">
+          <div class="abono-desc">Acceso a todos los partidos de local durante la temporada 2025/26.</div>
+          <button class="btn-abono" onclick="openAbonateModal('Adulto','100')">Más información</button>
+        </div>
+      </div>
+      <div class="abono-card">
+        <div class="abono-card-top">
+          <div class="abono-tipo">Niños</div>
+          <div class="abono-precio">50<span> €/temporada</span></div>
+        </div>
+        <div class="abono-card-body">
+          <div class="abono-desc">Para los más pequeños. Menores de 14 años con carné de socio juvenil.</div>
+          <button class="btn-abono" onclick="openAbonateModal('Niños','50')">Más información</button>
+        </div>
+      </div>
+      <div class="abono-card">
+        <div class="abono-card-top">
+          <div class="abono-tipo">Mayores de 65</div>
+          <div class="abono-precio">50<span> €/temporada</span></div>
+        </div>
+        <div class="abono-card-body">
+          <div class="abono-desc">Tarifa especial para mayores de 65 años con acreditación.</div>
+          <button class="btn-abono" onclick="openAbonateModal('Mayores de 65','50')">Más información</button>
+        </div>
+      </div>
+    </div>
+    <div class="abonate-aviso">
+      <div class="abonate-aviso-icon">📄</div>
+      <p><strong>Descuento para residentes del pueblo:</strong> Presentando documentación acreditativa de residencia, todos los precios del abono tienen un <strong>50% de descuento</strong>. Consúltalo en el club antes de formalizar tu abono.</p>
+    </div>
+  </section>
+</div>
+
+<!-- MODAL ABÓNATE -->
+<div class="entradas-modal-overlay" id="abonateModalOverlay" onclick="if(event.target===this)closeAbonateModal()">
+  <div class="entradas-modal">
+    <div class="entradas-modal-header">
+      <button class="entradas-modal-close" onclick="closeAbonateModal()">✕</button>
+      <h3 id="abonate-modal-tipo">Abono</h3>
+      <p id="abonate-modal-precio"></p>
+    </div>
+    <div class="entradas-modal-body">
+      <table class="precios-tabla">
+        <thead><tr><th>Tarifa</th><th>Precio</th></tr></thead>
+        <tbody id="abonate-modal-tabla"></tbody>
+      </table>
+      <div class="abonate-aviso" style="margin-top:0;margin-bottom:16px">
+        <div class="abonate-aviso-icon" style="font-size:20px">📄</div>
+        <p style="font-size:12px">Presentando documentación de residente del pueblo, <strong>todos los precios tienen un 50% de descuento</strong>.</p>
+      </div>
+      <div class="entradas-contacto">
+        Para tramitar tu abono, contacta con el club:<br/>
+        <strong>📞 684 454 669</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<div id="page-contacto" class="page-section">
+  <section class="contacto-section">
+    <div class="section-header"><h2 class="section-title">Contacto</h2></div>
+    <div class="contacto-info" style="margin-top:24px;max-width:500px">
+      <div class="contacto-info-item">
+        <div class="contacto-info-icon">📞</div>
+        <div class="contacto-info-text"><h4>Teléfono</h4><p>684 454 669</p></div>
+      </div>
+      <div class="contacto-info-item">
+        <div class="contacto-info-icon">📍</div>
+        <div class="contacto-info-text"><h4>Estadio</h4><p>Ontinyent, Valencia</p></div>
+      </div>
+      <div class="contacto-info-item">
+        <div class="contacto-info-icon">📱</div>
+        <div class="contacto-info-text"><h4>Instagram</h4><p><a href="https://www.instagram.com/rfef/" target="_blank" style="color:var(--rojo)">@ontinyentcf</a></p></div>
+      </div>
+      <div class="contacto-info-item">
+        <div class="contacto-info-icon">🕐</div>
+        <div class="contacto-info-text"><h4>Horario de atención</h4><p>Lunes a viernes · 10:00 – 14:00 h<br/>Días de partido · Desde 2h antes</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <!-- ENTRADAS -->
 <div id="page-entradas" class="page-section">
   <section class="entradas-section">
@@ -497,7 +627,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
         <thead><tr><th>Tipo de entrada</th><th>Precio</th></tr></thead>
         <tbody>
           <tr><td>Normal</td><td class="precio">20 €</td></tr>
-          <tr><td>Socios</td><td class="precio">5 €</td></tr>
+          <tr><td>Socios</td><td class="precio">GRATUITO</td></tr>
           <tr><td>Niños</td><td class="precio">10 €</td></tr>
           <tr><td>Mayores de 65</td><td class="precio">10 €</td></tr>
         </tbody>
@@ -646,7 +776,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
       <p style="margin-top:12px;font-size:13px;line-height:1.6">Real Federación Española de Fútbol<br/>Ciudad del Fútbol · Las Rozas, Madrid<br/>+34 913 495 200</p>
     </div>
     <div class="footer-col"><h5>Equipo</h5><a onclick="showPage('plantilla')">Plantilla</a><a onclick="showPage('clasificacion')">Clasificación</a><a onclick="showPage('partidos')">Calendario</a></div>
-    <div class="footer-col"><h5>Afición</h5><a onclick="showPage('entradas')">Entradas</a><a onclick="showPage('tienda')">Tienda oficial</a><a onclick="openAdmin()">Admin</a></div>
+    <div class="footer-col"><h5>Afición</h5><a onclick="showPage('entradas')">Entradas</a><a onclick="showPage('abonate')">Abónate</a><a onclick="showPage('tienda')">Tienda oficial</a><a onclick="showPage('contacto')">Contacto</a><a onclick="openAdmin()">⚙ Admin</a></div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Selección Española · RFEF</span>
@@ -1593,6 +1723,34 @@ function closeEntradasModal(){
   document.body.style.overflow='';
 }
 
+function openAbonateModal(tipo, precio){
+  document.getElementById('abonate-modal-tipo').textContent='Abono '+tipo;
+  document.getElementById('abonate-modal-precio').textContent=precio+' € / temporada';
+  const precioNum=parseInt(precio);
+  const descuento=Math.round(precioNum*0.5);
+  document.getElementById('abonate-modal-tabla').innerHTML=`
+    <tr><td>Precio normal</td><td class="precio">${precioNum} €</td></tr>
+    <tr><td>Con descuento residente</td><td class="precio">${descuento} €</td></tr>`;
+  const el=document.getElementById('abonateModalOverlay');
+  el.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeAbonateModal(){
+  document.getElementById('abonateModalOverlay').style.display='none';
+  document.body.style.overflow='';
+}
+
+function enviarContacto(){
+  const nombre=document.getElementById('c-nombre').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const mensaje=document.getElementById('c-mensaje').value.trim();
+  if(!nombre||!email||!mensaje){alert('Por favor rellena nombre, email y mensaje.');return;}
+  const ok=document.getElementById('contacto-ok');
+  ok.style.display='block';
+  ['c-nombre','c-email','c-asunto','c-mensaje'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  setTimeout(()=>ok.style.display='none',5000);
+}
+
 function openLegalModal(){
   const el=document.getElementById('legalModalOverlay');
   el.style.cssText='display:flex;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.8);overflow-y:auto;padding:40px 20px;align-items:flex-start;justify-content:center';
@@ -1625,7 +1783,7 @@ function showPage(name){
   document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
   const pg=document.getElementById('page-'+name);if(pg)pg.classList.add('active');
-  const map={inicio:0,historia:1,noticias:2,partidos:3,plantilla:4,clasificacion:5,tienda:6,entradas:7};
+  const map={inicio:0,historia:1,noticias:2,partidos:3,plantilla:4,clasificacion:5,tienda:6,entradas:7,abonate:8,contacto:9};
   const navs=document.querySelectorAll('nav a');
   if(map[name]!==undefined&&navs[map[name]])navs[map[name]].classList.add('active');
   window.scrollTo(0,0);
