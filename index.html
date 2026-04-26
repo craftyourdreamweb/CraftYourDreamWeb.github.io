@@ -81,17 +81,21 @@ nav a:hover,nav a.active{color:var(--blanco);border-bottom-color:var(--amarillo)
 
 /* TABLA */
 .tabla-section{background:var(--gris-claro);padding:60px 40px}
-.tabla-container{max-width:800px}
-.tabla{width:100%;border-collapse:collapse;font-size:14px}
+.tabla-container{max-width:800px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tabla{width:100%;border-collapse:collapse;font-size:14px;min-width:480px}
 .tabla thead tr{background:var(--rojo-oscuro);color:var(--blanco)}
-.tabla th{padding:12px 14px;text-align:left;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
-.tabla td{padding:12px 14px;border-bottom:1px solid var(--gris)}
+.tabla th{padding:12px 14px;text-align:left;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;white-space:nowrap}
+.tabla td{padding:12px 14px;border-bottom:1px solid var(--gris);white-space:nowrap}
 .tabla tbody tr{background:var(--blanco)}
 .tabla tbody tr:nth-child(even){background:#fff5f5}
 .tabla tbody tr.destacado{background:#ffe0e0;font-weight:700}
 .tabla tbody tr.destacado td{color:var(--rojo-oscuro)}
 .tabla tbody tr.descenso{background:#fff0f0}
 .tabla tbody tr.descenso td{color:#cc0000}
+@media(max-width:600px){
+  .tabla{font-size:12px}
+  .tabla th,.tabla td{padding:9px 8px}
+}
 .pos-num{font-weight:700;color:var(--rojo);width:30px}
 
 /* PLANTILLA */
