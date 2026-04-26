@@ -808,9 +808,10 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
               <div class="form-group"><label>Precio (€) *</label><input type="number" id="s-price" step="0.01" min="0"/></div>
             </div>
             <div class="g2">
-              <div class="form-group"><label>URL Imagen</label><input type="text" id="s-img" placeholder="https://images.unsplash.com/..."/></div>
+              <div class="form-group"><label>URL Imagen</label><input type="text" id="s-img" placeholder="https://..."/></div>
               <div class="form-group"><label>Etiqueta</label><input type="text" id="s-badge" placeholder="Novedad, Oferta..."/></div>
             </div>
+            <div class="form-group"><label>URL de compra (enlace al producto)</label><input type="text" id="s-url" placeholder="https://tienda.ontinyentcf.com/producto..."/></div>
             <button class="btn-primary" onclick="addProduct()">+ Añadir producto</button>
           </div>
           <h4 style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo);letter-spacing:1px;margin-bottom:12px">Productos (<span id="store-count">0</span>)</h4>
@@ -1067,16 +1068,13 @@ let tableData=[
   {pos:18,name:"Recambios Colon",pj:32,g:2,e:13,p:17,gf:26,gc:50,pts:19,status:"descenso",isTnf:false}
 ];
 
-
-
-
 let tableDate='3ª Federación Grupo 6 · Temporada 2025/26';
 
 let storeItems=ld('esp_store',[
-  {id:1,name:"Camiseta Oficial España 2026 — Local",price:150,img:"https://shop.rfef.es/cdn/shop/files/25CM0843_Z9.png?v=1764598846&width=1000",badge:"Mundial 2026"},
-  {id:2,name:"Camiseta Oficial España 2026 — Visitante",price:150,img:"https://shop.rfef.es/cdn/shop/files/25CM0845-14.jpg?v=1774015012&width=2000",badge:"Suplente Mundial 2026"},
-  {id:3,name:"Balón Trionda World Cup",price:30,img:"https://shop.rfef.es/cdn/shop/files/25BA0020_Z1.jpg?v=1773759538&width=800",badge:"BEST SELLER"},
-  {id:4,name:"Bufanda La Roja Edición Mundial",price:11.95,img:"https://shop.rfef.es/cdn/shop/products/24BF0003_Z1.jpg?v=1710411541&width=1000",badge:"Oferta"}
+  {id:1,name:"Camiseta Oficial España 2026 — Local",price:150,img:"https://shop.rfef.es/cdn/shop/files/25CM0843_Z9.png?v=1764598846&width=1000",badge:"Mundial 2026",url:"https://shop.rfef.es/products/camiseta-hombre-primera-equipacion-authentic"},
+  {id:2,name:"Camiseta Oficial España 2026 — Visitante",price:150,img:"https://shop.rfef.es/cdn/shop/files/25CM0845-14.jpg?v=1774015012&width=2000",badge:"Suplente Mundial 2026",url:"https://shop.rfef.es/products/camiseta-hombre-segunda-equipacion-authentic"},
+  {id:3,name:"Balón Trionda World Cup",price:30,img:"https://shop.rfef.es/cdn/shop/files/25BA0020_Z1.jpg?v=1773759538&width=800",badge:"BEST SELLER",url:"https://shop.rfef.es/products/balon-trionda-world-cup-1"},
+  {id:4,name:"Bufanda La Roja Edición Mundial",price:11.95,img:"https://shop.rfef.es/cdn/shop/products/24BF0003_Z1.jpg?v=1710411541&width=1000",badge:"Oferta",url:"https://shop.rfef.es/products/bufanda-mundial-2022-roja"}
 ]);
 
 let escudoUrl=ld('esp_escudo','https://upload.wikimedia.org/wikipedia/commons/6/6a/Escudo_selecci%C3%B3n_espa%C3%B1ola.png');
@@ -1215,12 +1213,13 @@ function renderTable(){
 function renderStore(){
   const el=document.getElementById('store-grid');
   if(!el)return;
-  el.innerHTML=storeItems.map(s=>`<div class="producto-card">
+  el.innerHTML=storeItems.map(s=>`<div class="producto-card" ${s.url?`onclick="window.open('${s.url}','_blank')" style="cursor:pointer"`:''}> 
     <img src="${s.img}" alt="" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400'"/>
     <div class="producto-info">
       ${s.badge?`<div class="producto-badge">${s.badge}</div>`:''}
       <h4>${s.name}</h4>
       <div class="producto-precio">${parseFloat(s.price).toFixed(2)} €</div>
+      ${s.url?`<div style="margin-top:10px;background:var(--rojo);color:#fff;text-align:center;padding:8px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase">Comprar →</div>`:''}
     </div>
   </div>`).join('');
 }
@@ -1270,7 +1269,7 @@ function renderATable(){
 function renderAStore(){
   const c=document.getElementById('store-count');if(c)c.textContent=storeItems.length;
   document.getElementById('admin-store-list').innerHTML=storeItems.map(s=>`<div class="item-row">
-    <div style="flex:1"><div class="item-row-info">${s.name}</div><div class="item-row-sub">${parseFloat(s.price).toFixed(2)} €${s.badge?' · '+s.badge:''}</div></div>
+    <div style="flex:1"><div class="item-row-info">${s.name}</div><div class="item-row-sub">${parseFloat(s.price).toFixed(2)} €${s.badge?' · '+s.badge:''}</div>${s.url?`<div style="font-size:11px;color:#888;margin-top:2px">🔗 ${s.url}</div>`:''}</div>
     <button class="btn-danger" onclick="delProduct(${s.id})">Eliminar</button></div>`).join('');
 }
 
@@ -1333,8 +1332,8 @@ function saveTableDate(){tableDate=g('tabla-update-date');sv('esp_tdate',tableDa
 
 function addProduct(){
   const n=g('s-name'),p=g('s-price');if(!n||!p){alert('Nombre y precio obligatorios');return;}
-  storeItems.push({id:uid(),name:n,price:parseFloat(p),img:g('s-img')||'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',badge:g('s-badge')});
-  sv('esp_store',storeItems);['s-name','s-price','s-img','s-badge'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
+  storeItems.push({id:uid(),name:n,price:parseFloat(p),img:g('s-img')||'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',badge:g('s-badge'),url:g('s-url')||''});
+  sv('esp_store',storeItems);['s-name','s-price','s-img','s-badge','s-url'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
   renderStore();renderAStore();
 }
 function delProduct(id){if(!confirm('¿Eliminar?'))return;storeItems=storeItems.filter(s=>s.id!==id);sv('esp_store',storeItems);renderStore();renderAStore();}
