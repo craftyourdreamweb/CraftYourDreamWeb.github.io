@@ -1243,25 +1243,25 @@ function switchPlantilla(cat){
 }
 
 
-let tableData=[
-  {pos:1,  name:"Castellonense",   pj:33, g:20, e:7,  p:6,  gf:56, gc:29, pts:67, status:"ascenso",  isTnf:false},
-  {pos:2,  name:"At. Saguntino",   pj:33, g:19, e:6,  p:8,  gf:47, gc:30, pts:63, status:"playoff",  isTnf:false},
-  {pos:3,  name:"Levante B",       pj:33, g:17, e:11, p:5,  gf:53, gc:26, pts:62, status:"playoff",  isTnf:false},
-  {pos:4,  name:"Villareal C",     pj:33, g:18, e:6,  p:9,  gf:61, gc:36, pts:60, status:"playoff",  isTnf:false},
-  {pos:5,  name:"La Nucia",        pj:33, g:15, e:13, p:5,  gf:41, gc:26, pts:58, status:"playoff",  isTnf:false},
-  {pos:6,  name:"Vall de Uxo",     pj:33, g:13, e:10, p:10, gf:31, gc:28, pts:49, status:"normal",   isTnf:false},
-  {pos:7,  name:"Ontinyent 1931",  pj:33, g:13, e:9,  p:11, gf:32, gc:29, pts:48, status:"normal",   isTnf:false},
-  {pos:8,  name:"Buñol",           pj:33, g:12, e:11, p:10, gf:33, gc:40, pts:47, status:"normal",   isTnf:false},
-  {pos:9,  name:"Torrellano",      pj:33, g:13, e:8,  p:12, gf:40, gc:36, pts:47, status:"normal",   isTnf:false},
-  {pos:10, name:"Soneja",          pj:33, g:12, e:6,  p:15, gf:30, gc:40, pts:42, status:"normal",   isTnf:false},
-  {pos:11, name:"Hercules B",      pj:33, g:10, e:11, p:12, gf:31, gc:42, pts:41, status:"normal",   isTnf:false},
-  {pos:12, name:"Jove Español",    pj:33, g:11, e:7,  p:15, gf:36, gc:41, pts:40, status:"normal",   isTnf:false},
-  {pos:13, name:"Crevillente",     pj:33, g:10, e:10, p:13, gf:41, gc:44, pts:40, status:"normal",   isTnf:false},
-  {pos:14, name:"Roda",            pj:33, g:10, e:7,  p:16, gf:33, gc:46, pts:37, status:"normal",   isTnf:false},
-  {pos:15, name:"Atzeneta",        pj:33, g:10, e:7,  p:16, gf:32, gc:42, pts:37, status:"normal",   isTnf:false},
-  {pos:16, name:"Alzira",          pj:33, g:8,  e:10, p:15, gf:37, gc:50, pts:34, status:"descenso", isTnf:false},
-  {pos:17, name:"Utiel",           pj:33, g:7,  e:9,  p:17, gf:29, gc:46, pts:30, status:"descenso", isTnf:false},
-  {pos:18, name:"Recambios Colon", pj:33, g:3,  e:13, p:17, gf:30, gc:56, pts:22, status:"descenso", isTnf:false}
+let tableData = [
+  {pos:1,name:"Castellonense",pj:33,g:20,e:7,p:6,gf:54,gc:29,pts:67,status:"ascenso",isTnf:false},
+  {pos:2,name:"Levante B",pj:33,g:18,e:12,p:3,gf:55,gc:24,pts:66,status:"playoff",isTnf:false},
+  {pos:3,name:"At. Saguntino",pj:33,g:19,e:6,p:8,gf:45,gc:31,pts:63,status:"playoff",isTnf:false},
+  {pos:4,name:"Villarreal C",pj:33,g:17,e:7,p:9,gf:63,gc:38,pts:58,status:"playoff",isTnf:false},
+  {pos:5,name:"La Nucia",pj:33,g:14,e:14,p:5,gf:38,gc:26,pts:56,status:"playoff",isTnf:false},
+  {pos:6,name:"Ontinyent 1931",pj:33,g:14,e:10,p:9,gf:34,gc:28,pts:52,status:"normal",isTnf:false},
+  {pos:7,name:"Buñol",pj:33,g:13,e:11,p:9,gf:35,gc:38,pts:50,status:"normal",isTnf:false},
+  {pos:8,name:"Vall de Uxo",pj:33,g:12,e:11,p:10,gf:32,gc:27,pts:47,status:"normal",isTnf:false},
+  {pos:9,name:"Torrellano",pj:33,g:13,e:8,p:12,gf:38,gc:34,pts:47,status:"normal",isTnf:false},
+  {pos:10,name:"Soneja",pj:33,g:11,e:7,p:15,gf:30,gc:42,pts:40,status:"normal",isTnf:false},
+  {pos:11,name:"Hercules B",pj:33,g:10,e:11,p:12,gf:31,gc:41,pts:41,status:"normal",isTnf:false},
+  {pos:12,name:"Roda",pj:33,g:10,e:8,p:15,gf:33,gc:45,pts:38,status:"normal",isTnf:false},
+  {pos:13,name:"Jove Español",pj:33,g:10,e:7,p:16,gf:31,gc:40,pts:37,status:"normal",isTnf:false},
+  {pos:14,name:"Crevillente",pj:33,g:8,e:11,p:14,gf:40,gc:47,pts:35,status:"normal",isTnf:false},
+  {pos:15,name:"Atzeneta",pj:33,g:9,e:7,p:17,gf:28,gc:40,pts:34,status:"normal",isTnf:false},
+  {pos:16,name:"Alzira",pj:33,g:7,e:10,p:16,gf:32,gc:48,pts:31,status:"descenso",isTnf:false},
+  {pos:17,name:"Utiel",pj:33,g:6,e:9,p:18,gf:28,gc:45,pts:27,status:"descenso",isTnf:false},
+  {pos:18,name:"Recambios Colon",pj:33,g:2,e:14,p:17,gf:27,gc:53,pts:20,status:"descenso",isTnf:false}
 ];
 
 let tableDate='3ª Federación Grupo 6 · Temporada 2025/26';
