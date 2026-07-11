@@ -98,6 +98,21 @@ nav a:hover,nav a.active{color:var(--blanco);border-bottom-color:var(--amarillo)
 }
 .pos-num{font-weight:700;color:var(--rojo);width:30px}
 
+/* BRACKET ELIMINATORIA */
+.bracket-section{margin-top:56px}
+.bracket-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--rojo-oscuro);letter-spacing:1.5px;margin-bottom:18px}
+.bracket-scroll{display:flex;gap:22px;overflow-x:auto;padding-bottom:14px}
+.bracket-round{display:flex;flex-direction:column;justify-content:center;gap:14px;min-width:230px;flex-shrink:0}
+.bracket-round-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:2px;text-align:center}
+.bracket-match{background:var(--blanco);border:1px solid var(--gris);padding:12px 14px}
+.bracket-match.jugado{border-left:4px solid var(--rojo)}
+.bracket-match.pendiente{border-left:4px solid var(--amarillo);background:#fffdf3}
+.bracket-team{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:4px 0}
+.bracket-team.win{font-weight:700;color:var(--rojo-oscuro)}
+.bracket-team.lose{color:#999}
+.bracket-score{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px}
+.bracket-meta{font-size:10px;color:#aaa;margin-top:6px;padding-top:6px;border-top:1px solid var(--gris)}
+
 /* PLANTILLA */
 .plantilla-section{padding:60px 40px}
 .plantilla-selector{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 32px}
@@ -362,9 +377,9 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     <img class="hero-img" src="https://objetos-xlk.estaticos-marca.com/uploads/2024/12/25/676c342e135d0.jpeg" alt="Selección España"/>
     <div class="hero-overlay">
       <div class="hero-content">
-        <span class="hero-badge">Mundial 2026 · Grupo H · Campeones Euro 2024</span>
-        <h1 class="hero-title"><em>La Roja</em><br/>rumbo al<br/>Mundial 2026</h1>
-        <p class="hero-desc">España, campeona de Europa, busca conquistar el mundo en Canadá, México y EE.UU. De la Fuente lidera a una generación de oro.</p>
+        <span class="hero-badge">Mundial 2026 · Semifinales · Campeones Euro 2024</span>
+        <h1 class="hero-title"><em>La Roja</em><br/>a un paso<br/>de la final</h1>
+        <p class="hero-desc">España, campeona de Europa, sigue viva en el Mundial de Canadá, México y EE.UU. tras eliminar a Portugal y Bélgica. De la Fuente lidera a una generación de oro rumbo a la segunda estrella.</p>
         <span class="hero-cta" onclick="showPage('partidos')">Ver próximos partidos</span>
       </div>
       <div class="hero-escudo-wrap" style="flex-shrink:0;padding-right:40px">
@@ -490,14 +505,19 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 <!-- CLASIFICACIÓN -->
 <div id="page-clasificacion" class="page-section">
   <section class="tabla-section">
-    <div class="section-header"><h2 class="section-title">Clasificación · 3ª Federación Grupo 6</h2></div>
+    <div class="section-header"><h2 class="section-title">Clasificación · Mundial 2026 · Grupo H</h2></div>
     <p style="font-size:12px;color:#888;margin-bottom:14px" id="tabla-fecha"></p>
     <div class="tabla-container">
       <table class="tabla">
         <thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>Pts</th></tr></thead>
         <tbody id="tabla-body"></tbody>
       </table>
-      <p style="font-size:11px;color:#aaa;margin-top:10px">🟢 Ascenso directo · 🟡 Playoff de ascenso · 🔴 Descenso
+      <p style="font-size:11px;color:#aaa;margin-top:10px">🟢 Clasificado a dieciseisavos · 🔴 Eliminado en fase de grupos
+    </div>
+
+    <div class="bracket-section">
+      <h3 class="bracket-title">Fase Eliminatoria</h3>
+      <div class="bracket-scroll" id="bracket-content"></div>
     </div>
   </section>
 </div> 
@@ -982,7 +1002,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
               <div class="form-group"><label>GC</label><input type="number" id="t-gc" min="0"/></div>
             </div>
             <div class="g2">
-              <div class="form-group"><label>Estado</label><select id="t-status"><option value="normal">Normal</option><option value="ascenso">Pasa a octavos</option><option value="descenso">Eliminado</option></select></div>
+              <div class="form-group"><label>Estado</label><select id="t-status"><option value="normal">Normal</option><option value="ascenso">Pasa a dieciseisavos</option><option value="descenso">Eliminado</option></select></div>
               <div class="form-group"><label>¿Es España?</label><select id="t-isTnf"><option value="no">No</option><option value="si">Sí</option></select></div>
             </div>
             <button class="btn-primary" onclick="addTableRow()">+ Guardar</button>
@@ -1068,29 +1088,30 @@ function ld(k,d){try{const x=localStorage.getItem(k);return x?JSON.parse(x):d}ca
 
 // ---- DEFAULT DATA ----
 let news=[
-  {id:1,title:"España aplasta a Serbia 3-0 en el Estadio de la Cerámica",cat:"Crónica · Amistoso",summary:"Yamal, Williams y Olmo firman una goleada ante los serbios en el último ensayo previo al Mundial.",img:"https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&auto=format&fit=crop",date:"2026-03-27",content:`La noche en Estadio de la Cerámica tuvo aroma a fiesta grande. La selección española firmó una victoria contundente por 3-0 ante Serbia, en un encuentro donde el balón pareció tener acento ibérico desde el primer minuto.
+  {id:1,title:"España elimina a Bélgica (2-1) y jugará las semifinales del Mundial 2026",cat:"Crónica · Mundial 2026",summary:"Mikel Merino vuelve a aparecer en el momento clave y España se cita con Francia en semifinales, el martes 14 de julio en Dallas.",img:"https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&auto=format&fit=crop",date:"2026-07-10",content:`La Roja sigue firme en su camino hacia la segunda estrella. España derrotó a Bélgica por 2-1 en un cuartos de final vibrante y disputado en el SoFi Stadium de Los Ángeles, en un partido que se resolvió con sufrimiento hasta el último suspiro.
 
-España salió al césped con la intención de mandar, y lo dejó claro rápido: posesiones largas, presión alta y un ritmo que fue asfixiando poco a poco a los balcánicos. Serbia, sólida en defensa sobre el papel, se vio obligada a retroceder, como si el campo se inclinara ligeramente hacia su portería.
+El encuentro tuvo de todo: intensidad, un gol en propia puerta, la lesión del portero belga Thibaut Courtois -que tuvo que ser sustituido por Senne Lammens- y, de nuevo, la aparición decisiva de un hombre que ya se ha convertido en el héroe inesperado de este Mundial: Mikel Merino, que entró desde el banquillo para inclinar la balanza a favor de España, tal y como ya hizo en los octavos de final ante Portugal.
 
-El primer gol llegó como caen las tormentas de verano: anunciado, inevitable. Tras una jugada colectiva que cosió pases con precisión quirúrgica, el balón terminó en la red y encendió a la grada. El rugido del estadio fue un trueno que marcó el tono del resto del partido.
+Luis de la Fuente destacó tras el pitido final la capacidad de sacrificio y la profundidad de una plantilla que "compite de la misma manera juegue quien juegue". El seleccionador insistió en que el equipo "sufre, pelea y no se rinde", virtudes que se han convertido en sello de esta España que ya suma tres eliminatorias superadas sin encajar más de un gol por rival.
 
-Lejos de conformarse, España siguió empujando. El segundo tanto fue una muestra de inteligencia táctica, aprovechando un desajuste defensivo serbio. Para entonces, Serbia ya navegaba en aguas turbulentas, intentando resistir más que competir.
+Con este triunfo, España se convierte en la segunda selección clasificada para las semifinales del torneo, donde le espera Francia, vigente subcampeona y una de las grandes favoritas al título, que un día antes había superado a Marruecos con un doblete repartido entre Kylian Mbappé y Ousmane Dembélé.
 
-En la segunda mitad, el guion no cambió demasiado. España controló el ritmo con la serenidad de quien sabe que tiene el partido en el bolsillo, pero sin bajar la intensidad. El tercer gol, ya definitivo, fue la firma elegante al pie de una obra bien ejecutada.
+El cruce, que promete ser una de las citas más atractivas de todo el Mundial, se disputará el martes 14 de julio en el AT&T Stadium de Dallas, el mismo escenario donde La Roja ya derrotó a Portugal en los octavos de final. Sería la segunda semifinal de un Mundial en la historia de la selección española, después de la lograda en Sudáfrica 2010, que terminó con la conquista del título.
 
-Más allá del marcador, el encuentro dejó sensaciones muy positivas: cohesión, talento joven y una idea de juego clara que se despliega como un mapa bien dibujado. Serbia, por su parte, tendrá que recomponer piezas tras una noche en la que nunca encontró el hilo del partido.
-
-Así, bajo las luces de La Cerámica, España no solo ganó, sino que convenció. Y en el fútbol, eso vale casi tanto como el resultado.`},
-  {id:2,title:"España empata 0-0 con Egipto en el RCDE Stadium",cat:"Crónica · Amistoso",summary:"La Roja cierra la ventana de marzo con un empate ante los egipcios liderados por Salah.",img:"https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&auto=format&fit=crop",date:"2026-03-31"},
-  {id:3,title:"España en el Grupo H del Mundial 2026 junto a Cabo Verde, Arabia Saudí y Uruguay",cat:"Mundial 2026",summary:"El sorteo celebrado en Washington D.C. puso a La Roja en el Grupo H. Debuta el 15 de junio ante Cabo Verde en Atlanta.",img:"https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&auto=format&fit=crop",date:"2025-12-05"}
+La afición española empieza a soñar. Queda un rival de máxima exigencia por delante, pero el equipo de Luis de la Fuente ha demostrado hasta ahora que sabe sufrir y ganar cuando el partido más lo exige.`},
+  {id:2,title:"Merino tumba a Cristiano Ronaldo y Portugal en el descuento: España, a cuartos",cat:"Crónica · Mundial 2026",summary:"Un gol de Mikel Merino en el minuto 90+1 certificó la eliminación de Portugal en los octavos de final del Mundial 2026 en Dallas.",img:"https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&auto=format&fit=crop",date:"2026-07-06"},
+  {id:3,title:"España golea 3-0 a Austria y avanza a octavos como líder invicta",cat:"Crónica · Mundial 2026",summary:"La Roja resuelve con solvencia su primer cruce eliminatorio en el SoFi Stadium de Los Ángeles y sigue sin encajar un gol en el torneo.",img:"https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&auto=format&fit=crop",date:"2026-07-02"},
+  {id:4,title:"España cierra la fase de grupos como primera del Grupo H tras ganar a Uruguay",cat:"Mundial 2026",summary:"Un error de Muslera permitió a La Roja imponerse 0-1 en Guadalajara y terminar líder del grupo con 7 puntos, sin encajar goles.",img:"https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&auto=format&fit=crop",date:"2026-06-27"}
 ];
 
 let matches=ld('esp_matches',[
-  {id:1,home:"España",away:"Serbia",hg:3,ag:0,status:"played",date:"2026-03-27T21:00",venue:"Estadio de la Cerámica, Villarreal",comp:"Amistoso Internacional"},
-  {id:2,home:"España",away:"Egipto",hg:0,ag:0,status:"played",date:"2026-03-31T18:00",venue:"RCDE Stadium, Barcelona",comp:"Amistoso Internacional"},
-  {id:3,home:"España",away:"Cabo Verde",hg:null,ag:null,status:"upcoming",date:"2026-06-15T18:00",venue:"Mercedes-Benz Stadium, Atlanta",comp:"Mundial 2026 · Grupo H · J1"},
-  {id:4,home:"España",away:"Arabia Saudí",hg:null,ag:null,status:"upcoming",date:"2026-06-21T18:00",venue:"Mercedes-Benz Stadium, Atlanta",comp:"Mundial 2026 · Grupo H · J2"},
-  {id:5,home:"Uruguay",away:"España",hg:null,ag:null,status:"upcoming",date:"2026-06-26T02:00",venue:"Estadio Akron, Guadalajara",comp:"Mundial 2026 · Grupo H · J3"}
+  {id:1,home:"España",away:"Cabo Verde",hg:0,ag:0,status:"played",date:"2026-06-15T18:00",venue:"Mercedes-Benz Stadium, Atlanta",comp:"Mundial 2026 · Grupo H · J1"},
+  {id:2,home:"España",away:"Arabia Saudí",hg:4,ag:0,status:"played",date:"2026-06-21T18:00",venue:"Mercedes-Benz Stadium, Atlanta",comp:"Mundial 2026 · Grupo H · J2"},
+  {id:3,home:"Uruguay",away:"España",hg:0,ag:1,status:"played",date:"2026-06-27T02:00",venue:"Estadio Akron, Guadalajara",comp:"Mundial 2026 · Grupo H · J3"},
+  {id:4,home:"España",away:"Austria",hg:3,ag:0,status:"played",date:"2026-07-02T21:00",venue:"SoFi Stadium, Los Ángeles",comp:"Mundial 2026 · Dieciseisavos de final"},
+  {id:5,home:"Portugal",away:"España",hg:0,ag:1,status:"played",date:"2026-07-06T19:00",venue:"AT&T Stadium, Dallas",comp:"Mundial 2026 · Octavos de final"},
+  {id:6,home:"España",away:"Bélgica",hg:2,ag:1,status:"played",date:"2026-07-10T21:00",venue:"SoFi Stadium, Los Ángeles",comp:"Mundial 2026 · Cuartos de final"},
+  {id:7,home:"España",away:"Francia",hg:null,ag:null,status:"upcoming",date:"2026-07-14T21:00",venue:"AT&T Stadium, Dallas",comp:"Mundial 2026 · Semifinal"}
 ]);
 
 let squad=[
@@ -1244,27 +1265,22 @@ function switchPlantilla(cat){
 
 
 let tableData = [
-  {pos:1,name:"Castellonense",pj:33,g:20,e:7,p:6,gf:56,gc:29,pts:67,status:"ascenso",isTnf:false},
-  {pos:2,name:"At. Saguntino",pj:33,g:19,e:6,p:8,gf:47,gc:30,pts:63,status:"playoff",isTnf:false},
-  {pos:3,name:"Levante B",pj:33,g:17,e:11,p:5,gf:53,gc:26,pts:62,status:"playoff",isTnf:false},
-  {pos:4,name:"Villarreal C",pj:33,g:18,e:6,p:9,gf:61,gc:36,pts:60,status:"playoff",isTnf:false},
-  {pos:5,name:"La Nucia",pj:33,g:15,e:13,p:5,gf:41,gc:26,pts:58,status:"playoff",isTnf:false},
-  {pos:6,name:"Vall de Uxo",pj:33,g:13,e:10,p:10,gf:31,gc:28,pts:49,status:"normal",isTnf:false},
-  {pos:7,name:"Ontinyent 1931",pj:33,g:13,e:9,p:11,gf:32,gc:29,pts:48,status:"normal",isTnf:false},
-  {pos:8,name:"Buñol",pj:33,g:12,e:11,p:10,gf:33,gc:40,pts:47,status:"normal",isTnf:false},
-  {pos:9,name:"Torrellano",pj:33,g:13,e:8,p:12,gf:40,gc:36,pts:47,status:"normal",isTnf:false},
-  {pos:10,name:"Soneja",pj:33,g:12,e:6,p:15,gf:30,gc:40,pts:42,status:"normal",isTnf:false},
-  {pos:11,name:"Hercules B",pj:33,g:10,e:11,p:12,gf:31,gc:43,pts:41,status:"normal",isTnf:false},
-  {pos:12,name:"Roda",pj:33,g:11,e:7,p:15,gf:32,gc:43,pts:40,status:"normal",isTnf:false},
-  {pos:13,name:"Jove Español",pj:33,g:10,e:8,p:15,gf:33,gc:39,pts:38,status:"normal",isTnf:false},
-  {pos:14,name:"Crevillente",pj:33,g:8,e:11,p:14,gf:42,gc:49,pts:35,status:"normal",isTnf:false},
-  {pos:15,name:"Atzeneta",pj:33,g:9,e:7,p:17,gf:28,gc:39,pts:34,status:"normal",isTnf:false},
-  {pos:16,name:"Alzira",pj:33,g:7,e:10,p:16,gf:32,gc:48,pts:31,status:"descenso",isTnf:false},
-  {pos:17,name:"Utiel",pj:33,g:6,e:10,p:17,gf:29,gc:45,pts:28,status:"descenso",isTnf:false},
-  {pos:18,name:"Recambios Colon",pj:33,g:2,e:13,p:18,gf:27,gc:52,pts:19,status:"descenso",isTnf:false}
+  {pos:1,name:"España",pj:3,g:2,e:1,p:0,gf:5,gc:0,pts:7,status:"ascenso",isTnf:true},
+  {pos:2,name:"Cabo Verde",pj:3,g:0,e:3,p:0,gf:2,gc:2,pts:3,status:"ascenso",isTnf:false},
+  {pos:3,name:"Uruguay",pj:3,g:0,e:2,p:1,gf:3,gc:4,pts:2,status:"descenso",isTnf:false},
+  {pos:4,name:"Arabia Saudí",pj:3,g:0,e:2,p:1,gf:1,gc:5,pts:2,status:"descenso",isTnf:false}
 ];
 
-let tableDate='3ª Federación Grupo 6 · Temporada 2025/26';
+let tableDate='Fase de grupos finalizada · Mundial 2026';
+
+// Fase eliminatoria de España en el Mundial 2026
+let bracketData = [
+  {ronda:"Dieciseisavos de final",home:"España",away:"Austria",hg:3,ag:0,jugado:true,fecha:"2 jul 2026",sede:"SoFi Stadium, Los Ángeles"},
+  {ronda:"Octavos de final",home:"Portugal",away:"España",hg:0,ag:1,jugado:true,fecha:"6 jul 2026",sede:"AT&T Stadium, Dallas"},
+  {ronda:"Cuartos de final",home:"España",away:"Bélgica",hg:2,ag:1,jugado:true,fecha:"10 jul 2026",sede:"SoFi Stadium, Los Ángeles"},
+  {ronda:"Semifinal",home:"España",away:"Francia",hg:null,ag:null,jugado:false,fecha:"14 jul 2026",sede:"AT&T Stadium, Dallas"},
+  {ronda:"Final",home:"Por determinar",away:"Por determinar",hg:null,ag:null,jugado:false,fecha:"19 jul 2026",sede:"MetLife Stadium, Nueva Jersey"}
+];
 
 let storeItems=ld('esp_store',[
   {id:1,name:"Camiseta Oficial España 2026 — Local",price:150,img:"https://shop.rfef.es/cdn/shop/files/25CM0843_Z9.png?v=1764598846&width=1000",badge:"Mundial 2026",url:"https://shop.rfef.es/products/camiseta-hombre-primera-equipacion-authentic"},
@@ -1307,7 +1323,11 @@ const FLAGS={
   'croacia':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
   'croatia':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
   'marruecos':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'morocco':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">'
+  'morocco':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
+  'bélgica':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
+  'belgica':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
+  'belgium':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
+  'austria':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">'
 };
 function getFlag(name){return FLAGS[name.toLowerCase()]||'⚽';}
 function isEsp(n){return n.toLowerCase().includes('españa')||n.toLowerCase().includes('spain');}
@@ -1396,14 +1416,32 @@ function renderSquad(){
 function renderTable(){
   const el=document.getElementById('tabla-body'),fd=document.getElementById('tabla-fecha');
   if(!el)return;
-  const s=[...tableData].sort((a,b)=>b.pts-a.pts||b.g-a.g||(b.gf-b.gc)-(a.gf-a.gc));
+  const s=[...tableData].sort((a,b)=>b.pts-a.pts||(b.gf-b.gc)-(a.gf-a.gc)||b.gf-a.gf);
   el.innerHTML=s.map((t,i)=>{
     const pos=i+1;
     const cls=t.isTnf?'destacado':t.status==='descenso'?'descenso':'';
-    const ic=pos===1?'🟢 ':pos<=5?'🟡 ':t.status==='descenso'?'🔴 ':'';
+    const ic=t.status==='ascenso'?'🟢 ':t.status==='descenso'?'🔴 ':'';
     return`<tr class="${cls}"><td class="pos-num">${pos}</td><td>${ic}${t.name}</td><td>${t.pj}</td><td>${t.g}</td><td>${t.e}</td><td>${t.p}</td><td>${t.gf}</td><td>${t.gc}</td><td><strong>${t.pts}</strong></td></tr>`;
   }).join('');
   if(fd)fd.textContent=tableDate;
+}
+
+function renderBracket(){
+  const el=document.getElementById('bracket-content');
+  if(!el)return;
+  el.innerHTML=bracketData.map(b=>{
+    const hEsp=isEsp(b.home),aEsp=isEsp(b.away);
+    const hWin=b.jugado&&b.hg>b.ag, aWin=b.jugado&&b.ag>b.hg;
+    const sc=b.jugado?`${b.hg} - ${b.ag}`:'vs';
+    return`<div class="bracket-round">
+      <div class="bracket-round-label">${b.ronda}</div>
+      <div class="bracket-match ${b.jugado?'jugado':'pendiente'}">
+        <div class="bracket-team ${hWin?'win':b.jugado?'lose':''}"><span>${b.home}</span><span class="bracket-score">${b.jugado?b.hg:''}</span></div>
+        <div class="bracket-team ${aWin?'win':b.jugado?'lose':''}"><span>${b.away}</span><span class="bracket-score">${b.jugado?b.ag:''}</span></div>
+        <div class="bracket-meta">${b.jugado?'Finalizado':'Por jugar'} · ${b.fecha}<br/>${b.sede}</div>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 function renderStore(){
@@ -1424,7 +1462,7 @@ function applyEscudo(){
   ['header-escudo','hero-escudo','footer-escudo'].forEach(id=>{const e=document.getElementById(id);if(e)e.src=escudoUrl;});
 }
 
-function renderAll(){renderNews();renderMatches();renderSquad();renderTable();renderStore();renderEntradas();}
+function renderAll(){renderNews();renderMatches();renderSquad();renderTable();renderBracket();renderStore();renderEntradas();}
 
 // ---- ADMIN LISTS ----
 function renderANews(){
