@@ -8,7 +8,9 @@
 <style>
 :root{--rojo:#c60b1e;--rojo-oscuro:#8b0000;--amarillo:#f1bf00;--blanco:#fff;--gris-claro:#f5f5f5;--gris:#e0e0e0;--texto:#111;}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Barlow',sans-serif;background:var(--blanco);color:var(--texto)}
+img,svg{max-width:100%}
+html{overflow-x:hidden}
+body{font-family:'Barlow',sans-serif;background:var(--blanco);color:var(--texto);overflow-x:hidden}
 header{background:var(--rojo-oscuro);position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.5)}
 .header-top{display:flex;align-items:center;justify-content:space-between;padding:10px 40px;border-bottom:3px solid var(--amarillo)}
 .logo-area{display:flex;align-items:center;gap:14px;cursor:pointer}
@@ -40,13 +42,13 @@ nav a:hover,nav a.active{color:var(--blanco);border-bottom-color:var(--amarillo)
 
 /* SECTIONS */
 .section{padding:60px 40px}
-.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;border-left:5px solid var(--rojo);padding-left:16px}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:32px;border-left:5px solid var(--rojo);padding-left:16px}
 .section-title{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--rojo-oscuro);letter-spacing:2px}
 .ver-todo{font-size:13px;font-weight:700;color:var(--rojo);text-transform:uppercase;letter-spacing:1px;cursor:pointer}
 .ver-todo:hover{color:var(--rojo-oscuro)}
 
 /* NEWS */
-.news-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px}
+.news-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:20px}
 .news-card{overflow:hidden;background:var(--gris-claro);cursor:pointer;transition:transform .25s}
 .news-card:hover{transform:translateY(-4px)}
 .news-card img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .4s}
@@ -63,7 +65,7 @@ nav a:hover,nav a.active{color:var(--blanco);border-bottom-color:var(--amarillo)
 .partidos-bg .section-title,.partidos-bg .ver-todo{color:var(--blanco)}
 .partidos-bg .section-header{border-left-color:var(--amarillo)}
 .partidos-bg .ver-todo:hover{color:var(--amarillo)}
-.partidos-scroll{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:var(--amarillo) rgba(255,255,255,.1)}
+.partidos-scroll{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;padding-right:40px;scrollbar-width:thin;scrollbar-color:var(--amarillo) rgba(255,255,255,.1)}
 .partido-card{min-width:270px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:20px;flex-shrink:0;transition:background .2s}
 .partido-card:hover{background:rgba(255,255,255,.12)}
 .partido-card.proximo{border-color:var(--amarillo);box-shadow:0 0 0 1px var(--amarillo)}
@@ -101,7 +103,7 @@ nav a:hover,nav a.active{color:var(--blanco);border-bottom-color:var(--amarillo)
 /* BRACKET ELIMINATORIA */
 .bracket-section{margin-top:56px}
 .bracket-title{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--rojo-oscuro);letter-spacing:1.5px;margin-bottom:18px}
-.bracket-scroll{display:flex;gap:22px;overflow-x:auto;padding-bottom:14px}
+.bracket-scroll{display:flex;gap:22px;overflow-x:auto;padding-bottom:14px;padding-right:40px}
 .bracket-round{display:flex;flex-direction:column;justify-content:center;gap:14px;min-width:230px;flex-shrink:0}
 .bracket-round-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:2px;text-align:center}
 .bracket-match{background:var(--blanco);border:1px solid var(--gris);padding:12px 14px}
@@ -131,7 +133,7 @@ nav a:hover,nav a.active{color:var(--blanco);border-bottom-color:var(--amarillo)
 
 /* TIENDA */
 .tienda-section{padding:60px 40px}
-.tienda-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tienda-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 .producto-card{border:1px solid var(--gris);transition:box-shadow .2s;cursor:pointer}
 .producto-card:hover{box-shadow:0 8px 30px rgba(198,11,30,.12)}
 .producto-card img{width:100%;height:420px;object-fit:cover;display:block;background:var(--gris-claro)}
@@ -142,12 +144,12 @@ nav a:hover,nav a.active{color:var(--blanco);border-bottom-color:var(--amarillo)
 
 /* HISTORIA */
   
-.ImagenHistoria{width:100%;height:600px;object-fit:cover;margin-top:20px;border-radius:6px;box-shadow:0 4px 20px rgb(255, 0, 0)}
+.ImagenHistoria{display:block;width:100%;max-width:100%;height:600px;object-fit:cover;margin-top:20px;border-radius:6px;box-shadow:0 4px 20px rgb(255, 0, 0)}
 
   
 /* FOOTER */
 footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:40px;margin-bottom:40px}
 .footer-col h5{color:var(--blanco);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:14px}
 .footer-col a{display:block;color:rgba(255,255,255,.5);font-size:13px;margin-bottom:7px;cursor:pointer}
 .footer-col a:hover{color:var(--amarillo)}
@@ -319,6 +321,14 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 .live-dot{display:inline-block;width:8px;height:8px;background:#ff4444;border-radius:50%;animation:blink 1s infinite;margin-right:4px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 
+/* CENTRADO EN PANTALLAS GRANDES */
+@media(min-width:1300px){
+  .header-top,nav,.section,.partidos-bg,.tabla-section,.plantilla-section,.tienda-section,.abonate-section,.contacto-section,.entradas-section,.patrocinadores-bg{
+    padding-left:calc((100% - 1220px)/2);
+    padding-right:calc((100% - 1220px)/2);
+  }
+}
+
 @media(max-width:900px){
   .news-grid,.tienda-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr;text-align:center}
@@ -377,9 +387,9 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     <img class="hero-img" src="https://objetos-xlk.estaticos-marca.com/uploads/2024/12/25/676c342e135d0.jpeg" alt="Selección España"/>
     <div class="hero-overlay">
       <div class="hero-content">
-        <span class="hero-badge">Mundial 2026 · Semifinales · Campeones Euro 2024</span>
-        <h1 class="hero-title"><em>La Roja</em><br/>a un paso<br/>de la final</h1>
-        <p class="hero-desc">España, campeona de Europa, sigue viva en el Mundial de Canadá, México y EE.UU. tras eliminar a Portugal y Bélgica. De la Fuente lidera a una generación de oro rumbo a la segunda estrella.</p>
+        <span class="hero-badge">Campeones del Mundo 2026 · Campeones Euro 2024</span>
+        <h1 class="hero-title"><em>La Roja</em><br/>campeona<br/>del mundo</h1>
+        <p class="hero-desc">España conquista su segunda Copa del Mundo tras vencer 1-0 a Argentina en la prórroga de la final, con gol de Ferran Torres. De la Fuente corona a una generación de oro que ya suma Mundial, Eurocopa y Nations League.</p>
         <span class="hero-cta" onclick="showPage('partidos')">Ver próximos partidos</span>
       </div>
       <div class="hero-escudo-wrap" style="flex-shrink:0;padding-right:40px">
@@ -670,7 +680,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
       <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,8vw,72px);color:var(--blanco);line-height:.95;margin-bottom:16px;">La Roja<br/><span style="color:var(--amarillo);">Una leyenda viva</span></h1>
       <p style="color:rgba(255,255,255,.75);font-size:15px;max-width:520px;line-height:1.65;margin-bottom:28px;">Más de un siglo de fútbol, pasión y gloria. De los Juegos Olímpicos de Amberes al dominio absoluto del fútbol mundial entre 2008 y 2024. La selección más laureada de Europa.</p>
       <div style="display:flex;flex-wrap:wrap;gap:20px 28px;">
-        <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">1</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Mundial</div></div>
+        <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">2</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Mundiales</div></div>
         <div style="width:1px;background:rgba(255,255,255,.15);"></div>
         <div><div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--amarillo);line-height:1;">4</div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,.6);text-transform:uppercase;">Eurocopas</div></div>
         <div style="width:1px;background:rgba(255,255,255,.15);"></div>
@@ -690,9 +700,9 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
         <p style="font-size:14px;color:#444;line-height:1.8;">Conocida en sus inicios como «La Furia Española» por su espíritu combativo, La Roja evolucionó hasta convertirse en sinónimo del mejor fútbol del mundo gracias a una generación histórica liderada por Xavi, Iniesta y Villa, y más tarde por una nueva ola de talentos como Pedri, Yamal y Nico Williams.</p>
       </div>
       <div>
-        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--rojo-oscuro);letter-spacing:1px;margin-bottom:14px;">Rumbo al Mundial 2026</h2>
-        <p style="font-size:14px;color:#444;line-height:1.8;margin-bottom:12px;">Bajo la dirección de Luis de la Fuente, La Roja llega al Mundial de Norteamérica 2026 como vigente campeona de Europa y una de las grandes favoritas al título. España se integra en el Grupo H junto a rivales de alto nivel.</p>
-        <p style="font-size:14px;color:#444;line-height:1.8;">Con una mezcla perfecta de experiencia e irrupción juvenil, la ilusión de toda España pasa por conquistar la segunda estrella mundial y consolidar el legado de la generación más brillante que ha dado el fútbol español.</p>
+        <h2 style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--rojo-oscuro);letter-spacing:1px;margin-bottom:14px;">La segunda estrella, conquistada</h2>
+        <p style="font-size:14px;color:#444;line-height:1.8;margin-bottom:12px;">Bajo la dirección de Luis de la Fuente, La Roja llegó al Mundial de Norteamérica 2026 como vigente campeona de Europa y una de las grandes favoritas al título, integrada en el Grupo H. El verano terminó con la mejor noticia posible: España se proclamó campeona del mundo por segunda vez en su historia tras vencer a Argentina en la final.</p>
+        <p style="font-size:14px;color:#444;line-height:1.8;">Con una mezcla perfecta de experiencia e irrupción juvenil, encabezada por Lamine Yamal, Pedri y Rodri, España cerró el torneo invicta en los 90 minutos, con un solo gol encajado en todo el campeonato, y consolidó el legado de la generación más brillante que ha dado el fútbol español.</p>
       </div>
     </div>
   </section>
@@ -758,6 +768,13 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
         <p style="font-size:14px;color:#555;line-height:1.7;">Lamine Yamal, con solo 17 años, y Nico Williams se convierten en los protagonistas de una Eurocopa sensacional. España vence a Inglaterra en la final de Berlín (2-1) con un golazo de Mikel Oyarzabal. La cuarta Eurocopa de la historia de La Roja, récord absoluto entre todas las selecciones europeas, y el pistoletazo de salida hacia el Mundial 2026.</p>
       </div>
 
+      <div style="position:relative;margin-top:38px;">
+        <div style="position:absolute;left:-41px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--rojo);border:3px solid var(--blanco);box-shadow:0 0 0 2px var(--rojo);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--rojo);text-transform:uppercase;">2026</span>
+        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--rojo-oscuro);margin:4px 0 6px;">La Segunda Estrella · Campeones del Mundo en Nueva Jersey</h3>
+        <p style="font-size:14px;color:#555;line-height:1.7;">Ferran Torres firma en la prórroga el gol que decide la final ante Argentina (1-0) en el MetLife Stadium. España conquista su segunda Copa del Mundo doce años después de Sudáfrica 2010, cerrando un torneo histórico con un solo gol encajado en siete partidos. Luis de la Fuente se convierte en el seleccionador más laureado de la historia de La Roja absoluta.</p>
+      </div>
+
     </div>
   </section>
 
@@ -778,7 +795,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
       <div style="background:var(--blanco);border-top:4px solid var(--amarillo);padding:20px 22px;">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo-oscuro);letter-spacing:.5px;">Luis de la Fuente</div>
         <div style="font-size:11px;font-weight:700;color:var(--rojo);letter-spacing:1.5px;text-transform:uppercase;margin:4px 0 8px;">2022 – Actualidad</div>
-        <p style="font-size:13px;color:#555;line-height:1.6;">Conquistó la Eurocopa 2024 y guía a la nueva generación hacia el Mundial 2026 con un fútbol atrevido y vertical.</p>
+        <p style="font-size:13px;color:#555;line-height:1.6;">Conquistó la Eurocopa 2024 y el Mundial 2026, convirtiéndose en el seleccionador más laureado de la historia de La Roja absoluta.</p>
       </div>
     </div>
   </section>
@@ -1088,6 +1105,18 @@ function ld(k,d){try{const x=localStorage.getItem(k);return x?JSON.parse(x):d}ca
 
 // ---- DEFAULT DATA ----
 let news=[
+  {id:6,title:"¡España, campeona del Mundo! Ferran Torres firma el 1-0 a Argentina en la prórroga",cat:"Crónica · Final Mundial 2026",summary:"Un gol de Ferran Torres en el minuto 106, tras una jugada coral de Yamal, Porro y Nico Williams, da a La Roja su segunda estrella mundial en el MetLife Stadium de Nueva Jersey.",img:"https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800&auto=format&fit=crop",date:"2026-07-19",content:`España es campeona del mundo por segunda vez en su historia. La Roja se impuso 1-0 a Argentina en la prórroga de la final del Mundial 2026, disputada en el MetLife Stadium de Nueva Jersey, con un gol de Ferran Torres en el minuto 106 tras una jugada coral iniciada por Lamine Yamal, continuada por Pedro Porro y rematada de cabeza por Nico Williams antes de que el delantero del Barcelona empujara el balón a la red.
+
+El combinado de Luis de la Fuente dominó la mayor parte del encuentro ante un rival que se refugió en la solidez defensiva y en la figura de Emiliano Martínez, decisivo hasta el tramo final. España cierra el torneo con siete victorias y un empate, un solo gol encajado en todo el campeonato y catorce a favor, cifras que la sitúan entre las selecciones más dominantes de la historia de la competición.
+
+Con este título, España añade la Copa del Mundo a la Eurocopa 2024 y a la Nations League, consolidando a esta generación —con Lamine Yamal, Pedri, Rodri y Nico Williams como estandartes— como una de las más laureadas del fútbol español, doce años después del título conquistado en Sudáfrica 2010.
+
+Luis de la Fuente se convierte además en el seleccionador más laureado de la historia de La Roja absoluta. La afición celebró el título por todo el país, con la selección previendo una recepción oficial en Madrid en los días posteriores a la consagración.`},
+  {id:5,title:"España vence 2-0 a Francia y jugará la final del Mundial 2026",cat:"Crónica · Semifinal Mundial 2026",summary:"Goles de Mikel Oyarzabal de penalti y Pedro Porro certifican el billete de La Roja a su segunda final mundialista, ante Argentina el domingo 19 de julio.",img:"https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=800&auto=format&fit=crop",date:"2026-07-14",content:`España se planta en la final del Mundial 2026 tras superar con autoridad a Francia por 2-0 en el AT&T Stadium de Dallas. Mikel Oyarzabal abrió el marcador de penalti en el minuto 22 tras una falta sobre Lamine Yamal, y Pedro Porro sentenció en el 58 tras una pared con Dani Olmo.
+
+La Roja, que ya había eliminado a Les Bleus en semifinales de la Eurocopa 2024 y de la Nations League 2025, firmó su tercer triunfo consecutivo ante el combinado galo en una eliminatoria de gran nivel, controlando el juego con Rodri como director en el mediocampo.
+
+España disputará así su segunda final de un Mundial, doce años después de la conquistada en Sudáfrica 2010, el domingo 19 de julio en el MetLife Stadium de Nueva Jersey, ante el ganador del cruce entre Argentina e Inglaterra.`},
   {id:1,title:"España elimina a Bélgica (2-1) y jugará las semifinales del Mundial 2026",cat:"Crónica · Mundial 2026",summary:"Mikel Merino vuelve a aparecer en el momento clave y España se cita con Francia en semifinales, el martes 14 de julio en Dallas.",img:"https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&auto=format&fit=crop",date:"2026-07-10",content:`La Roja sigue firme en su camino hacia la segunda estrella. España derrotó a Bélgica por 2-1 en un cuartos de final vibrante y disputado en el SoFi Stadium de Los Ángeles, en un partido que se resolvió con sufrimiento hasta el último suspiro.
 
 El encuentro tuvo de todo: intensidad, un gol en propia puerta, la lesión del portero belga Thibaut Courtois -que tuvo que ser sustituido por Senne Lammens- y, de nuevo, la aparición decisiva de un hombre que ya se ha convertido en el héroe inesperado de este Mundial: Mikel Merino, que entró desde el banquillo para inclinar la balanza a favor de España, tal y como ya hizo en los octavos de final ante Portugal.
@@ -1111,31 +1140,43 @@ let matches=ld('esp_matches',[
   {id:4,home:"España",away:"Austria",hg:3,ag:0,status:"played",date:"2026-07-02T21:00",venue:"SoFi Stadium, Los Ángeles",comp:"Mundial 2026 · Dieciseisavos de final"},
   {id:5,home:"Portugal",away:"España",hg:0,ag:1,status:"played",date:"2026-07-06T19:00",venue:"AT&T Stadium, Dallas",comp:"Mundial 2026 · Octavos de final"},
   {id:6,home:"España",away:"Bélgica",hg:2,ag:1,status:"played",date:"2026-07-10T21:00",venue:"SoFi Stadium, Los Ángeles",comp:"Mundial 2026 · Cuartos de final"},
-  {id:7,home:"España",away:"Francia",hg:null,ag:null,status:"upcoming",date:"2026-07-14T21:00",venue:"AT&T Stadium, Dallas",comp:"Mundial 2026 · Semifinal"}
+  {id:7,home:"Francia",away:"España",hg:0,ag:2,status:"played",date:"2026-07-14T21:00",venue:"AT&T Stadium, Dallas",comp:"Mundial 2026 · Semifinal"},
+  {id:8,home:"España",away:"Argentina",hg:1,ag:0,status:"played",date:"2026-07-19T21:00",venue:"MetLife Stadium, Nueva Jersey",comp:"Mundial 2026 · Final (tras prórroga)"},
+  {id:9,home:"Inglaterra",away:"España",hg:null,ag:null,status:"upcoming",date:"2026-09-26T20:45",venue:"Estadio de Wembley, Londres",comp:"Nations League 2026/27 · J1"},
+  {id:10,home:"España",away:"Croacia",hg:null,ag:null,status:"upcoming",date:"2026-09-29T20:45",venue:"Ramón Sánchez-Pizjuán, Sevilla",comp:"Nations League 2026/27 · J2"},
+  {id:11,home:"España",away:"República Checa",hg:null,ag:null,status:"upcoming",date:"2026-10-03T20:45",venue:"Carlos Tartiere, Oviedo",comp:"Nations League 2026/27 · J3"},
+  {id:12,home:"Croacia",away:"España",hg:null,ag:null,status:"upcoming",date:"2026-10-06T20:45",venue:"Por confirmar, Croacia",comp:"Nations League 2026/27 · J4"},
+  {id:13,home:"República Checa",away:"España",hg:null,ag:null,status:"upcoming",date:"2026-11-12T20:45",venue:"Por confirmar, República Checa",comp:"Nations League 2026/27 · J5"},
+  {id:14,home:"España",away:"Inglaterra",hg:null,ag:null,status:"upcoming",date:"2026-11-15T20:45",venue:"Cívitas Metropolitano, Madrid",comp:"Nations League 2026/27 · J6"}
 ]);
 
 let squad=[
-  {id:1,num:1,name:"Unai Simón",pos:"Portero",club:"Athletic Club",age:27},
-  {id:2,num:13,name:"David Raya",pos:"Portero",club:"Arsenal",age:29},
-  {id:3,num:25,name:"Joan García",pos:"Portero",club:"FC Barcelona",age:23},
-  {id:4,num:2,name:"Pedro Porro",pos:"Defensa",club:"Tottenham",age:25},
-  {id:5,num:3,name:"Marc Cucurella",pos:"Defensa",club:"Chelsea",age:25},
-  {id:6,num:4,name:"Alex Carmona",pos:"Defensa",club:"Zeus",age:23},
-  {id:7,num:5,name:"Pau Cubarsí",pos:"Defensa",club:"FC Barcelona",age:18,img:"pau_cubarsi.png"},
-  {id:8,num:6,name:"Robin Le Normand",pos:"Defensa",club:"Atlético Madrid",age:28},
-  {id:9,num:15,name:"Dean Huijsen",pos:"Defensa",club:"Real Madrid",age:19},
-  {id:10,num:23,name:"Álex Grimaldo",pos:"Defensa",club:"Bayer Leverkusen",age:29},
-  {id:11,num:16,name:"Rodri",pos:"Centrocampista",club:"Manchester City",age:28},
-  {id:12,num:8,name:"Pedri",pos:"Centrocampista",club:"FC Barcelona",age:23},
-  {id:14,num:10,name:"Dani Olmo",pos:"Centrocampista",club:"FC Barcelona",age:27},
-  {id:15,num:14,name:"Andreu Zarzoso",pos:"Centrocampista",club:"FC Barcelona",age:20},
-  {id:16,num:20,name:"Álex Baena",pos:"Centrocampista",club:"Atlético Madrid",age:23},
-  {id:17,num:7,name:"Lamine Yamal",pos:"Delantero",club:"FC Barcelona",age:18,img:"yamal.jpg"},
-  {id:18,num:11,name:"Nico Williams",pos:"Delantero",club:"Athletic Club",age:22},
-  {id:19,num:21,name:"Mikel Oyarzabal",pos:"Delantero",club:"Real Sociedad",age:27},
-  {id:20,num:17,name:"Ferran Torres",pos:"Delantero",club:"FC Barcelona",age:24},
-  {id:21,num:19,name:"Yeremy Pino",pos:"Delantero",club:"Crystal Palace",age:22},
-  {id:22,num:9,name:"Hugo Senra",pos:"Delantero",club:"Atlético Madrid",age:19}
+  {id:1,num:1,name:"Unai Simón",pos:"Portero",club:"Athletic Club",age:29},
+  {id:2,num:2,name:"David Raya",pos:"Portero",club:"Arsenal",age:30},
+  {id:3,num:3,name:"Joan García",pos:"Portero",club:"FC Barcelona",age:25},
+  {id:4,num:4,name:"Marc Cucurella",pos:"Defensa",club:"Chelsea",age:27},
+  {id:5,num:5,name:"Alejandro Grimaldo",pos:"Defensa",club:"Bayer Leverkusen",age:30},
+  {id:6,num:6,name:"Marc Pubill",pos:"Defensa",club:"Atlético Madrid",age:23},
+  {id:7,num:7,name:"Eric García",pos:"Defensa",club:"FC Barcelona",age:25},
+  {id:8,num:8,name:"Aymeric Laporte",pos:"Defensa",club:"Athletic Club",age:32},
+  {id:9,num:9,name:"Pau Cubarsí",pos:"Defensa",club:"FC Barcelona",age:19,img:"pau_cubarsi.png"},
+  {id:10,num:10,name:"Marcos Llorente",pos:"Defensa",club:"Atlético Madrid",age:31},
+  {id:11,num:11,name:"Pedro Porro",pos:"Defensa",club:"Tottenham",age:26},
+  {id:12,num:12,name:"Pedri",pos:"Centrocampista",club:"FC Barcelona",age:23},
+  {id:13,num:13,name:"Fabián Ruiz",pos:"Centrocampista",club:"Paris Saint-Germain",age:30},
+  {id:14,num:14,name:"Martín Zubimendi",pos:"Centrocampista",club:"Arsenal",age:26},
+  {id:15,num:15,name:"Gavi",pos:"Centrocampista",club:"FC Barcelona",age:21},
+  {id:16,num:16,name:"Rodri",pos:"Centrocampista",club:"Manchester City",age:30},
+  {id:17,num:17,name:"Mikel Merino",pos:"Centrocampista",club:"Arsenal",age:30},
+  {id:18,num:18,name:"Álex Baena",pos:"Centrocampista",club:"Atlético Madrid",age:25},
+  {id:19,num:19,name:"Mikel Oyarzabal",pos:"Delantero",club:"Real Sociedad",age:29},
+  {id:20,num:20,name:"Dani Olmo",pos:"Delantero",club:"FC Barcelona",age:28},
+  {id:21,num:21,name:"Nico Williams",pos:"Delantero",club:"Athletic Club",age:24},
+  {id:22,num:22,name:"Yeremy Pino",pos:"Delantero",club:"Villarreal",age:23},
+  {id:23,num:23,name:"Ferran Torres",pos:"Delantero",club:"FC Barcelona",age:26},
+  {id:24,num:24,name:"Borja Iglesias",pos:"Delantero",club:"Celta de Vigo",age:33},
+  {id:25,num:25,name:"Víctor Muñoz",pos:"Delantero",club:"Osasuna",age:22},
+  {id:26,num:26,name:"Lamine Yamal",pos:"Delantero",club:"FC Barcelona",age:19,img:"yamal.jpg"}
 ];
 
 // Plantillas por categoría (cada una se almacena en localStorage por separado)
@@ -1278,8 +1319,8 @@ let bracketData = [
   {ronda:"Dieciseisavos de final",home:"España",away:"Austria",hg:3,ag:0,jugado:true,fecha:"2 jul 2026",sede:"SoFi Stadium, Los Ángeles"},
   {ronda:"Octavos de final",home:"Portugal",away:"España",hg:0,ag:1,jugado:true,fecha:"6 jul 2026",sede:"AT&T Stadium, Dallas"},
   {ronda:"Cuartos de final",home:"España",away:"Bélgica",hg:2,ag:1,jugado:true,fecha:"10 jul 2026",sede:"SoFi Stadium, Los Ángeles"},
-  {ronda:"Semifinal",home:"España",away:"Francia",hg:null,ag:null,jugado:false,fecha:"14 jul 2026",sede:"AT&T Stadium, Dallas"},
-  {ronda:"Final",home:"Por determinar",away:"Por determinar",hg:null,ag:null,jugado:false,fecha:"19 jul 2026",sede:"MetLife Stadium, Nueva Jersey"}
+  {ronda:"Semifinal",home:"Francia",away:"España",hg:0,ag:2,jugado:true,fecha:"14 jul 2026",sede:"AT&T Stadium, Dallas"},
+  {ronda:"Final",home:"España",away:"Argentina",hg:1,ag:0,jugado:true,fecha:"19 jul 2026",sede:"MetLife Stadium, Nueva Jersey · (tras prórroga)"}
 ];
 
 let storeItems=ld('esp_store',[
