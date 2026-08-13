@@ -25,6 +25,16 @@ header{background:var(--rojo-oscuro);position:sticky;top:0;z-index:100;box-shado
 nav{display:flex;padding:0 40px;overflow-x:auto;background:var(--rojo)}
 nav a{color:rgba(255,255,255,.85);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:13px 18px;border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer;transition:all .2s}
 nav a:hover,nav a.active{color:var(--blanco);border-bottom-color:var(--amarillo)}
+
+/* DESPLEGABLE PLANTILLA */
+.nav-dropdown-trigger{position:relative;display:flex;align-items:center;gap:6px}
+.nav-dropdown-trigger .nav-caret{font-size:9px;transition:transform .25s}
+.nav-dropdown-trigger.open .nav-caret{transform:rotate(180deg)}
+.nav-dropdown-trigger.open{color:var(--blanco);border-bottom-color:var(--amarillo)}
+.nav-dropdown-menu{display:none;position:fixed;min-width:230px;background:var(--rojo-oscuro);border-top:3px solid var(--amarillo);box-shadow:0 14px 30px rgba(0,0,0,.4);z-index:300;padding:6px 0}
+.nav-dropdown-trigger.open .nav-dropdown-menu{display:block}
+.nav-dropdown-menu span{display:block;padding:11px 20px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.85);cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.nav-dropdown-menu span:hover{background:rgba(255,255,255,.08);color:var(--amarillo)}
 .page-section{display:none}
 .page-section.active{display:block}
 
@@ -281,43 +291,6 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 .patrocinadores-page-wrap .section-header{border-left-color:var(--amarillo);}
 
 
-/* ADMIN */
-.admin-overlay{display:none;position:fixed;inset:0;background:rgba(20,0,0,.92);z-index:9999;overflow-y:auto}
-.admin-overlay.open{display:flex;flex-direction:column}
-.admin-panel{background:#fff;min-height:100vh;width:100%;max-width:940px;margin:0 auto}
-.admin-header{background:var(--rojo-oscuro);color:#fff;padding:18px 30px;display:flex;justify-content:space-between;align-items:flex-start;position:sticky;top:0;z-index:10;border-bottom:3px solid var(--amarillo)}
-.admin-header h2{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px}
-.admin-tabs{display:flex;gap:4px;margin-top:10px;flex-wrap:wrap}
-.admin-tab{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:none;padding:7px 13px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:background .2s}
-.admin-tab.active{background:var(--amarillo);color:#111}
-.admin-tab.api-tab{background:rgba(241,191,0,.2);color:var(--amarillo)}
-.admin-content{padding:26px}
-.admin-section{display:none}
-.admin-section.active{display:block}
-.form-group{margin-bottom:15px}
-.form-group label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#555;margin-bottom:5px}
-.form-group input,.form-group textarea,.form-group select{width:100%;padding:9px 12px;border:1.5px solid #ddd;font-size:14px;font-family:'Barlow',sans-serif;outline:none}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--rojo)}
-.form-group textarea{resize:vertical;min-height:70px}
-.btn-primary{background:var(--rojo);color:#fff;border:none;padding:11px 22px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
-.btn-primary:hover{background:var(--rojo-oscuro)}
-.btn-danger{background:#cc0000;color:#fff;border:none;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer}
-.btn-secondary{background:#eee;color:#333;border:1px solid #ccc;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer}
-.btn-success{background:#00aa55;color:#fff;border:none;padding:11px 22px;font-size:13px;font-weight:700;cursor:pointer}
-.item-row{display:flex;align-items:center;gap:12px;padding:11px 15px;background:#f8f8f8;border-left:4px solid var(--rojo);margin-bottom:7px}
-.item-row-info{font-size:14px;font-weight:600;color:#222}
-.item-row-sub{font-size:12px;color:#888;margin-top:2px}
-.add-box{background:#fff5f5;border:1.5px dashed var(--rojo);padding:22px;margin-bottom:26px}
-.add-box h4{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo);margin-bottom:13px;letter-spacing:1px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-.login-box{background:#fff;border:1px solid #ddd;padding:40px;max-width:360px;margin:80px auto}
-.login-box h3{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--rojo-oscuro);letter-spacing:2px;margin-bottom:20px}
-.login-error{background:#fee2e2;color:#991b1b;padding:9px 12px;font-size:13px;margin-bottom:14px;display:none}
-.api-status-box{padding:14px 16px;font-size:13px;border-left:4px solid #ccc;margin-top:12px;display:none;line-height:1.7}
-.api-ok{border-color:#00aa55;background:#f0fff4}
-.api-error{border-color:#cc0000;background:#fff0f0}
-.api-info{border-color:var(--rojo);background:#fff5f5}
 .live-dot{display:inline-block;width:8px;height:8px;background:#ff4444;border-radius:50%;animation:blink 1s infinite;margin-right:4px}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 
@@ -341,7 +314,6 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
   .hero-overlay{padding:0 28px;flex-direction:column;justify-content:center}
   .hero-title{font-size:48px}
   .hero-escudo-wrap{display:none}
-  .g2,.g3{grid-template-columns:1fr}
   .plantilla-grid{grid-template-columns:repeat(2,1fr);gap:12px}
   .jugador-card img{height:160px}
 }
@@ -359,7 +331,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 <header>
   <div class="header-top">
     <div class="logo-area" onclick="showPage('inicio')">
-      <img id="header-escudo" src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Escudo_selecci%C3%B3n_espa%C3%B1ola.png"
+      <img id="header-escudo" src="https://assets.footylogos.com/logos/spain-national-team/spain-national-team-logo-footylogos.svg"
         alt="Escudo España" style="height:58px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))"/>
       <div class="club-name">La Roja<span>Selección Española de Fútbol</span></div>
     </div>
@@ -372,7 +344,16 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     <a onclick="showPage('historia')">Historia</a>
     <a onclick="showPage('noticias')">Noticias</a>
     <a onclick="showPage('partidos')">Partidos</a>
-    <a onclick="showPage('plantilla')">Plantilla</a>
+    <a class="nav-dropdown-trigger" onclick="togglePlantillaDropdown(event)">Plantilla <span class="nav-caret">▾</span>
+      <div class="nav-dropdown-menu" onclick="event.stopPropagation()">
+        <span onclick="goToSquad(event,'masculina')">Selección Masculina</span>
+        <span onclick="goToSquad(event,'femenina')">Selección Femenina</span>
+        <span onclick="goToSquad(event,'alevinA')">Alevín A</span>
+        <span onclick="goToSquad(event,'alevinB')">Alevín B</span>
+        <span onclick="goToSquad(event,'benjamin')">Benjamín</span>
+        <span onclick="goToSquad(event,'prebenjamin')">Prebenjamín</span>
+      </div>
+    </a>
     <a onclick="showPage('clasificacion')">Clasificación</a>
     <a onclick="showPage('tienda')">Tienda</a>
     <a onclick="showPage('entradas')">Entradas</a>
@@ -384,7 +365,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
 <!-- INICIO -->
 <div id="page-inicio" class="page-section active">
   <section class="hero">
-    <img class="hero-img" src="https://objetos-xlk.estaticos-marca.com/uploads/2024/12/25/676c342e135d0.jpeg" alt="Selección España"/>
+    <img class="hero-img" src="https://forbes.es/wp-content/uploads/2026/07/Progetto-senza-titolo-2026-07-20T090719.148.png" alt="Selección España"/>
     <div class="hero-overlay">
       <div class="hero-content">
         <span class="hero-badge">Campeones del Mundo 2026 · Campeones Euro 2024</span>
@@ -393,7 +374,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
         <span class="hero-cta" onclick="showPage('partidos')">Ver próximos partidos</span>
       </div>
       <div class="hero-escudo-wrap" style="flex-shrink:0;padding-right:40px">
-        <img id="hero-escudo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Spain_national_football_team_badge_%282023%29.svg/640px-Spain_national_football_team_badge_%282023%29.svg.png"
+        <img id="hero-escudo" src="https://assets.footylogos.com/logos/spain-national-team/spain-national-team-logo-footylogos.svg"
           alt="Escudo España" style="height:300px;width:auto;object-fit:contain;filter:drop-shadow(0 8px 30px rgba(0,0,0,.7));opacity:.95"/>
       </div>
     </div>
@@ -522,7 +503,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
         <thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>Pts</th></tr></thead>
         <tbody id="tabla-body"></tbody>
       </table>
-      <p style="font-size:11px;color:#aaa;margin-top:10px">🟢 Clasificado a dieciseisavos · 🔴 Eliminado en fase de grupos
+      <p style="font-size:11px;color:#aaa;margin-top:10px">Clasificado a dieciseisavos · Eliminado en fase de grupos
     </div>
 
     <div class="bracket-section">
@@ -579,7 +560,6 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
       </div>
     </div>
     <div class="abonate-aviso">
-      <div class="abonate-aviso-icon">📄</div>
       <p><strong>Descuento para residentes de la poblacion:</strong> Presentando documentación acreditativa de residencia, todos los precios del abono tienen un <strong>50% de descuento</strong>. Consúltalo en el club antes de formalizar tu abono.</p>
     </div>
   </section>
@@ -599,12 +579,11 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
         <tbody id="abonate-modal-tabla"></tbody>
       </table>
       <div class="abonate-aviso" style="margin-top:0;margin-bottom:16px">
-        <div class="abonate-aviso-icon" style="font-size:20px">📄</div>
         <p style="font-size:12px">Presentando documentación de residente de la poblacion, <strong>todos los precios tienen un 50% de descuento</strong>.</p>
       </div>
       <div class="entradas-contacto">
         Para tramitar tu abono, contacta con el club:<br/>
-        <strong>📞 +34 684 454 669</strong>
+        <strong>+34 684 454 669</strong>
       </div>
     </div>
   </div>
@@ -616,19 +595,15 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
     <div class="section-header"><h2 class="section-title">Contacto</h2></div>
     <div class="contacto-info" style="margin-top:24px;max-width:500px">
       <div class="contacto-info-item">
-        <div class="contacto-info-icon">📞</div>
         <div class="contacto-info-text"><h4>Teléfono</h4><p>+34 684 454 669</p></div>
       </div>
       <div class="contacto-info-item">
-        <div class="contacto-info-icon">📍</div>
         <div class="contacto-info-text"><h4>Oficinas</h4><p>Las Rozas, Madrid</p></div>
       </div>
       <div class="contacto-info-item">
-        <div class="contacto-info-icon">📩</div>
         <div class="contacto-info-text"><h4>Email</h4><p><a>secretaria@rfef.es</a></p></div>
       </div>
       <div class="contacto-info-item">
-        <div class="contacto-info-icon">🕐</div>
         <div class="contacto-info-text"><h4>Horario de atención</h4><p>Lunes a viernes · 10:00 – 14:00 h<br/>Días de partido · Desde 2h antes</p></div>
       </div>
     </div>
@@ -664,7 +639,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
       </table>
       <div class="entradas-contacto">
         Para comprar entradas, contacta con el club:<br/>
-        <strong>📞 +34 684 454 669</strong>
+        <strong>+34 684 454 669</strong>
       </div>
     </div>
   </div>
@@ -813,7 +788,7 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
       <p style="margin-top:12px;font-size:13px;line-height:1.6">Real Federación Española de Fútbol<br/>Ciudad del Fútbol · Las Rozas, Madrid<br/>+34 913 495 200</p>
     </div>
     <div class="footer-col"><h5>Equipo</h5><a onclick="showPage('plantilla')">Plantilla</a><a onclick="showPage('clasificacion')">Clasificación</a><a onclick="showPage('partidos')">Calendario</a></div>
-    <div class="footer-col"><h5>Afición</h5><a onclick="showPage('entradas')">Entradas</a><a onclick="showPage('abonate')">Abónate</a><a onclick="showPage('tienda')">Tienda oficial</a><a onclick="showPage('contacto')">Contacto</a><a onclick="openAdmin()">Admin</a></div>
+    <div class="footer-col"><h5>Afición</h5><a onclick="showPage('entradas')">Entradas</a><a onclick="showPage('abonate')">Abónate</a><a onclick="showPage('tienda')">Tienda oficial</a><a onclick="showPage('contacto')">Contacto</a></div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Selección Española · RFEF</span>
@@ -885,226 +860,9 @@ footer{background:#3a0000;color:rgba(255,255,255,.6);padding:50px 40px 30px}
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
-
-<!-- ADMIN PANEL -->
-<div class="admin-overlay" id="adminOverlay">
-  <div class="admin-panel">
-    <div id="adminLogin" style="padding:30px">
-      <div class="login-box">
-        <h3>Administración</h3>
-        <div class="login-error" id="loginError">Contraseña incorrecta</div>
-        <div class="form-group"><label>Contraseña</label><input type="password" id="adminPass" onkeydown="if(event.key==='Enter')checkLogin()" placeholder="Contraseña de acceso"/></div>
-        <div style="display:flex;gap:10px;margin-top:8px">
-          <button class="btn-primary" onclick="checkLogin()">Entrar</button>
-          <button class="btn-secondary" onclick="closeAdmin()">Cancelar</button>
-        </div>
-      </div>
-    </div>
-    <div id="adminPanel" style="display:none">
-      <div class="admin-header">
-        <div>
-          <h2>Panel Admin · Selección Española</h2>
-          <div class="admin-tabs">
-            <button class="admin-tab active" onclick="adminTab('news')">📰 Noticias</button>
-            <button class="admin-tab" onclick="adminTab('matches')">⚽ Partidos</button>
-            <button class="admin-tab" onclick="adminTab('squad')">👕 Plantilla</button>
-            <button class="admin-tab" onclick="adminTab('table')">🏆 Grupo</button>
-            <button class="admin-tab" onclick="adminTab('store')">🛒 Tienda</button>
-          </div>
-        </div>
-        <button style="background:rgba(255,255,255,.1);color:#fff;border:none;font-size:24px;cursor:pointer;padding:6px 12px" onclick="closeAdmin()">✕</button>
-      </div>
-      <div class="admin-content">
-
-        <!-- NOTICIAS -->
-        <div class="admin-section active" id="admin-news">
-          <div class="add-box" style="background:#f0fff4;border-color:#00aa66;margin-bottom:24px">
-            <h4 style="color:#00aa66">🔴 Escudo / Identidad visual</h4>
-            <p style="font-size:13px;color:#555;margin-bottom:12px">Pega la URL de cualquier imagen PNG/SVG del escudo (Google, Wikipedia…)</p>
-            <div class="g2" style="align-items:flex-end">
-              <div class="form-group" style="margin:0"><label>URL del Escudo</label><input type="text" id="escudo-url" placeholder="https://upload.wikimedia.org/..."/></div>
-              <div style="display:flex;align-items:center;gap:10px">
-                <button class="btn-success" onclick="saveEscudo()">💾 Guardar</button>
-                <img id="escudo-preview" src="" alt="" style="height:56px;width:auto;object-fit:contain;display:none;border:1px solid #ddd;padding:3px;background:#fff"/>
-              </div>
-            </div>
-          </div>
-          <div class="add-box">
-            <h4>Nueva Noticia</h4>
-            <div class="g2">
-              <div class="form-group"><label>Título *</label><input type="text" id="n-title" placeholder="Título de la noticia"/></div>
-              <div class="form-group"><label>Categoría *</label><input type="text" id="n-cat" placeholder="Convocatoria, Crónica, Mundial..."/></div>
-            </div>
-            <div class="form-group"><label>Resumen</label><textarea id="n-summary" placeholder="Descripción breve..."></textarea></div>
-            <div class="form-group"><label>Contenido completo</label><textarea id="n-content" style="min-height:140px" placeholder="Escribe aquí el artículo completo que verán los lectores al abrir la noticia..."></textarea></div>
-            <div class="g2">
-              <div class="form-group"><label>URL Imagen</label><input type="text" id="n-img" placeholder="https://images.unsplash.com/..."/></div>
-              <div class="form-group"><label>Fecha</label><input type="date" id="n-date"/></div>
-            </div>
-            <button class="btn-primary" onclick="addNews()">+ Añadir noticia</button>
-          </div>
-          <h4 style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo);letter-spacing:1px;margin-bottom:12px">Noticias (<span id="news-count">0</span>)</h4>
-          <div id="admin-news-list"></div>
-        </div>
-
-        <!-- PARTIDOS -->
-        <div class="admin-section" id="admin-matches">
-          <div style="background:#fff8e1;border:1.5px solid var(--amarillo);padding:14px 18px;margin-bottom:20px;font-size:13px">
-            ⚡ <strong>Con la API activada</strong>, los partidos se actualizan automáticamente. Puedes añadir partidos manualmente si la API no los incluye (ej: amistosos no registrados).
-          </div>
-          <div class="add-box">
-            <h4>Partido Manual</h4>
-            <div class="g2">
-              <div class="form-group"><label>Local *</label><input type="text" id="m-home" placeholder="España"/></div>
-              <div class="form-group"><label>Visitante *</label><input type="text" id="m-away" placeholder="Cape Verde"/></div>
-            </div>
-            <div class="g3">
-              <div class="form-group"><label>Goles Local</label><input type="number" id="m-hg" min="0"/></div>
-              <div class="form-group"><label>Goles Visitante</label><input type="number" id="m-ag" min="0"/></div>
-              <div class="form-group"><label>Estado</label><select id="m-status"><option value="upcoming">Próximo</option><option value="played">Finalizado</option><option value="live">En Directo</option></select></div>
-            </div>
-            <div class="g2">
-              <div class="form-group"><label>Fecha y Hora</label><input type="datetime-local" id="m-date"/></div>
-              <div class="form-group"><label>Estadio / Ciudad</label><input type="text" id="m-venue" placeholder="Mercedes-Benz Stadium, Atlanta"/></div>
-            </div>
-            <div class="form-group"><label>Competición</label><input type="text" id="m-comp" placeholder="Mundial 2026 · Grupo H"/></div>
-            <button class="btn-primary" onclick="addMatch()">+ Añadir partido</button>
-          </div>
-          <h4 style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo);letter-spacing:1px;margin-bottom:12px">Partidos (<span id="matches-count">0</span>)</h4>
-          <div id="admin-matches-list"></div>
-        </div>
-
-        <!-- PLANTILLA -->
-        <div class="admin-section" id="admin-squad">
-          <div class="add-box">
-            <h4>Añadir Jugador</h4>
-            <div class="form-group"><label>Categoría</label><select id="p-cat"><option value="masculina">Selección Masculina</option><option value="femenina">Selección Femenina</option><option value="alevinA">Alevín A</option><option value="alevinB">Alevín B</option><option value="benjamin">Benjamín</option><option value="prebenjamin">Prebenjamín</option></select></div>
-            <div class="g3">
-              <div class="form-group"><label>Dorsal</label><input type="number" id="p-num" min="1" max="99"/></div>
-              <div class="form-group"><label>Nombre *</label><input type="text" id="p-name" placeholder="Lamine Yamal"/></div>
-              <div class="form-group"><label>Posición</label><select id="p-pos"><option>Portero</option><option>Defensa</option><option>Centrocampista</option><option>Delantero</option></select></div>
-            </div>
-            <div class="g2">
-              <div class="form-group"><label>Club</label><input type="text" id="p-club" placeholder="FC Barcelona"/></div>
-              <div class="form-group"><label>Edad</label><input type="number" id="p-age" placeholder="17"/></div>
-            </div>
-            <div class="form-group">
-              <label>Foto del jugador (opcional)</label>
-              <input type="text" id="p-img" placeholder="yamal.jpg"/>
-              <small style="color:#999;font-size:11px;margin-top:4px;display:block">Sube la foto a la carpeta <code style="background:#eee;padding:1px 5px">img/jugadores/</code> de tu repositorio y escribe solo el nombre del archivo (ej: <code style="background:#eee;padding:1px 5px">yamal.jpg</code>)</small>
-            </div>
-            <button class="btn-primary" onclick="addPlayer()">+ Añadir jugador</button>
-          </div>
-          <h4 style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo);letter-spacing:1px;margin-bottom:12px">Plantilla (<span id="squad-count">0</span> jugadores)</h4>
-          <div id="admin-squad-list"></div>
-        </div>
-
-        <!-- GRUPO H -->
-        <div class="admin-section" id="admin-table">
-          <div class="add-box">
-            <h4>Añadir / Actualizar Selección</h4>
-            <div class="g2">
-              <div class="form-group"><label>Posición</label><input type="number" id="t-pos" min="1"/></div>
-              <div class="form-group"><label>Selección *</label><input type="text" id="t-name" placeholder="España"/></div>
-            </div>
-            <div class="g3">
-              <div class="form-group"><label>PJ</label><input type="number" id="t-pj" min="0"/></div>
-              <div class="form-group"><label>G</label><input type="number" id="t-g" min="0"/></div>
-              <div class="form-group"><label>E</label><input type="number" id="t-e" min="0"/></div>
-            </div>
-            <div class="g3">
-              <div class="form-group"><label>P</label><input type="number" id="t-p" min="0"/></div>
-              <div class="form-group"><label>GF</label><input type="number" id="t-gf" min="0"/></div>
-              <div class="form-group"><label>GC</label><input type="number" id="t-gc" min="0"/></div>
-            </div>
-            <div class="g2">
-              <div class="form-group"><label>Estado</label><select id="t-status"><option value="normal">Normal</option><option value="ascenso">Pasa a dieciseisavos</option><option value="descenso">Eliminado</option></select></div>
-              <div class="form-group"><label>¿Es España?</label><select id="t-isTnf"><option value="no">No</option><option value="si">Sí</option></select></div>
-            </div>
-            <button class="btn-primary" onclick="addTableRow()">+ Guardar</button>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap">
-            <label style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#555">Actualización:</label>
-            <input type="text" id="tabla-update-date" style="border:1px solid #ddd;padding:6px 10px;font-size:13px;flex:1;min-width:200px" placeholder="Fase de grupos · Junio 2026"/>
-            <button class="btn-secondary" style="padding:7px 14px;font-size:12px" onclick="saveTableDate()">Guardar</button>
-          </div>
-          <div id="admin-table-list"></div>
-        </div>
-
-        <!-- TIENDA -->
-        <div class="admin-section" id="admin-store">
-          <div class="add-box">
-            <h4>Nuevo Producto</h4>
-            <div class="g2">
-              <div class="form-group"><label>Nombre *</label><input type="text" id="s-name" placeholder="Camiseta Oficial España 2026 — Local"/></div>
-              <div class="form-group"><label>Precio (€) *</label><input type="number" id="s-price" step="0.01" min="0"/></div>
-            </div>
-            <div class="g2">
-              <div class="form-group"><label>URL Imagen</label><input type="text" id="s-img" placeholder="https://..."/></div>
-              <div class="form-group"><label>Etiqueta</label><input type="text" id="s-badge" placeholder="Novedad, Oferta..."/></div>
-            </div>
-            <div class="form-group"><label>URL de compra (enlace al producto)</label><input type="text" id="s-url" placeholder="https://tienda.ontinyentcf.com/producto..."/></div>
-            <button class="btn-primary" onclick="addProduct()">+ Añadir producto</button>
-          </div>
-          <h4 style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--rojo);letter-spacing:1px;margin-bottom:12px">Productos (<span id="store-count">0</span>)</h4>
-          <div id="admin-store-list"></div>
-        </div>
-      
-       <!-- API AUTO-SYNC -->
-        <div class="admin-section" id="admin-api">
-          <div style="background:#fff8e1;border:1.5px solid var(--amarillo);padding:16px 20px;margin-bottom:20px;font-size:13px;line-height:1.7">
-            <strong>⚡ Estado de sincronización automática</strong><br/>
-            <span id="api-config-status">Cargando...</span><br/>
-            <span style="color:#888" id="api-last-sync-label"></span>
-          </div>
-          <div class="add-box" style="background:#fffbea;border-color:#d4a017">
-            <h4 style="color:#b8860b">🔑 Paso 1 — Obtener clave gratuita</h4>
-            <ol style="font-size:13px;color:#555;line-height:2.1;padding-left:18px;margin-top:6px">
-              <li>Ve a <a href="https://www.football-data.org/client/register" target="_blank" style="color:var(--rojo);font-weight:700">football-data.org/client/register</a> y regístrate (gratis)</li>
-              <li>Recibirás un email con tu <strong>API Token</strong></li>
-              <li>Cópialo y pégalo en el campo de abajo</li>
-            </ol>
-          </div>
-          <div class="add-box" style="background:#fff5f5;border-color:var(--rojo)">
-            <h4>🔗 Paso 2 — Activar sincronización automática</h4>
-            <p style="font-size:13px;color:#555;margin-bottom:14px">La selección española (ID: <code style="background:#eee;padding:2px 6px">760</code>) está preconfigurada. Solo necesitas tu token.</p>
-            <div class="g2" style="align-items:flex-end;margin-bottom:14px">
-              <div class="form-group" style="margin:0">
-                <label>Tu API Token</label>
-                <input type="text" id="api-key-input" placeholder="a1b2c3d4e5f6..." style="font-family:monospace;font-size:13px"/>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:8px">
-                <button class="btn-primary" onclick="saveApiKey()">💾 Guardar clave</button>
-                <button class="btn-success" onclick="testAndSync()">🔄 Sincronizar ahora</button>
-              </div>
-            </div>
-            <div class="api-status-box" id="api-status-box"></div>
-          </div>
-          <div style="background:#f8f8f8;border:1px solid #eee;padding:14px 18px;font-size:13px;line-height:1.8">
-            <strong>¿Qué se sincroniza automáticamente?</strong><br/>
-            ✅ Próximos partidos de España (Mundial, Nations League, Amistosos)<br/>
-            ✅ Resultados actualizados al finalizar cada partido<br/>
-            ✅ Estado en directo (si la API lo detecta)<br/>
-            ⚠️ La clasificación del Grupo H del Mundial se actualiza cuando comience la fase de grupos (junio 2026)<br/>
-            <br/>
-            <strong>Competiciones cubiertas (tier gratuito):</strong> Amistosos internacionales, UEFA Nations League, Clasificación Mundial, Copa del Mundo FIFA
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-const PASS='123';
-
-function sv(k,d){try{localStorage.setItem(k,JSON.stringify(d))}catch(e){}}
-function ld(k,d){try{const x=localStorage.getItem(k);return x?JSON.parse(x):d}catch(e){return d}}
-
 // ---- DEFAULT DATA ----
-let news=[
+const NEWS_DEFAULT=[
   {id:6,title:"¡España, campeona del Mundo! Ferran Torres firma el 1-0 a Argentina en la prórroga",cat:"Crónica · Final Mundial 2026",summary:"Un gol de Ferran Torres en el minuto 106, tras una jugada coral de Yamal, Porro y Nico Williams, da a La Roja su segunda estrella mundial en el MetLife Stadium de Nueva Jersey.",img:"https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=800&auto=format&fit=crop",date:"2026-07-19",content:`España es campeona del mundo por segunda vez en su historia. La Roja se impuso 1-0 a Argentina en la prórroga de la final del Mundial 2026, disputada en el MetLife Stadium de Nueva Jersey, con un gol de Ferran Torres en el minuto 106 tras una jugada coral iniciada por Lamine Yamal, continuada por Pedro Porro y rematada de cabeza por Nico Williams antes de que el delantero del Barcelona empujara el balón a la red.
 
 El combinado de Luis de la Fuente dominó la mayor parte del encuentro ante un rival que se refugió en la solidez defensiva y en la figura de Emiliano Martínez, decisivo hasta el tramo final. España cierra el torneo con siete victorias y un empate, un solo gol encajado en todo el campeonato y catorce a favor, cifras que la sitúan entre las selecciones más dominantes de la historia de la competición.
@@ -1132,8 +890,9 @@ La afición española empieza a soñar. Queda un rival de máxima exigencia por 
   {id:3,title:"España golea 3-0 a Austria y avanza a octavos como líder invicta",cat:"Crónica · Mundial 2026",summary:"La Roja resuelve con solvencia su primer cruce eliminatorio en el SoFi Stadium de Los Ángeles y sigue sin encajar un gol en el torneo.",img:"https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&auto=format&fit=crop",date:"2026-07-02"},
   {id:4,title:"España cierra la fase de grupos como primera del Grupo H tras ganar a Uruguay",cat:"Mundial 2026",summary:"Un error de Muslera permitió a La Roja imponerse 0-1 en Guadalajara y terminar líder del grupo con 7 puntos, sin encajar goles.",img:"https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&auto=format&fit=crop",date:"2026-06-27"}
 ];
+let news=NEWS_DEFAULT;
 
-let matches=ld('esp_matches',[
+let matches=[
   {id:1,home:"España",away:"Cabo Verde",hg:0,ag:0,status:"played",date:"2026-06-15T18:00",venue:"Mercedes-Benz Stadium, Atlanta",comp:"Mundial 2026 · Grupo H · J1"},
   {id:2,home:"España",away:"Arabia Saudí",hg:4,ag:0,status:"played",date:"2026-06-21T18:00",venue:"Mercedes-Benz Stadium, Atlanta",comp:"Mundial 2026 · Grupo H · J2"},
   {id:3,home:"Uruguay",away:"España",hg:0,ag:1,status:"played",date:"2026-06-27T02:00",venue:"Estadio Akron, Guadalajara",comp:"Mundial 2026 · Grupo H · J3"},
@@ -1148,9 +907,9 @@ let matches=ld('esp_matches',[
   {id:12,home:"Croacia",away:"España",hg:null,ag:null,status:"upcoming",date:"2026-10-06T20:45",venue:"Por confirmar, Croacia",comp:"Nations League 2026/27 · J4"},
   {id:13,home:"República Checa",away:"España",hg:null,ag:null,status:"upcoming",date:"2026-11-12T20:45",venue:"Por confirmar, República Checa",comp:"Nations League 2026/27 · J5"},
   {id:14,home:"España",away:"Inglaterra",hg:null,ag:null,status:"upcoming",date:"2026-11-15T20:45",venue:"Cívitas Metropolitano, Madrid",comp:"Nations League 2026/27 · J6"}
-]);
+];
 
-let squad=[
+const SQUAD_DEFAULT=[
   {id:1,num:23,name:"Unai Simón",pos:"Portero",club:"Athletic Club",age:29},
   {id:2,num:1,name:"David Raya",pos:"Portero",club:"Arsenal",age:30},
   {id:3,num:13,name:"Joan García",pos:"Portero",club:"FC Barcelona",age:25},
@@ -1178,6 +937,7 @@ let squad=[
   {id:25,num:25,name:"Víctor Muñoz",pos:"Delantero",club:"Osasuna",age:22},
   {id:26,num:19,name:"Lamine Yamal",pos:"Delantero",club:"FC Barcelona",age:19,img:"yamal.jpg"}
 ];
+let squad=SQUAD_DEFAULT;
 
 // Plantillas por categoría (cada una se almacena en localStorage por separado)
 const CATEGORIAS = {
@@ -1290,8 +1050,6 @@ let currentCategoria = 'masculina';
 
 function getSquadForCategoria(cat){
   if(cat === 'masculina') return squad;
-  const stored = ld(CATEGORIAS[cat].key, null);
-  if(stored !== null) return stored;
   return getSquadDefault(cat);
 }
 
@@ -1304,8 +1062,39 @@ function switchPlantilla(cat){
   renderSquad();
 }
 
+// ---- DESPLEGABLE "PLANTILLA" DEL MENÚ ----
+function togglePlantillaDropdown(e){
+  const trigger=e.currentTarget;
+  const menu=trigger.querySelector('.nav-dropdown-menu');
+  const wasOpen=trigger.classList.contains('open');
+  closeNavDropdowns();
+  if(!wasOpen){
+    trigger.classList.add('open');
+    const r=trigger.getBoundingClientRect();
+    let left=r.left;
+    if(left+menu.offsetWidth>window.innerWidth-10) left=window.innerWidth-menu.offsetWidth-10;
+    if(left<10) left=10;
+    menu.style.top=r.bottom+'px';
+    menu.style.left=left+'px';
+  }
+}
+function goToSquad(e,cat){
+  e.stopPropagation();
+  closeNavDropdowns();
+  showPage('plantilla');
+  switchPlantilla(cat);
+}
+function closeNavDropdowns(){
+  document.querySelectorAll('.nav-dropdown-trigger.open').forEach(t=>t.classList.remove('open'));
+}
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.nav-dropdown-trigger')) closeNavDropdowns();
+});
+window.addEventListener('scroll', closeNavDropdowns, true);
+window.addEventListener('resize', closeNavDropdowns);
 
-let tableData = [
+
+let tableData=[
   {pos:1,name:"España",pj:3,g:2,e:1,p:0,gf:5,gc:0,pts:7,status:"ascenso",isTnf:true},
   {pos:2,name:"Cabo Verde",pj:3,g:0,e:3,p:0,gf:2,gc:2,pts:3,status:"ascenso",isTnf:false},
   {pos:3,name:"Uruguay",pj:3,g:0,e:2,p:1,gf:3,gc:4,pts:2,status:"descenso",isTnf:false},
@@ -1315,7 +1104,7 @@ let tableData = [
 let tableDate='Fase de grupos finalizada · Mundial 2026';
 
 // Fase eliminatoria de España en el Mundial 2026
-let bracketData = [
+let bracketData=[
   {ronda:"Dieciseisavos de final",home:"España",away:"Austria",hg:3,ag:0,jugado:true,fecha:"2 jul 2026",sede:"SoFi Stadium, Los Ángeles"},
   {ronda:"Octavos de final",home:"Portugal",away:"España",hg:0,ag:1,jugado:true,fecha:"6 jul 2026",sede:"AT&T Stadium, Dallas"},
   {ronda:"Cuartos de final",home:"España",away:"Bélgica",hg:2,ag:1,jugado:true,fecha:"10 jul 2026",sede:"SoFi Stadium, Los Ángeles"},
@@ -1323,54 +1112,57 @@ let bracketData = [
   {ronda:"Final",home:"España",away:"Argentina",hg:1,ag:0,jugado:true,fecha:"19 jul 2026",sede:"MetLife Stadium, Nueva Jersey · (tras prórroga)"}
 ];
 
-let storeItems=ld('esp_store',[
+let storeItems=[
   {id:1,name:"Camiseta Oficial España 2026 — Local",price:150,img:"https://shop.rfef.es/cdn/shop/files/25CM0843_Z9.png?v=1764598846&width=1000",badge:"Mundial 2026",url:"https://shop.rfef.es/products/camiseta-hombre-primera-equipacion-authentic"},
   {id:2,name:"Camiseta Oficial España 2026 — Visitante",price:150,img:"https://shop.rfef.es/cdn/shop/files/25CM0845-14.jpg?v=1774015012&width=2000",badge:"Suplente Mundial 2026",url:"https://shop.rfef.es/products/camiseta-hombre-segunda-equipacion-authentic"},
   {id:3,name:"Balón Trionda World Cup",price:30,img:"https://shop.rfef.es/cdn/shop/files/25BA0020_Z1.jpg?v=1773759538&width=800",badge:"BEST SELLER",url:"https://shop.rfef.es/products/balon-trionda-world-cup-1"},
   {id:4,name:"Bufanda La Roja Edición Mundial",price:11.95,img:"https://shop.rfef.es/cdn/shop/products/24BF0003_Z1.jpg?v=1710411541&width=1000",badge:"Oferta",url:"https://shop.rfef.es/products/bufanda-mundial-2022-roja"}
-]);
+];
 
-let escudoUrl=ld('esp_escudo','https://upload.wikimedia.org/wikipedia/commons/6/6a/Escudo_selecci%C3%B3n_espa%C3%B1ola.png');
-let apiKey=ld('esp_apikey','');
-let nid=ld('esp_nid',300);
-function uid(){nid++;sv('esp_nid',nid);return nid;}
 
-// ---- FLAGS (emoji flags for common teams) ----
+// ---- FLAGS (banderas reales por selección) ----
 const FLAGS={
-  'españa':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'spain':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'cabo verde':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fd1a816e27f50c145ad13b_cabo-verde-footballlogos-org.svg">',
-  'cape verde':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fd1a816e27f50c145ad13b_cabo-verde-footballlogos-org.svg">',
-  'arabia saudí':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fd1fd05277266bdbbef843_saudi-arabia-national-team-footballlogos-org.svg">',
-  'saudi arabia':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fd1fd05277266bdbbef843_saudi-arabia-national-team-footballlogos-org.svg">',
-  'uruguay':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa0a1da25a41302d191465_uruguay-national-team-footballlogos-org.svg">',
-  'serbia':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa079ed3496bbab2abf811_serbia-national-team-footballlogos-org.svg">',
-  'egipto':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa0009125d5bd39ba3bcd4_egypt-national-team-footballlogos-org.svg">',
-  'egypt':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa0009125d5bd39ba3bcd4_egypt-national-team-footballlogos-org.svg">',
-  'alemania':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'germany':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'francia':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'france':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'italia':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'italy':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'portugal':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'argentina':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'brasil':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'brazil':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'england':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'inglaterra':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'países bajos':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'netherlands':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'croacia':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'croatia':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'marruecos':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'morocco':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'bélgica':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'belgica':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'belgium':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">',
-  'austria':'<img src="https://cdn.prod.website-files.com/68f550992570ca0322737dc2/68fa08a222ccfc6f4d10acf4_spain-national-team-footballlogos-org.svg">'
+  'españa':'<img src="https://flagcdn.com/es.svg" alt="España">',
+  'spain':'<img src="https://flagcdn.com/es.svg" alt="España">',
+  'cabo verde':'<img src="https://flagcdn.com/cv.svg" alt="Cabo Verde">',
+  'cape verde':'<img src="https://flagcdn.com/cv.svg" alt="Cabo Verde">',
+  'arabia saudí':'<img src="https://flagcdn.com/sa.svg" alt="Arabia Saudí">',
+  'saudi arabia':'<img src="https://flagcdn.com/sa.svg" alt="Arabia Saudí">',
+  'uruguay':'<img src="https://flagcdn.com/uy.svg" alt="Uruguay">',
+  'austria':'<img src="https://flagcdn.com/at.svg" alt="Austria">',
+  'portugal':'<img src="https://flagcdn.com/pt.svg" alt="Portugal">',
+  'bélgica':'<img src="https://flagcdn.com/be.svg" alt="Bélgica">',
+  'belgica':'<img src="https://flagcdn.com/be.svg" alt="Bélgica">',
+  'belgium':'<img src="https://flagcdn.com/be.svg" alt="Bélgica">',
+  'francia':'<img src="https://flagcdn.com/fr.svg" alt="Francia">',
+  'france':'<img src="https://flagcdn.com/fr.svg" alt="Francia">',
+  'argentina':'<img src="https://flagcdn.com/ar.svg" alt="Argentina">',
+  /* Próximos rivales de España — Nations League 2026/27 (según el calendario) */
+  'inglaterra':'<img src="https://flagcdn.com/gb-eng.svg" alt="Inglaterra">',
+  'england':'<img src="https://flagcdn.com/gb-eng.svg" alt="Inglaterra">',
+  'croacia':'<img src="https://flagcdn.com/hr.svg" alt="Croacia">',
+  'croatia':'<img src="https://flagcdn.com/hr.svg" alt="Croacia">',
+  'república checa':'<img src="https://flagcdn.com/cz.svg" alt="República Checa">',
+  'republica checa':'<img src="https://flagcdn.com/cz.svg" alt="República Checa">',
+  'czech republic':'<img src="https://flagcdn.com/cz.svg" alt="República Checa">',
+  'czechia':'<img src="https://flagcdn.com/cz.svg" alt="República Checa">',
+  /* Otras selecciones habituales, por si se añaden más partidos */
+  'alemania':'<img src="https://flagcdn.com/de.svg" alt="Alemania">',
+  'germany':'<img src="https://flagcdn.com/de.svg" alt="Alemania">',
+  'italia':'<img src="https://flagcdn.com/it.svg" alt="Italia">',
+  'italy':'<img src="https://flagcdn.com/it.svg" alt="Italia">',
+  'brasil':'<img src="https://flagcdn.com/br.svg" alt="Brasil">',
+  'brazil':'<img src="https://flagcdn.com/br.svg" alt="Brasil">',
+  'países bajos':'<img src="https://flagcdn.com/nl.svg" alt="Países Bajos">',
+  'paises bajos':'<img src="https://flagcdn.com/nl.svg" alt="Países Bajos">',
+  'netherlands':'<img src="https://flagcdn.com/nl.svg" alt="Países Bajos">',
+  'marruecos':'<img src="https://flagcdn.com/ma.svg" alt="Marruecos">',
+  'morocco':'<img src="https://flagcdn.com/ma.svg" alt="Marruecos">',
+  'egipto':'<img src="https://flagcdn.com/eg.svg" alt="Egipto">',
+  'egypt':'<img src="https://flagcdn.com/eg.svg" alt="Egipto">',
+  'serbia':'<img src="https://flagcdn.com/rs.svg" alt="Serbia">'
 };
-function getFlag(name){return FLAGS[name.toLowerCase()]||'⚽';}
+function getFlag(name){return FLAGS[name.toLowerCase()]||'';}
 function isEsp(n){return n.toLowerCase().includes('españa')||n.toLowerCase().includes('spain');}
 
 function fmtDate(d){
@@ -1412,7 +1204,7 @@ function renderMatches(){
         <div class="partido-resultado">${sc}</div>
         <div class="equipo"><div class="equipo-flag">${flagA}</div><div class="equipo-nombre">${m.away}</div></div>
       </div>
-      <div class="partido-fecha">${m.status==='played'?'Finalizado':m.status==='live'?'⚽ EN DIRECTO':fmtDate(m.date)}</div>
+      <div class="partido-fecha">${m.status==='played'?'Finalizado':m.status==='live'?'EN DIRECTO':fmtDate(m.date)}</div>
     </div>`;
   };
   ['home-matches','all-matches'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=matches.map(card).join('');});
@@ -1434,7 +1226,7 @@ function renderSquad(){
   if(coachEl) coachEl.innerHTML = cat.coach ? `<strong>${cat.coach}</strong>` : '';
   const grupos=['Portero','Defensa','Centrocampista','Delantero'];
   if(!currentSquad.length){
-    el.innerHTML=`<p style="color:#aaa;font-style:italic;margin-top:16px">No hay jugadores registrados en esta categoría todavía. Puedes añadirlos desde el panel de administración.</p>`;
+    el.innerHTML=`<p style="color:#aaa;font-style:italic;margin-top:16px">No hay jugadores registrados en esta categoría todavía.</p>`;
     return;
   }
   el.innerHTML=grupos.map(g=>{
@@ -1461,7 +1253,7 @@ function renderTable(){
   el.innerHTML=s.map((t,i)=>{
     const pos=i+1;
     const cls=t.isTnf?'destacado':t.status==='descenso'?'descenso':'';
-    const ic=t.status==='ascenso'?'🟢 ':t.status==='descenso'?'🔴 ':'';
+    const ic='';
     return`<tr class="${cls}"><td class="pos-num">${pos}</td><td>${ic}${t.name}</td><td>${t.pj}</td><td>${t.g}</td><td>${t.e}</td><td>${t.p}</td><td>${t.gf}</td><td>${t.gc}</td><td><strong>${t.pts}</strong></td></tr>`;
   }).join('');
   if(fd)fd.textContent=tableDate;
@@ -1499,271 +1291,7 @@ function renderStore(){
   </div>`).join('');
 }
 
-function applyEscudo(){
-  ['header-escudo','hero-escudo','footer-escudo'].forEach(id=>{const e=document.getElementById(id);if(e)e.src=escudoUrl;});
-}
-
 function renderAll(){renderNews();renderMatches();renderSquad();renderTable();renderBracket();renderStore();renderEntradas();}
-
-// ---- ADMIN LISTS ----
-function renderANews(){
-  const c=document.getElementById('news-count');if(c)c.textContent=news.length;
-  document.getElementById('admin-news-list').innerHTML=news.map(n=>`<div class="item-row">
-    <div style="flex:1"><div class="item-row-info">${n.title}</div><div class="item-row-sub">${n.cat} · ${n.date||''}</div></div>
-    <button class="btn-danger" onclick="delNews(${n.id})">Eliminar</button></div>`).join('');
-}
-function renderAMatches(){
-  const c=document.getElementById('matches-count');if(c)c.textContent=matches.length;
-  document.getElementById('admin-matches-list').innerHTML=matches.map(m=>`<div class="item-row">
-    <div style="flex:1"><div class="item-row-info">${m.home} vs ${m.away}</div><div class="item-row-sub">${m.comp} · ${m.status==='played'?m.hg+'-'+m.ag:fmtDate(m.date)} · ${m.status}</div></div>
-    <button class="btn-danger" onclick="delMatch(${m.id})">Eliminar</button></div>`).join('');
-}
-function renderASquad(){
-  const allCats = Object.keys(CATEGORIAS);
-  const getList = cat => cat==='masculina' ? squad : (ld(CATEGORIAS[cat].key,null)??getSquadDefault(cat));
-  let total = allCats.reduce((s,c)=>s+getList(c).length,0);
-  const c=document.getElementById('squad-count');if(c)c.textContent=total;
-  let html='';
-  allCats.forEach(cat=>{
-    const list = getList(cat);
-    html+=`<div style="margin-bottom:6px;padding:6px 0;border-bottom:2px solid var(--gris);font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--rojo);letter-spacing:1px">${CATEGORIAS[cat].label} (${list.length})</div>`;
-    if(!list.length){ html+=`<p style="font-size:12px;color:#bbb;margin-bottom:12px;font-style:italic">Sin jugadores</p>`; return; }
-    html+=[...list].sort((a,b)=>a.num-b.num).map(p=>`<div class="item-row">
-      <div style="width:34px;height:34px;background:var(--rojo-oscuro);color:var(--amarillo);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:17px;flex-shrink:0">${p.num}</div>
-      <div style="flex:1"><div class="item-row-info">${p.name}</div><div class="item-row-sub">${p.pos} · ${p.club||''} · ${p.age} años</div></div>
-      <button class="btn-danger" onclick="delPlayer(${p.id},'${cat}')">Eliminar</button></div>`).join('');
-  });
-  document.getElementById('admin-squad-list').innerHTML=html;
-}
-function renderATable(){
-  document.getElementById('admin-table-list').innerHTML=[...tableData].sort((a,b)=>a.pos-b.pos).map(t=>`<div class="item-row">
-    <div style="width:26px;font-weight:700;color:var(--rojo)">${t.pos}</div>
-    <div style="flex:1"><div class="item-row-info">${t.name}${t.isTnf?' 🔴':''}</div><div class="item-row-sub">PJ:${t.pj} G:${t.g} E:${t.e} P:${t.p} GF:${t.gf} GC:${t.gc} · <strong>${t.pts} pts</strong></div></div>
-    <button class="btn-danger" onclick="delTableRow(${t.pos})">Eliminar</button></div>`).join('');
-}
-function renderAStore(){
-  const c=document.getElementById('store-count');if(c)c.textContent=storeItems.length;
-  document.getElementById('admin-store-list').innerHTML=storeItems.map(s=>`<div class="item-row">
-    <div style="flex:1"><div class="item-row-info">${s.name}</div><div class="item-row-sub">${parseFloat(s.price).toFixed(2)} €${s.badge?' · '+s.badge:''}</div>${s.url?`<div style="font-size:11px;color:#888;margin-top:2px">🔗 ${s.url}</div>`:''}</div>
-    <button class="btn-danger" onclick="delProduct(${s.id})">Eliminar</button></div>`).join('');
-}
-
-// ---- CRUD ----
-function g(id){const e=document.getElementById(id);return e?e.value.trim():'';}
-
-function addNews(){
-  const t=g('n-title'),c=g('n-cat');if(!t||!c){alert('Título y categoría obligatorios');return;}
-  news.unshift({id:uid(),title:t,cat:c,summary:g('n-summary'),content:g('n-content'),img:g('n-img')||'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600',date:g('n-date')});
-  sv('esp_news',news);['n-title','n-cat','n-summary','n-content','n-img','n-date'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
-  renderNews();renderANews();
-}
-function delNews(id){if(!confirm('¿Eliminar?'))return;news=news.filter(n=>n.id!==id);sv('esp_news',news);renderNews();renderANews();}
-
-function addMatch(){
-  const h=g('m-home'),a=g('m-away');if(!h||!a){alert('Equipos obligatorios');return;}
-  const hg=g('m-hg')!==''?parseInt(g('m-hg')):null,ag=g('m-ag')!==''?parseInt(g('m-ag')):null;
-  matches.push({id:uid(),home:h,away:a,hg,ag,status:g('m-status'),date:g('m-date'),venue:g('m-venue'),comp:g('m-comp')});
-  sv('esp_matches',matches);['m-home','m-away','m-hg','m-ag','m-date','m-venue','m-comp'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
-  renderMatches();renderAMatches();
-}
-function delMatch(id){if(!confirm('¿Eliminar?'))return;matches=matches.filter(m=>m.id!==id);sv('esp_matches',matches);renderMatches();renderAMatches();}
-
-function addPlayer(){
-  const n=g('p-num'),nm=g('p-name'),cat=g('p-cat')||'absoluta';if(!nm){alert('Nombre obligatorio');return;}
-  const newPlayer={id:uid(),num:parseInt(n)||0,name:nm,pos:g('p-pos'),club:g('p-club'),age:parseInt(g('p-age'))||0,img:g('p-img')||''};
-  if(cat==='masculina'){
-    squad.push(newPlayer);sv('esp_squad',squad);
-  } else {
-    let catSquad=ld(CATEGORIAS[cat].key, null);
-    if(catSquad===null) catSquad=getSquadDefault(cat);
-    catSquad.push(newPlayer);sv(CATEGORIAS[cat].key,catSquad);
-  }
-  ['p-num','p-name','p-club','p-age','p-img'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
-  renderSquad();renderASquad();
-}
-function delPlayer(id,cat){
-  cat=cat||'absoluta';
-  if(!confirm('¿Eliminar?'))return;
-  if(cat==='masculina'){squad=squad.filter(p=>p.id!==id);sv('esp_squad',squad);}
-  else{
-    let cs = ld(CATEGORIAS[cat].key, null);
-    if(cs===null) cs=getSquadDefault(cat);
-    cs=cs.filter(p=>p.id!==id);
-    sv(CATEGORIAS[cat].key,cs);
-  }
-  renderSquad();renderASquad();
-}
-
-function addTableRow(){
-  const pos=parseInt(g('t-pos')),nm=g('t-name');if(!pos||!nm){alert('Posición y nombre obligatorios');return;}
-  const gg=parseInt(g('t-g'))||0,e=parseInt(g('t-e'))||0;
-  tableData=tableData.filter(t=>t.pos!==pos);
-  tableData.push({pos,name:nm,pj:parseInt(g('t-pj'))||0,g:gg,e,p:parseInt(g('t-p'))||0,gf:parseInt(g('t-gf'))||0,gc:parseInt(g('t-gc'))||0,pts:gg*3+e,status:g('t-status'),isTnf:g('t-isTnf')==='si'});
-  sv('esp_table',tableData);['t-pos','t-name','t-pj','t-g','t-e','t-p','t-gf','t-gc'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
-  renderTable();renderATable();
-}
-function delTableRow(pos){if(!confirm('¿Eliminar?'))return;tableData=tableData.filter(t=>t.pos!==pos);sv('esp_table',tableData);renderTable();renderATable();}
-function saveTableDate(){tableDate=g('tabla-update-date');sv('esp_tdate',tableDate);renderTable();}
-
-function addProduct(){
-  const n=g('s-name'),p=g('s-price');if(!n||!p){alert('Nombre y precio obligatorios');return;}
-  storeItems.push({id:uid(),name:n,price:parseFloat(p),img:g('s-img')||'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',badge:g('s-badge'),url:g('s-url')||''});
-  sv('esp_store',storeItems);['s-name','s-price','s-img','s-badge','s-url'].forEach(i=>{const e=document.getElementById(i);if(e)e.value='';});
-  renderStore();renderAStore();
-}
-function delProduct(id){if(!confirm('¿Eliminar?'))return;storeItems=storeItems.filter(s=>s.id!==id);sv('esp_store',storeItems);renderStore();renderAStore();}
-
-function saveEscudo(){
-  const url=g('escudo-url');if(!url){alert('URL inválida');return;}
-  escudoUrl=url;sv('esp_escudo',escudoUrl);applyEscudo();
-  const prev=document.getElementById('escudo-preview');if(prev){prev.src=escudoUrl;prev.style.display='block';}
-  alert('✅ Escudo actualizado');
-}
-
-// ---- API AUTO-SYNC ----
-// España team ID en api-football.com = 9
-// Base: https://v3.football.api-sports.io
-const SPAIN_TEAM_ID = 9;
-const API_BASE = 'https://v3.football.api-sports.io';
-
-function setApiBox(type,html){
-  const el=document.getElementById('api-status-box');
-  if(!el)return;
-  el.className='api-status-box '+type;
-  el.style.display='block';
-  el.innerHTML=html;
-}
-
-function saveApiKey(){
-  const k=g('api-key-input');if(!k){alert('Introduce un token');return;}
-  apiKey=k;sv('esp_apikey',apiKey);
-  setApiBox('api-info','✅ Clave guardada. Pulsa "Sincronizar ahora" para probarla.');
-  updateApiStatus();
-}
-
-function updateApiStatus(){
-  const el=document.getElementById('api-config-status');
-  const ls=document.getElementById('api-last-sync-label');
-  if(!el)return;
-  if(apiKey){
-    el.innerHTML=`<span style="color:#00aa55;font-weight:700">✅ API activada</span> — España ID: <code style="background:#eee;padding:1px 5px">9</code> · Los datos se sincronizan automáticamente al cargar la página.`;
-  } else {
-    el.innerHTML=`<span style="color:#cc0000">❌ Sin configurar</span> — Introduce tu token del dashboard de api-football.com para activar la sincronización automática.`;
-  }
-  const last=ld('esp_lastsync','');
-  if(ls)ls.textContent=last?'Última sincronización: '+last:'';
-}
-
-async function testAndSync(){
-  if(!apiKey){alert('Primero guarda tu clave API');return;}
-  setApiBox('api-info','⏳ Conectando con api-football.com...');
-  await syncFromApi(true);
-}
-
-async function syncFromApi(verbose=false){
-  if(!apiKey)return;
-  const headers={
-    'x-apisports-key': apiKey
-  };
-
-  try {
-    // Obtener temporada actual y partidos de España
-    const season = new Date().getFullYear();
-    const res = await fetch(
-      `${API_BASE}/fixtures?team=${SPAIN_TEAM_ID}&season=${season}&last=5&next=5`,
-      {headers}
-    );
-
-    if(!res.ok){
-      const errData = await res.json().catch(()=>({}));
-      const msg = errData.message || errData.errors?.token || `HTTP ${res.status}`;
-      throw new Error(msg);
-    }
-
-    const data = await res.json();
-
-    // Comprobar errores de autenticación en el body
-    if(data.errors && Object.keys(data.errors).length > 0){
-      const errMsg = Object.values(data.errors).join(' · ');
-      throw new Error(errMsg);
-    }
-
-    const fixtures = data.response || [];
-
-    if(fixtures.length > 0){
-      const stMap = {
-        'NS':'upcoming', 'TBD':'upcoming', 'SUSP':'upcoming', 'PST':'upcoming', 'CANC':'upcoming',
-        '1H':'live', 'HT':'live', '2H':'live', 'ET':'live', 'P':'live', 'LIVE':'live', 'BT':'live',
-        'FT':'played', 'AET':'played', 'PEN':'played', 'AWD':'played', 'WO':'played'
-      };
-
-      const compMap = {
-        'UEFA Nations League':'Nations League',
-        'World Cup - Qualification Europe':'Clasificación Mundial',
-        'World Cup':'Mundial 2026',
-        'UEFA Euro':'Eurocopa',
-        'Friendlies - International':'Amistoso Internacional'
-      };
-
-      const raw = fixtures.map((f, i) => {
-        const fix = f.fixture;
-        const teams = f.teams;
-        const goals = f.goals;
-        const comp = f.league;
-        const statusShort = fix.status?.short || 'NS';
-        const status = stMap[statusShort] || 'upcoming';
-        const compName = compMap[comp.name] || comp.name;
-        const round = comp.round ? ` · ${comp.round.replace('Regular Season - ','J')}` : '';
-
-        return {
-          id: 7000 + i,
-          home: teams.home.name,
-          away: teams.away.name,
-          hg: goals.home,
-          ag: goals.away,
-          status,
-          date: fix.date,
-          venue: fix.venue?.name ? `${fix.venue.name}, ${fix.venue.city}` : 'Por confirmar',
-          comp: compName + round
-        };
-      });
-
-      matches = raw.sort((a,b) => new Date(a.date) - new Date(b.date));
-      sv('esp_matches', matches);
-      renderMatches();
-
-      const now = new Date().toLocaleString('es-ES');
-      sv('esp_lastsync', now);
-      const syncEls = ['home-sync-status','all-sync-status'];
-      syncEls.forEach(id => { const e=document.getElementById(id); if(e) e.textContent='Datos sincronizados · '+now; });
-
-      if(verbose) setApiBox('api-ok',
-        `✅ <strong>Sincronización exitosa.</strong> ${matches.length} partidos cargados desde api-football.com.<br/>
-        Los resultados se actualizarán automáticamente en cada visita.`
-      );
-    } else {
-      if(verbose) setApiBox('api-info',
-        '⚠️ La API respondió correctamente pero no devolvió partidos. Puede que no haya partidos en las próximas/últimas 5 jornadas.'
-      );
-    }
-    updateApiStatus();
-
-  } catch(e){
-    if(verbose) setApiBox('api-error',
-      `❌ <strong>Error al conectar:</strong> ${e.message}<br/><br/>
-      <strong>Soluciones:</strong><ul style="margin:8px 0 0 16px;line-height:1.9;font-size:12px">
-      <li>Verifica que el token sea correcto (sin espacios)</li>
-      <li>El token puede tardar unos minutos en activarse tras el registro</li>
-      <li>Comprueba que tu cuenta en dashboard.api-football.com esté activa</li>
-      <li>El plan gratuito tiene 100 peticiones/día — comprueba que no las hayas agotado</li>
-      </ul>`
-    );
-    console.warn('API sync error:', e.message);
-  }
-}
-
-// Auto-sync silently on page load
-if(apiKey){ syncFromApi(false); }
 
 function renderEntradas(){
   const el=document.getElementById('entradas-grid');
@@ -1783,8 +1311,8 @@ function renderEntradas(){
         <div class="entrada-fecha-badge">${fmtDate(m.date)}</div>
       </div>
       <div class="entrada-card-body">
-        <div class="entrada-info">📍 ${m.venue||'Por confirmar'}</div>
-        <button class="btn-entradas" onclick="openEntradasModal('${(m.home+' vs '+m.away).replace(/'/g,"\\'")}','${fmtDate(m.date)}','${(m.venue||'Por confirmar').replace(/'/g,"\\'")}')">🎟 Comprar entrada</button>
+        <div class="entrada-info">${m.venue||'Por confirmar'}</div>
+        <button class="btn-entradas" onclick="openEntradasModal('${(m.home+' vs '+m.away).replace(/'/g,"\\'")}','${fmtDate(m.date)}','${(m.venue||'Por confirmar').replace(/'/g,"\\'")}')">Comprar entrada</button>
       </div>
     </div>`).join('');
 }
@@ -1867,41 +1395,8 @@ function showPage(name){
   window.scrollTo(0,0);
 }
 
-function openAdmin(){
-  document.getElementById('adminOverlay').classList.add('open');
-  document.getElementById('adminLogin').style.display='block';
-  document.getElementById('adminPanel').style.display='none';
-  document.getElementById('adminPass').value='';
-  document.getElementById('loginError').style.display='none';
-}
-function closeAdmin(){document.getElementById('adminOverlay').classList.remove('open');}
-function checkLogin(){
-  if(document.getElementById('adminPass').value===PASS){
-    document.getElementById('adminLogin').style.display='none';
-    document.getElementById('adminPanel').style.display='block';
-    const ai=document.getElementById('api-key-input');if(ai)ai.value=apiKey;
-    const td=document.getElementById('tabla-update-date');if(td)td.value=tableDate;
-    const eu=document.getElementById('escudo-url');if(eu)eu.value=escudoUrl;
-    const prev=document.getElementById('escudo-preview');if(prev&&escudoUrl){prev.src=escudoUrl;prev.style.display='block';}
-    updateApiStatus();
-    renderANews();renderAMatches();renderASquad();renderATable();renderAStore();
-  } else {
-    document.getElementById('loginError').style.display='block';
-  }
-}
-function adminTab(name){
-  document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-  const sec=document.getElementById('admin-'+name);if(sec)sec.classList.add('active');
-  const map={news:0,matches:1,squad:2,table:3,store:4,api:5};
-  const tabs=document.querySelectorAll('.admin-tab');
-  if(map[name]!==undefined&&tabs[map[name]])tabs[map[name]].classList.add('active');
-  if(name==='api')updateApiStatus();
-}
-document.getElementById('adminOverlay').addEventListener('click',function(e){if(e.target===this)closeAdmin();});
-
 // ---- INIT ----
-renderAll();applyEscudo();
+renderAll();
 </script>
 </body>
 </html>
